@@ -269,7 +269,7 @@ Note:
 
 
 ## Post-Run Analysis
-![CI Workflow P2](images/ci-flow-p2.png)
+<img data-src="images/ci-flow-p2.png" class="plain"/>
 
 Note:
 - This diagram shows the log-classify process running on the executor node.
@@ -297,8 +297,7 @@ Note:
 
 
 ## Logstash Filter
-
-![CI Workflow P4](images/ci-flow-p4.png)
+<img data-src="images/ci-flow-p4.png" class="plain"/>
 
 Note:    
 - This diagram shows a more advanced Zuul workflow including a log-processor.
@@ -307,8 +306,7 @@ Note:
 
 
 ## Standalone Service
-
-![CI Workflow P5](images/ci-flow-p5.png)
+<img data-src="images/ci-flow-p5.png" class="plain"/>
 
 Note:
 - The log-processor could be adapted as a standalone service (TBD).
@@ -325,7 +323,6 @@ DEMO:
 
 
 ## www.softwarefactory-project.io
-
 ![What is SoftwareFactory](images/what-is-sf.png)
 
 Note:
@@ -360,3 +357,7 @@ Note:
 Note:
     - And this concludes the presentation.
     - Thank you for your time!
+
+
+## Credits
+Icons used in diagrams are licensed under Creative Commons Attribution 3.0: https://fontawesome.com/license
