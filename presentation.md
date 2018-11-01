@@ -58,7 +58,7 @@ Note:
 
 
 ## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
-<!-- .slide: data-background-image="https://www.openstack.org/summit/images/berlin.jpg" -->
+<!-- .slide: data-background-image="images/berlin.jpg" -->
 
 Short intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
