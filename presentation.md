@@ -1,25 +1,39 @@
-# Introduction
-
-Here is some content...
-
-Note:
-- This section introduces the goal of anomaly detection in CI logs.
-
-
-
-## Presentation
-
-- We are software engineer
-- Focus in system integration
-- Looking for solution to improve logs reading
+[comment]: # (Warm-up - Why are we presenting?)
+### We are software engineers
+![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
 - Tristan is working at Red Hat, member of the OpenStack Vulnerability Management Team for more than 3 years, working on CI/CD solution
-- Dirk is ...
+- Dirk is working at SUSE and spending too much time looking at log files :)
 
+
+### We love ~~YouTube~~ OpenStack Health
+![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
+
+
+### We watch OpenStack Health
+![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
+
+
+### Let's peek the log...
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
+
+Note:
+- Here we see about 2% of the logfile of the OpenStack Infra
+job http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-ubuntu-xenial/616f532/job-output.txt.gz
+- There is an error in there, can you see it?
+
+
+# ?
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
+
+
+### Found it?
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
 ## Current Process
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 <img data-src="images/legacy-flow.png" class="plain"/>
 
 Note:
@@ -27,8 +41,6 @@ Note:
   understand why a job failed.
 - This process is tedious and time consuming and usually involves lots
   of clicking and scrolling...
-
-
 
 
 ## What if the machine looked for the errors?
@@ -39,12 +51,20 @@ Note:
 - Automatic anomaly detection may greatly reduces investigation time.
 
 
+### Log-Classify
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
+![OpenStack Health Screenshot](images/log-classify-openstack-error.png)
 
 
-## Today's plan
-- Short intro to Machine Learning
-- Tool presentation
-- CI logs classification
+
+## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+<!-- .slide: data-background-image="https://www.openstack.org/summit/images/berlin.jpg" -->
+
+Short intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+
+Tool presentation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+
+CI logs classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
 
@@ -55,7 +75,7 @@ Note:
 
 
 
-# Using machine learning to remove noise
+### Using machine learning to remove noise
 
 Note:
 - This section introduces two objects that can be used with CI logs:
