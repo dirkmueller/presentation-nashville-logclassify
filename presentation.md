@@ -113,7 +113,7 @@ the data.
 
 
 ## Example of Devstack Vectors
-<img data-src="images/sectors.png" class="plain"/>
+<img data-src="images/vectors.png" class="plain"/>
 
 Note:
 - This example shows the vectors of a devstack job-output of 34k lines.
