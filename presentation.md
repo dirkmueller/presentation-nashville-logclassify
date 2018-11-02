@@ -170,7 +170,7 @@ vector to the baseline.
 - Noise may hide important information:
 ```
     pcre enabled            | pcre disabled
-    setup mirror hostnameA  | setup mirror hostnameB  |  
+    setup mirror hostnameA  | setup mirror hostnameB  |
 ```
 - Tokenization may need adjustment for small dataset.
 
@@ -319,7 +319,7 @@ Note:
 ## Logstash Filter
 <img data-src="images/ci-flow-p4.png" class="plain"/>
 
-Note:    
+Note:
 - This diagram shows a more advanced Zuul workflow including a log-processor.
 - The log-classify could be used as a library to add distance values to logstash events.
 - Cons: the users need to wait and go to Kibana to get the report.
