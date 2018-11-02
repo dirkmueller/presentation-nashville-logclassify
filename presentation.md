@@ -85,9 +85,17 @@ CI Logs Classification <!-- .element: style="color: white; background-color:rgba
 
 ## Taxonomy
 - ai/ml
+
 - models
+- Generic Hashing Text classifier
+  - Assumes text, line based log input
+  - Any input is fine (Any CI system)
 - baselines, targets
 
+Note:
+- Machine Learning is a subfield of AI
+- The models are created from training data
+- .
 
 
 ### Using machine learning to remove noise
@@ -121,6 +129,7 @@ Note:
 <img data-src="images/hashing-vectorizer.png" class="plain"/>
 
 Note:
+- 
 - The first step of the workflow is to transform raw log lines into
 something more convenient for machines.
 - The raw data can't be used because it's noisy: it contains random parts
@@ -173,7 +182,9 @@ Note:
 - The Nearest Neighbors model quickly computes the distance of a new
 vector to the baseline.
 
+## Overfitting problem
 
+## 
 
 ## Caveats
 - Need DEBUG in baseline logs.
@@ -199,8 +210,19 @@ Note:
 
 
 ## Introducing log-classify
+- Based on http://scikit-learn.org/
+  - Python :-)
+  - Many parameters to play with
+
+Note:
+- scikit-learn provides many text classifiers
+- Chose HashingVectorizer which is best for logfile types as others work better on natural language
+
+
+### log-classify: First steps
 
 - CLI that implements above process
+- PyPI project still called ```logreduce```
 - Command line published on pypi
 ```bash
     $ pip3 install --user logreduce
@@ -347,9 +369,22 @@ DEMO:
 **** TODO: record a backup video for this demo
 
 
+## Conclusions
+- http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
+- Using HashingVectorizer with NN "brute" runtime grows linearly with number of features
+  - Large variety in baseline causes number of features to grow too much
+  - Reasonable seems to be 1 million
+ 
+ 
+## How to contribute
 
-## www.softwarefactory-project.io
+Log-Classify is currently hosted on 
+
+www.softwarefactory-project.io
 ![What is SoftwareFactory](images/what-is-sf.png)
+
+- Apache-2.0 Licensed
+- .. instructions on how to contribute
 
 Note:
 - Logreduce has been created in the context of Software Factory.
@@ -362,6 +397,8 @@ Note:
 
 
 ## Roadmap
+- Incremental training and model
+  - Handle Streaming logs?
 - Curate public domain datasets
 - Fingerprint archived anomalies
 - Support more services: Jenkins build, Travis CI
