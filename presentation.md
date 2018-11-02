@@ -3,24 +3,35 @@
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
-- Tristan is working at Red Hat, member of the OpenStack Vulnerability Management Team for more than 3 years, working on CI/CD solution
-- Dirk is working at SUSE and spending too much time looking at log files :)
+- Tristan works for Red Hat and has been a member of the OpenStack
+  Vulnerability Management Team for more than 3 years.
+  His work focuses on CI/CD solutions.
+- Dirk works for SUSE and spends too much time looking at log files :)
 
 
 ### We love ~~YouTube~~ OpenStack Health
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
+Note:
+- OpenStack runs one of the largest CI systems for OpenSource software.
+- It produces tremendous amount of results and data.
+- This graph from OpenStack Health shows that each project undergoes
+  many runs daily.
+
 
 ### We watch OpenStack Health
 ![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
 
+Note:
+- Sometimes jobs fail unexpectedly.
 
-### Let's peek the log...
+
+### Let's peek at the log...
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 Note:
-- Here we see about 2% of the logfile of the OpenStack Infra
-job http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-ubuntu-xenial/616f532/job-output.txt.gz
+- Here we see that about 2% of the OpenStack Infra job log
+  http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-ubuntu-xenial/616f532/job-output.txt.gz
 - There is an error in there, can you see it?
 
 
@@ -28,7 +39,7 @@ job http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-u
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
-### Found it?
+### Did you find it?
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
@@ -48,24 +59,27 @@ Note:
 
 Note:
 - Most of this process can be automated.
-- Automatic anomaly detection may greatly reduces investigation time.
+- Automatic anomaly detection may greatly reduce investigation time.
 
 
 ### Log-Classify
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 ![OpenStack Health Screenshot](images/log-classify-openstack-error.png)
 
+Note:
+- In this presentation, we'll see how to go from a long boring log file
+  to a condensed exciting report of anomalies to look for.
 
 
 
 ## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 <!-- .slide: data-background-image="images/berlin.jpg" -->
 
-Short intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+Short Intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
-Tool presentation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+Tool Presentation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
-CI logs classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+CI Logs Classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
 
@@ -119,7 +133,7 @@ the data.
 
 
 ## Noise Reduction
-- Random words may be replaced with known tokens:
+Random words may be replaced with known tokens:
 
 <table><tr><th>Token</th><th>Raw text</th>
 <tr><td><pre>DATE</pre></td><td>months/days/date</td></tr>
@@ -165,7 +179,7 @@ vector to the baseline.
 - Need DEBUG in baseline logs.
 - Noise may hide important information:
 ```
-    pcre enabled            | pcre disabled
+    pcre enabled            | pcre disabled           |
     setup mirror hostnameA  | setup mirror hostnameB  |
 ```
 - Tokenization may need adjustment for small dataset.
@@ -174,9 +188,9 @@ Note:
 - This method relies on the fact that the baseline contains all
   non-anomalous data. Anything that can't be found in the baseline will be
   reported as anomalous.
-- For example, /testr/ logs only contains 'SUCCESS' when they succeed, and
-  all the logs are only emited when the job fails.
-- The example shows that both lines have the same distance, though we are only
+- For example, /testr/ logs only contain 'SUCCESS' when they succeed, and
+  the logs are only emited when the job fails.
+- This example shows that both lines have the same distance, though we are only
   interested in the "pcre disabled" one.
 
 - The next section introduces the log-classify tool, an implementation of this
@@ -191,7 +205,7 @@ Note:
 ```bash
     $ pip3 install --user logreduce
 ```
-- Output /distance/ | /filename:line-number/: **anomaly**
+- Output /distance/ | /file:line-number/: **anomaly**
 - Multiple baselines can be used
 
 
@@ -214,11 +228,11 @@ Note:
 ```
 
 Note:
-    - The journald range sets baseline as the previous day/week/month and the
-      target as the current day/week/month.
-    **** DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
-           show that looking at journalctl is boring,
-           then using a pre-trained model, extract the new events
+    - The journald range sets the baseline as the previous day/week/month and
+      the target as the current day/week/month.
+**** DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
+show that looking at journalctl is boring,
+then using a pre-trained model, extract the new events
 
 
 ## Sos Report
@@ -238,7 +252,7 @@ Note:
 - Before printing the anomalies, the baseline sources are also displayed,
   see the /compared with/ debug.
 **** DEMO: open a pre-generated html report and show non obvious issue that are
-        detected
+detected
 
 
 ## Web Frontend
@@ -252,7 +266,7 @@ Note:
 
 
 
-# (Zuul) CI Workflow
+# CI Workflow
 <img data-src="images/zuul.svg" width=20% height=20% class="plain"/>
 Note:
 - Using the tool manually may be cumbersome.
@@ -285,7 +299,7 @@ Note:
 
 Note:
 - This diagram shows the log-classify process running on the executor node.
-- Pros: users/job doesn't have to be adapted, the post-run can be added to the base job.
+- Pros: users/jobs don't have to be adapted, the post-run can be added to the base job.
 - Cons: memory/cpu overhead on shared resources.
 
 
@@ -348,7 +362,7 @@ Note:
 
 
 ## Roadmap
-- Curate public domain dataset
+- Curate public domain datasets
 - Fingerprint archived anomalies
 - Support more services: Jenkins build, Travis CI
 
@@ -365,4 +379,5 @@ Note:
 
 
 ## Credits
-Icons used in diagrams are licensed under Creative Commons Attribution 3.0: https://fontawesome.com/license
+Icons used in these diagrams are licensed under
+Creative Commons Attribution 3.0: https://fontawesome.com/license
