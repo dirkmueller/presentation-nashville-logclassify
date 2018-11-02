@@ -57,6 +57,7 @@ Note:
 
 
 
+
 ## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 <!-- .slide: data-background-image="images/berlin.jpg" -->
 
@@ -85,7 +86,6 @@ Note:
   generic workflow.
 
 
-
 ### Generic Training Workflow
 <img data-src="images/ml-generic-workflow-p1.png" class="plain"/>
 
@@ -94,14 +94,12 @@ Note:
 - The raw text lines need to be converted before being used by a machine learning model.
 
 
-
 ### Generic Testing Workflow
 <img data-src="images/ml-generic-workflow.png" class="plain"/>
 
 Note:
  - After the model is trained, we can repeat the same process to test
     the target and extract the novelties.
-
 
 
 ## Hashing Vectorizer
@@ -117,7 +115,6 @@ the data.
 - The sparse matrix is a numeric array of all possible hashes
 (2**20 by default).
 - Each vector is very sparse as it only contains the token hashes.
-
 
 
 ## Noise Reduction
@@ -144,7 +141,6 @@ look for the distances of each target vector to any baseline vectors.
 - We can use a learning model to detect the red dots.
 
 
-
 ## Nearest Neighbors Unsupervised Learner
 <img data-src="images/nntree.png" class="plain"/>
 
@@ -152,7 +148,6 @@ Note:
 - Nearest Neighbors learns from baseline vectors.
 - This builds a tree of connected tokens.
 - This doesn't hold the whole dataset.
-
 
 
 ## kNeighbors computes vector's distance
@@ -199,13 +194,11 @@ Note:
 - Multiple baselines can be used
 
 
-
 ## Managing baseline
 <img data-src="images/baselines.png" class="plain"/>
 
 Note:
 - The key to using k-NN regression for anomaly detection is to have a database of known good baselines.
-
 
 
 # Journald
@@ -227,7 +220,6 @@ Note:
            then using a pre-trained model, extract the new events
 
 
-
 ## Sos Report
 ```bash
 $ logreduce --debug diff report-good/ report-bad/ \
@@ -246,7 +238,6 @@ Note:
   see the /compared with/ debug.
 **** DEMO: open a pre-generated html report and show non obvious issue that are
         detected
-
 
 
 ## Web Frontend
