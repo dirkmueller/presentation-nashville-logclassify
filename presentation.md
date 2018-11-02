@@ -77,6 +77,7 @@ CI logs classification <!-- .element: style="color: white; background-color:rgba
 
 
 ### Using machine learning to remove noise
+<img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
 - This section introduces two objects that can be used with CI logs:
@@ -252,7 +253,7 @@ Note:
 
 
 # (Zuul) CI Workflow
-
+<img data-src="images/zuul.svg" width=20% height=20% class="plain"/>
 Note:
 - Using the tool manually may be cumbersome.
 - We will now see different ways to integrate anomaly detection
