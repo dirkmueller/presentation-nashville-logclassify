@@ -346,9 +346,6 @@ Note:
 
 
 
-# Conclusion
-
-
 ## Roadmap
 - Curate public domain dataset
 - Fingerprint archived anomalies
@@ -360,14 +357,10 @@ Note:
 - Detect known "fingerprint" similarly to the elastic-recheck.
 - Support more services to discover baselines
 
+- And this concludes the presentation.
+- Q&A time.
+- Thank you for your time!
 
-
-
-## Q&A
-
-Note:
-    - And this concludes the presentation.
-    - Thank you for your time!
 
 
 ## Credits
