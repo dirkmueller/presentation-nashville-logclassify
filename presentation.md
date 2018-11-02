@@ -146,10 +146,10 @@ Random words may be replaced with known tokens:
 
 <table><tr><th>Token</th><th>Raw text</th>
 <tr><td><pre>DATE</pre></td><td>months/days/date</td></tr>
-<tr><td><pre>RNGU</pre></td><td>any UUID</td></tr>
-<tr><td><pre>RNGI</pre></td><td>any IPv4 or IPv6 address</td></tr>
-<tr><td><pre>RNGN</pre></td><td>any word that is exactly 32,64 or 128 chars</td></tr>
-<tr><td><pre>&quot;&quot;</pre></td><td>all numbers and non letters</td></tr>
+<tr><td><pre>RNGU</pre></td><td>UUIDs</td></tr>
+<tr><td><pre>RNGI</pre></td><td>IPv4 or IPv6 addresses</td></tr>
+<tr><td><pre>RNGN</pre></td><td>words that are exactly 32, 64 or 128 chars</td></tr>
+<tr><td><pre>RNGD</pre></td><td>numbers of at least 3 digits</td></tr>
 </table>
 
 
