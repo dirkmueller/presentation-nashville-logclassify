@@ -1,6 +1,6 @@
 [comment]: # (Warm-up - Why are we presenting?)
 ### We are software engineers
-![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
+<img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
 - Tristan works for Red Hat and has been a member of the OpenStack
@@ -211,6 +211,10 @@ Note:
 
 
 ## Introducing log-classify
+<img data-src="images/microscope-solid.svg" width=20% height=20% class="plain"/>
+
+
+### Log-classify
 - Based on http://scikit-learn.org/
   - Python :-)
   - Many parameters to play with
@@ -372,6 +376,7 @@ DEMO:
 
 
 ## Conclusions
+<img data-src="images/compass-solid.svg" width=20% height=20% class="plain"/>
 
 
 ### How to contribute
