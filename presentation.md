@@ -319,7 +319,7 @@ Note:
 - The executor retrieves the logs and publishes them to a logserver
 - Zuul returns the logserver url to the user
 - Zuul stores build information in a database. This is the key component
-  to make the log-classify process possible
+  to make the log-classify process automatic for CI logs.
 
 
 ### Post-Run Analysis
@@ -336,8 +336,8 @@ Note:
     - job:
         name: base
         post-run:
-          - upload-log
           - clasify-log
+          - upload-log
 ```
 ```yaml
     - tasks:
@@ -346,33 +346,35 @@ Note:
       - name: Generate report
         command: log-classify job-run ...
       - name: Return report url
-        zuul_return: {zuul: url: log: ...}
+        zuul_return: report.html
 ```
 
-
-### Logstash Filter
-<img data-src="images/ci-flow-p4.png" class="plain"/>
-
 Note:
-- This diagram shows a more advanced Zuul workflow including a log-processor
-- The log-classify could be used as a library to add distance values to logstash events
-- Cons: the users need to wait and go to Kibana to get the report
+- This is an example integration in the base job.
+- Log-classify comes with zuul-jobs roles ready to be
+used.
 
 
 ### Standalone Service
 <img data-src="images/ci-flow-p5.png" class="plain"/>
 
 Note:
-- The log-processor could be adapted as a standalone service (TBD)
-- Could interface with elastic-recheck
+- Logreduce can be deployed as a service to run analysis
+  after the job execution.
+-
 - This would enable user interaction, for example:
   - Trigger manual analysis
   - Feedback false-positive
   - ...
-DEMO:
+
+
+### Demo
+<video><source data-src="videos/short.webm" type="video/webm" /></video>
+
+Note:
 - Grab a failed job from zuul.openstack.org, put the uuid in the new form
-  and show the interface
-**** TODO: record a backup video for this demo
+  and show the report interface
+- Or fallback to recorded demo
 
 
 
@@ -406,6 +408,7 @@ Note:
   - Word2Vec
 - Incremental model training
 - Handle Streaming logs
+- Logstash filter
 - Curate public domain datasets
 - Fingerprint and classify known archived anomalies
 - Support more services: Jenkins build, Travis CI, ...
