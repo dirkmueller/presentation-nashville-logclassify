@@ -194,30 +194,19 @@ Note:
   which increase the distance a lot.
 
 
-## Overfitting problem
+## Limitations
 
-##
-
-## Caveats
-- Need DEBUG in baseline logs
-- Noise may hide important information
-```
-    pcre enabled            | pcre disabled           |
-    setup mirror hostnameA  | setup mirror hostnameB  |
-```
-- Tokenization may need adjustment for small dataset
+- Noise may hide important information.
+- Logs may contain many features.
+- Nearest Neighbor uses brute force search.
+- Complexcity grows linearly with samples size.
 
 Note:
-- This method relies on the fact that the baseline contains all
-  non-anomalous data. Anything that can't be found in the baseline will be
-  reported as anomalous
-- For example, /testr/ logs only contain 'SUCCESS' when they succeed, and
-  the logs are only emited when the job fails
-- This example shows that both lines have the same distance, though we are only
-  interested in the "pcre disabled" one
-
-- The next section introduces the log-classify tool, an implementation of this
-  method
+- NLP methods aren't ideal for log lines.
+- Samples sizes above xxx aren't practical (TODO: compute xxx)
+- http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
+- (Though it works well in many cases).
+- The next section introduces an easy-to-use implementation of this technique.
 
 
 
@@ -381,11 +370,8 @@ DEMO:
 **** TODO: record a backup video for this demo
 
 
+
 ## Conclusions
-- http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
-- Using HashingVectorizer with NN "brute" runtime grows linearly with number of features
-  - Large variety in baseline causes number of features to grow too much
-  - Reasonable seems to be 1 million
 
 
 ## How to contribute
@@ -405,7 +391,6 @@ Note:
 - The architecture is modular and the screenshot shows some of
   the ready-to-use components
 - Logreduce is integrated as part of the default CI logs processing
-
 
 
 ## Roadmap
