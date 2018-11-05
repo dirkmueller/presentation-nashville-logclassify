@@ -419,4 +419,6 @@ Note:
 
 ## Credits
 Icons used in these diagrams are licensed under
-Creative Commons Attribution 3.0: https://fontawesome.com/license
+Creative Commons Attribution 3.0:
+- https://fontawesome.com/license
+- https://zuul-ci.org
