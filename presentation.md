@@ -82,20 +82,26 @@ Tool Presentation <!-- .element: style="color: white; background-color:rgba(0, 0
 CI Logs Classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
-
 ## Taxonomy
-- ai/ml
-
-- models
-- Generic Hashing Text classifier
-  - Assumes text, line based log input
-  - Any input is fine (Any CI system)
-- baselines, targets
+- Artificial Intelligence
+- Machine Learning
+- k-Nearest Neighbors
+- Build
+- Baseline
+- Target
 
 Note:
-- Machine Learning is a subfield of AI
-- The models are created from training data
-- .
+- AI involves machines that can perform tasks that are characteristic of human
+  intelligence. It's rather general branch of computer science.
+- Stanford University defines machine learning as “the science of getting
+  computers to act without being explicitly programmed”.
+- And Nearest Neighbors is one of the simplest of all ML algorithm that
+  we use in this presentation.
+- Build defines generic process that generates logs, e.g. CI jobs,
+  deployment scripts, service operations, ...
+- Baseline defines nominal build
+- Target defines build that we want to analyze.
+
 
 
 ### Using machine learning to remove noise
@@ -126,10 +132,13 @@ Note:
 
 
 ## Hashing Vectorizer
-<img data-src="images/hashing-vectorizer.png" class="plain"/>
+- Generic Text classifier
+- Line based log input
+- Works with any inputs: console, service logs, ...
+
+<img style="border: none" data-src="images/hashing-vectorizer.png" class="plain"/> <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
-- 
 - The first step of the workflow is to transform raw log lines into
 something more convenient for machines
 - The raw data can't be used because it's noisy: it contains random parts
