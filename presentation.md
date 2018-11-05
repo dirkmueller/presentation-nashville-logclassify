@@ -393,14 +393,19 @@ Note:
 - Logreduce is integrated as part of the default CI logs processing
 
 
-## Roadmap
-- Incremental training and model
-  - Handle Streaming logs?
+## Future plans
+- Adapt the model based on sample size:
+  - ANN
+  - PCA
+  - Word2Vec
+- Incremental model training
+- Handle Streaming logs
 - Curate public domain datasets
-- Fingerprint archived anomalies
-- Support more services: Jenkins build, Travis CI
+- Fingerprint and classify known archived anomalies
+- Support more services: Jenkins build, Travis CI, ...
 
 Note:
+- This is a tentative roadmap
 - A public domain dataset to enable further research in that field
   Having a common dataset to test new models would help find new solutions
 - Detect known "fingerprint" similarly to the elastic-recheck
