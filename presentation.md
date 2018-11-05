@@ -43,7 +43,7 @@ Note:
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
-## Current Process
+### Current Process
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 <img data-src="images/legacy-flow.png" class="plain"/>
 
@@ -54,7 +54,7 @@ Note:
   of clicking and scrolling...
 
 
-## What if the machine looked for the errors?
+### What if the machine looked for the errors?
 <img data-src="images/improved-flow.png" class="plain"/>
 
 Note:
@@ -82,7 +82,7 @@ Tool Presentation <!-- .element: style="color: white; background-color:rgba(0, 0
 CI Logs Classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
-## Taxonomy
+### Taxonomy
 - Artificial Intelligence
 - Machine Learning
 - k-Nearest Neighbors
@@ -104,7 +104,7 @@ Note:
 
 
 
-### Using machine learning to remove noise
+## Using machine learning to remove noise
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
@@ -132,7 +132,7 @@ Note:
    the target and extract the novelties
 
 
-## Hashing Vectorizer
+### Hashing Vectorizer
 - Generic Text classifier
 - Line based log input
 - Works with any inputs: console, service logs, ...
@@ -151,7 +151,7 @@ the data
 - Each vector is very sparse as it only contains the token hashes
 
 
-## Noise Reduction
+### Noise Reduction
 Random words may be replaced with known tokens:
 
 <table><tr><th>Token</th><th>Raw text</th>
@@ -163,7 +163,7 @@ Random words may be replaced with known tokens:
 </table>
 
 
-## Example of Devstack Vectors
+### Example of Devstack Vectors
 <img data-src="images/vectors.png" class="plain"/>
 
 Note:
@@ -175,7 +175,7 @@ look for the distances of each target vector to any baseline vectors
 - We can use a learning model to detect the red dots
 
 
-## Nearest Neighbors Unsupervised Learner
+### Nearest Neighbors Unsupervised Learner
 <img data-src="images/knn.png" class="plain"/>
 
 Note:
@@ -185,7 +185,7 @@ Note:
   vector to the baseline
 
 
-## kNeighbors computes vector's distance
+### kNeighbors computes vector's distance
 <img data-src="images/kneighbors.png" class="plain"/>
 
 Note:
@@ -194,7 +194,7 @@ Note:
   which increase the distance a lot.
 
 
-## Limitations
+### Limitations
 
 - Noise may hide important information.
 - Logs may contain many features.
@@ -232,14 +232,14 @@ Note:
 - Multiple baselines can be used
 
 
-## Managing baseline
+### Managing baseline
 <img data-src="images/baselines.png" class="plain"/>
 
 Note:
 - The key to using k-NN regression for anomaly detection is to have a database of known good baselines
 
 
-# Journald
+### Journald
 - Extract novelty from the last day:
 ```bash
     $ logreduce journal --range day
@@ -258,7 +258,7 @@ show that looking at journalctl is boring,
 then using a pre-trained model, extract the new events
 
 
-## Sos Report
+### Sos Report
 ```bash
 $ logreduce --debug diff report-good/ report-bad/ \
             --html report.html
@@ -278,7 +278,7 @@ Note:
 detected
 
 
-## Web Frontend
+### Web Frontend
 - React interface for anomaly classification
 
 ![LogClassify React UI](images/react-interface.png)
@@ -289,15 +289,15 @@ Note:
 
 
 
-# CI Workflow
-<img data-src="images/zuul.svg" width=20% height=20% class="plain"/>
+## CI Workflow
+<img data-src="images/zuul.svg" width=30% height=20% class="plain"/>
 Note:
 - Using the tool manually may be cumbersome
 - We will now see different ways to integrate anomaly detection
   in a CI workflow
 
 
-## Build results
+### Build results
 ![Zuul Build Results](images/zuul-results.png)
 
 Note:
@@ -305,7 +305,7 @@ Note:
   often deterministic and previous runs can be automatically used as baselines
 
 
-## Zuul Architecture
+### Zuul Architecture
 <img data-src="images/ci-flow-p1.png" class="plain"/>
 
 Note:
@@ -317,7 +317,7 @@ Note:
   to make the log-classify process possible
 
 
-## Post-Run Analysis
+### Post-Run Analysis
 <img data-src="images/ci-flow-p2.png" class="plain"/>
 
 Note:
@@ -326,7 +326,7 @@ Note:
 - Cons: memory/cpu overhead on shared resources
 
 
-## Post-Run Playbook
+### Post-Run Playbook
 ```yaml
     - job:
         name: base
@@ -345,7 +345,7 @@ Note:
 ```
 
 
-## Logstash Filter
+### Logstash Filter
 <img data-src="images/ci-flow-p4.png" class="plain"/>
 
 Note:
@@ -354,7 +354,7 @@ Note:
 - Cons: the users need to wait and go to Kibana to get the report
 
 
-## Standalone Service
+### Standalone Service
 <img data-src="images/ci-flow-p5.png" class="plain"/>
 
 Note:
@@ -374,7 +374,7 @@ DEMO:
 ## Conclusions
 
 
-## How to contribute
+### How to contribute
 
 Log-Classify is currently hosted on
 
@@ -393,7 +393,7 @@ Note:
 - Logreduce is integrated as part of the default CI logs processing
 
 
-## Future plans
+### Future plans
 - Adapt the model based on sample size:
   - ANN
   - PCA
