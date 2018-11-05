@@ -176,21 +176,23 @@ look for the distances of each target vector to any baseline vectors
 
 
 ## Nearest Neighbors Unsupervised Learner
-<img data-src="images/nntree.png" class="plain"/>
+<img data-src="images/knn.png" class="plain"/>
 
 Note:
 - Nearest Neighbors learns from baseline vectors
-- This builds a tree of connected tokens
-- This doesn't hold the whole dataset
+- It enables efficient regression analysis
+- Can be used to quickly computes the distance of a new
+  vector to the baseline
 
 
 ## kNeighbors computes vector's distance
 <img data-src="images/kneighbors.png" class="plain"/>
 
 Note:
-- This example illustrates an anomaly from the previous devstack example
-- The Nearest Neighbors model quickly computes the distance of a new
-vector to the baseline
+- This example illustrates a knn search from the previous devstack example.
+- In this case the line contains unknown tokens showed in red
+  which increase the distance a lot.
+
 
 ## Overfitting problem
 
