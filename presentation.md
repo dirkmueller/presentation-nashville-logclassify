@@ -108,7 +108,7 @@ Note:
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
-- This section introduces two objects that can be used with CI logs:
+- This section introduces two objects that can be used with logs:
   - the HashingVectorizer processor; and
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
@@ -120,7 +120,8 @@ Note:
 
 Note:
 - This diagram shows how baselines are processed to train a model
-- The raw text lines need to be converted before being used by a machine learning model
+- The raw text lines need to be converted before being used by a
+  machine learning model
 
 
 ### Generic Testing Workflow
@@ -128,7 +129,7 @@ Note:
 
 Note:
  - After the model is trained, we can repeat the same process to test
-    the target and extract the novelties
+   the target and extract the novelties
 
 
 ## Hashing Vectorizer
@@ -193,7 +194,7 @@ vector to the baseline
 
 ## Overfitting problem
 
-## 
+##
 
 ## Caveats
 - Need DEBUG in baseline logs
@@ -383,11 +384,11 @@ DEMO:
 - Using HashingVectorizer with NN "brute" runtime grows linearly with number of features
   - Large variety in baseline causes number of features to grow too much
   - Reasonable seems to be 1 million
- 
- 
+
+
 ## How to contribute
 
-Log-Classify is currently hosted on 
+Log-Classify is currently hosted on
 
 www.softwarefactory-project.io
 ![What is SoftwareFactory](images/what-is-sf.png)
