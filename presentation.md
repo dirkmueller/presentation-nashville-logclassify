@@ -44,7 +44,6 @@ Note:
 
 
 ### Current Process
-<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 <img data-src="images/legacy-flow.png" class="plain"/>
 
 Note:
@@ -63,7 +62,6 @@ Note:
 
 
 ### Log-Classify
-<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 ![OpenStack Health Screenshot](images/log-classify-openstack-error.png)
 
 Note:
@@ -87,21 +85,20 @@ CI Logs Classification <!-- .element: style="color: white; background-color:rgba
 - Artificial Intelligence
 - Machine Learning
 - k-Nearest Neighbors
-- Build
-- Baseline
-- Target
+- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
+- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
+- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
-- AI involves machines that can perform tasks that are characteristic of human
-  intelligence. It's rather general branch of computer science.
-- Stanford University defines machine learning as “the science of getting
-  computers to act without being explicitly programmed”.
-- And Nearest Neighbors is one of the simplest of all ML algorithm that
-  we use in this presentation.
-- Build defines generic process that generates logs, e.g. CI jobs,
-  deployment scripts, service operations, ...
-- Baseline defines nominal build
-- Target defines build that we want to analyze.
+- AI is a growing branch of computer science with a broad scope.
+- ML is a field of artificial intelligence that uses statistical techniques.
+- And Nearest Neighbors is one of the simplest of all ML algorithms that
+  we will explore today.
+- In this presentation:
+  - Build defines generic process that generates logs, e.g. CI jobs,
+    deployment scripts, service operations, ...
+  - Baseline defines nominal build
+  - Target defines build that we want to analyze.
 
 
 
@@ -109,7 +106,8 @@ Note:
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
-- This section introduces two objects that can be used with logs:
+- This section introduces the base principle along with
+  two objects that can be used with logs:
   - the HashingVectorizer processor; and
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
@@ -129,32 +127,13 @@ Note:
 <img data-src="images/ml-generic-workflow.png" class="plain"/>
 
 Note:
- - After the model is trained, we can repeat the same process to test
-   the target and extract the novelties
-
-
-### Hashing Vectorizer
-- Generic Text classifier
-- Line based log input
-- Works with any inputs: console, service logs, ...
-
-<img style="border: none" data-src="images/hashing-vectorizer.png" class="plain"/> <!-- .element: class="fragment" data-fragment-index="1" -->
-
-Note:
-- The first step of the workflow is to transform raw log lines into
-something more convenient for machines
-- The raw data can't be used because it's noisy: it contains random parts
-that would yield false positives
-- Let's use simple tokenization and a hashing vectorizer to transform
-the data
-- The sparse matrix is a numeric array of all possible hashes
-(2**20 by default)
-- Each vector is very sparse as it only contains the token hashes
+- After the model is trained, we can repeat the same process to test
+  the target and extract the novelties
+- Next we will see how to implement such model
+TODO: split the diagram in multiple slides
 
 
 ### Noise Reduction
-Random words may be replaced with known tokens:
-
 <table><tr><th>Token</th><th>Raw text</th>
 <tr><td><pre>DATE</pre></td><td>months/days/date</td></tr>
 <tr><td><pre>RNGU</pre></td><td>UUIDs</td></tr>
@@ -162,6 +141,25 @@ Random words may be replaced with known tokens:
 <tr><td><pre>RNGN</pre></td><td>words that are exactly 32, 64 or 128 chars</td></tr>
 <tr><td><pre>RNGD</pre></td><td>numbers of at least 3 digits</td></tr>
 </table>
+
+Note:
+- We already know what is not relevant for log analysis
+- Random words may be replaced with known tokens
+- Generic tokenization greatly reduce the complexity
+
+
+### Hashing Vectorizer
+<img style="border: none" data-src="images/hashing-vectorizer.png" class="plain"/>
+
+Note:
+- The raw log lines needs to be transformed into
+  something more convenient for machines.
+- After tokenization, the Hashing Vectorizer convert each
+  words into a numeric token.
+- And it encodes the token occurence information into a
+  sparse matrix array of all possible hashes
+  (2**20 by default).
+- Each vector is very sparse as it only contains the token hashes
 
 
 ### Example of Devstack Vectors
@@ -173,17 +171,17 @@ Note:
 - The red dots show target vectors
 - This representation shows all the vectors in order, though we will
 look for the distances of each target vector to any baseline vectors
-- We can use a learning model to detect the red dots
+- Next we will see how to interpret those vectors
 
 
-### Nearest Neighbors Unsupervised Learner
+### Nearest Neighbors
 <img data-src="images/knn.png" class="plain"/>
 
 Note:
 - Nearest Neighbors learns from baseline vectors
-- It enables efficient regression analysis
-- Can be used to quickly computes the distance of a new
-  vector to the baseline
+- It enables efficient regression analysis that can
+  be used to quickly compute the distance of targets
+  vectors to the baselines
 
 
 ### kNeighbors computes vector's distance
@@ -193,20 +191,6 @@ Note:
 - This example illustrates a knn search from the previous devstack example.
 - In this case the line contains unknown tokens showed in red
   which increase the distance a lot.
-
-
-### Limitations
-
-- Noise may hide important information.
-- Logs may contain many features.
-- Nearest Neighbor uses brute force search.
-- Complexcity grows linearly with samples size.
-
-Note:
-- NLP methods aren't ideal for log lines.
-- Samples sizes above xxx aren't practical (TODO: compute xxx)
-- http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
-- (Though it works well in many cases).
 - The next section introduces an easy-to-use implementation of this technique.
 
 
@@ -291,6 +275,9 @@ detected
 
 Note:
 - The server and web frontend only support Zuul Build at the moment
+- Failure classification into category and model re-enforcement
+  is still under discussion.
+- Next we will see how such tool can be used in a CI context.
 
 
 
@@ -300,6 +287,7 @@ Note:
 - Using the tool manually may be cumbersome
 - We will now see different ways to integrate anomaly detection
   in a CI workflow
+TODO: split the diagram in multiple slides
 
 
 ### Build results
@@ -308,6 +296,8 @@ Note:
 Note:
 - CI jobs are great targets for k-NN regression because the job outputs are
   often deterministic and previous runs can be automatically used as baselines
+- At the end of run, the user is presented with a list of job result,
+  and the goal is to help him understand why a job failed.
 
 
 ### Zuul Architecture
@@ -359,13 +349,14 @@ used.
 <img data-src="images/ci-flow-p5.png" class="plain"/>
 
 Note:
-- Logreduce can be deployed as a service to run analysis
+- Log-classify can be deployed as a service to run analysis
   after the job execution.
--
-- This would enable user interaction, for example:
-  - Trigger manual analysis
-  - Feedback false-positive
-  - ...
+- Trigger could be automatic after log upload, or requested
+  manually.
+- Pros: enable user interaction, for example,
+  feedback false-positive, centralized index of anomalies, ...
+- Cons: asynchronous, builds result still points at
+  directory index of raw files.
 
 
 ### Demo
@@ -378,22 +369,58 @@ Note:
 
 
 
+### Limitations
+- Nearest Neighbor uses brute force search.     <!-- .element: class="fragment" data-fragment-index="1" -->
+- Complexcity grows linearly with samples size. <!-- .element: class="fragment" data-fragment-index="2" -->
+- Noise may hide important information.         <!-- .element: class="fragment" data-fragment-index="3" -->
+- Logs may contain many features.               <!-- .element: class="fragment" data-fragment-index="4" -->
+
+Note:
+- Preliminary work based on the HashingVectorizer. It works well for
+  a large majority of log files.
+- The current Nearest Neighbor implementation actually uses a
+  brute force search for sparse matric vectors:
+  http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
+- Which means that search complexity grows linearly with samples size
+- Because it is an unsupervised learning model, short failure message
+  may be indeferent from noise.
+- NN doesn't work well if logfile contains too many
+  sparse features. Mistral logs, i'm looking at you :)
+
+
+### Unique vectors per job
+<img data-src="images/vector-per-jobs.png" class="plain"/>
+
+Note:
+- This graph shows the number of unique vectors found in
+  tempest-full job-output.
+
+
+### Performances per sample size
+<img data-src="images/time-per-samples.png" class="plain"/>
+
+Note:
+- This graph shows search time growing linearly with sample sizes.
+- Samples sizes above 1 millions vectors aren't practical, it
+  would takes 40ms to compute one distance, so about 10 minutes to
+  process a typical tempest-full job-output.
+
+
+
 ## Conclusions
 <img data-src="images/compass-solid.svg" width=20% height=20% class="plain"/>
 
 
 ### How to contribute
 
-Log-Classify is currently hosted on
-
-www.softwarefactory-project.io
+Log-Classify is hosted on softwarefactory-project.io
 ![What is SoftwareFactory](images/what-is-sf.png)
 
 - Apache-2.0 Licensed
-- .. instructions on how to contribute
+- #log-classify on Freenode
 
 Note:
-- Logreduce has been created in the context of Software Factory
+- Log-classify has been created in the context of Software Factory
 - It is an OpenSource development forge that integrates many component to
   be easily deployed on premise or as a service
 - The architecture is modular and the screenshot shows some of
@@ -402,19 +429,17 @@ Note:
 
 
 ### Future plans
-- Adapt the model based on sample size:
-  - ANN
-  - PCA
-  - Word2Vec
+- Adaptive model
 - Incremental model training
 - Handle Streaming logs
 - Logstash filter
 - Curate public domain datasets
-- Fingerprint and classify known archived anomalies
+- Fingerprint and detect archived anomalies
 - Support more services: Jenkins build, Travis CI, ...
 
 Note:
 - This is a tentative roadmap
+- Other model may be used depending on baseline sample sizes, e.g. ANN, Word2Vec
 - A public domain dataset to enable further research in that field
   Having a common dataset to test new models would help find new solutions
 - Detect known "fingerprint" similarly to the elastic-recheck
