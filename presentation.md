@@ -202,7 +202,7 @@ Note:
 
 
 ### Log-classify
-- Based on http://scikit-learn.org/<img data-src="images/Scikit_learn_logo_small.svg" class="plain"/>
+- Based on http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
   - Python :-)
   - Many parameters to play with
 - Generic Hashing Text classifier
