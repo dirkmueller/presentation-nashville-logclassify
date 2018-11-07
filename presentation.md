@@ -126,13 +126,21 @@ Note:
 
 
 ### Generic Testing Workflow
-<img data-src="images/ml-generic-workflow.png" class="plain"/>
+<!-- .slide: data-transition="none" -->
+<img data-src="images/ml-generic-workflow-p2.png" class="plain"/>
 
 Note:
 - After the model is trained, we can repeat the same process to test
-  the target and extract the novelties
+  the target
+
+
+### Generic Testing Workflow
+<!-- .slide: data-transition="none" -->
+<img data-src="images/ml-generic-workflow.png" class="plain"/>
+
+Note:
+- And look for what went wrong to produce a report.
 - Next we will see how to implement such model
-TODO: split the diagram in multiple slides
 
 
 ### Noise Reduction
