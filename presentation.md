@@ -162,14 +162,15 @@ Note:
 <img style="border: none" data-src="images/hashing-vectorizer.png" class="plain"/>
 
 Note:
-- The raw log lines needs to be transformed into
+- After tokenization, log lines needs to be transformed into
   something more convenient for machines.
-- After tokenization, the Hashing Vectorizer convert each
-  words into a numeric token.
-- And it encodes the token occurence information into a
-  sparse matrix array of all possible hashes
+- The Hashing Vectorizer convert each words into a numeric token using a
+  hashing trick.
+- Then it encodes the token occurence information into a
+  sparse matrix array of all the possible hashes
   (2**20 by default).
 - Each vector is very sparse as it only contains the token hashes
+- The vectorizer is used on each log lines, whatever its source or structure.
 
 
 ### Example of Devstack Vectors
@@ -194,7 +195,7 @@ Note:
   vectors to the baselines
 
 
-### kNeighbors computes vector's distance
+### kNeighbors queries
 <img data-src="images/kneighbors.png" class="plain"/>
 
 Note:
@@ -326,19 +327,19 @@ Note:
 ![Zuul Build Results](images/zuul-results.png)
 
 Note:
-- CI jobs are great targets for k-NN regression because the job outputs are
+- At the end of run, the user is presented with a list of build result,
+  and the goal is to help him understand why a build failed.
+- CI jobs are great targets for k-NN regression because the build outputs are
   often deterministic and previous runs can be automatically used as baselines
-- At the end of run, the user is presented with a list of job result,
-  and the goal is to help him understand why a job failed.
 
 
 ### Zuul Architecture
 <img data-src="images/ci-flow-p0.0.png" class="plain"/>
 
 Note:
-- This diagram show user that interact with the Zuul Scheduler through
-  code review system.
-- The scheduler executes jobs through a remote executor service.
+- This diagram shows that users interact with the Zuul Scheduler through
+  code review systems.
+- The scheduler executes builds through a remote executor service.
 
 
 ### Zuul Architecture 2
@@ -346,7 +347,7 @@ Note:
 <img data-src="images/ci-flow-p0.1.png" class="plain"/>
 
 Note:
-- Jobs are executed on ephemeral test instances
+- Builds are executed on ephemeral test instances
 - The executor retrieves the logs and publishes them to a logserver
 
 
@@ -369,7 +370,7 @@ Note:
 
 Note:
 - This diagram shows the log-classify process running on the executor node
-- Pros: users/jobs don't have to be adapted, the post-run can be added to the base job
+- Pros: jobs don't have to be adapted, the post-run can be added to the base job
 - Cons: memory/cpu overhead on shared resources
 
 
@@ -392,9 +393,9 @@ Note:
 ```
 
 Note:
-- This is an example integration in the base job.
-- Log-classify comes with zuul-jobs roles ready to be
-used.
+- This is an example of base job integration
+- Log-classify comes with zuul-jobs roles ready to be used to report
+  the job's condensed summary to the user.
 
 
 ### Standalone Service
@@ -402,7 +403,7 @@ used.
 
 Note:
 - Log-classify can be deployed as a service to run analysis
-  after the job execution.
+  after the build execution.
 - Trigger could be automatic after log upload, or requested
   manually.
 - Pros: enable user interaction, for example,
@@ -415,7 +416,7 @@ Note:
 <video><source data-src="videos/short.webm" type="video/webm" /></video>
 
 Note:
-- Grab a failed job from zuul.openstack.org, put the uuid in the new form
+- Grab a failed build from zuul.openstack.org, put the uuid in the new form
   and show the report interface
 - Or fallback to recorded demo
 
@@ -472,22 +473,23 @@ Log-Classify is hosted on softwarefactory-project.io
 - #log-classify on Freenode
 
 Note:
-- Log-classify has been created in the context of Software Factory
-- It is an OpenSource development forge that integrates many component to
-  be easily deployed on premise or as a service
-- The architecture is modular and the screenshot shows some of
+- Log-classify has been created in the context of Software Factory.
+  It is an OpenSource development forge that integrates many component to
+  be easily deployed on premise or as a service.
+  The architecture is modular and the screenshot shows some of
   the ready-to-use components
-- Logreduce is integrated as part of the default CI logs processing
+- Log-classify is integrated as part of the default CI logs processing
+- Join us on #log-classify IRC channel on Freenode to get involved
 
 
 ### Future plans
-- Adaptive model
-- Incremental model training
 - Handle Streaming logs
-- Logstash filter
+  - Adaptive model
+  - Incremental model training
 - Curate public domain datasets
 - Fingerprint and detect archived anomalies
-- Support more services: Jenkins build, Travis CI, ...
+- More services: Jenkins build, Travis CI, ...
+- More reporter: Logstash filter, ...
 
 Note:
 - This is a tentative roadmap
