@@ -224,12 +224,14 @@ Note:
 
 ### log-classify: First steps
 
--  Published on PyPI
+Published on PyPI
+
 ```bash
     $ pip3 install --user logreduce
     $ logreduce dir-train model.clf baseline/*
     $ logreduce dir-run model.clf error.txt
 ```
+<!-- .element: class="stretch" -->
 
 
 ### logreduce: Output
@@ -239,6 +241,7 @@ $ logreduce diff  logs/good.txt logs/bad.txt
 0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500, u'message': u'Exceeded maximum number of retries. Exhausted all hosts available for retrying build failures for instance d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
 97.98% reduction (from 35244 lines to 712)
 ```
+<!-- .element: class="stretch" -->
 
 Multiple baselines can be used
 
@@ -259,6 +262,7 @@ Note:
 ```bash
     $ logreduce journal --range day
 ```
+<!-- .element: class="stretch" -->
 - Build a model using last month's logs and look for novelties in the last week:
 
 ```bash-
@@ -267,6 +271,7 @@ Note:
 ...
 99.76% reduction (from 7804 lines to 19)
 ```
+<!-- .element: class="stretch" -->
 
 Note:
     - The journald range sets the baseline as the previous day/week/month and
