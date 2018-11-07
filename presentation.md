@@ -320,7 +320,6 @@ Note:
 - Using the tool manually may be cumbersome
 - We will now see different ways to integrate anomaly detection
   in a CI workflow
-TODO: split the diagram in multiple slides
 
 
 ### Build results
@@ -334,18 +333,38 @@ Note:
 
 
 ### Zuul Architecture
+<img data-src="images/ci-flow-p0.0.png" class="plain"/>
+
+Note:
+- This diagram show user that interact with the Zuul Scheduler through
+  code review system.
+- The scheduler executes jobs through a remote executor service.
+
+
+### Zuul Architecture 2
+<!-- .slide: data-transition="none" -->
+<img data-src="images/ci-flow-p0.1.png" class="plain"/>
+
+Note:
+- Jobs are executed on ephemeral test instances
+- The executor retrieves the logs and publishes them to a logserver
+
+
+### Zuul Architecture
+<!-- .slide: data-transition="none" -->
 <img data-src="images/ci-flow-p1.png" class="plain"/>
 
 Note:
-- This diagram shows the basic zuul workflow
-- Jobs are executed on ephemeral test instances
-- The executor retrieves the logs and publishes them to a logserver
 - Zuul returns the logserver url to the user
 - Zuul stores build information in a database. This is the key component
   to make the log-classify process automatic for CI logs.
 
+- This diagram shows the basic zuul workflow, let's see how log-classify
+  can be used.
+
 
 ### Post-Run Analysis
+<!-- .slide: data-transition="none" -->
 <img data-src="images/ci-flow-p2.png" class="plain"/>
 
 Note:
