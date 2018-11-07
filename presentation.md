@@ -99,6 +99,8 @@ Note:
     deployment scripts, service operations, ...
   - Baseline defines nominal build
   - Target defines build that we want to analyze.
+- Deep Learning (neural network modelling) is an instance of generalizing learning
+- Nearest Neighboars is an instance based learning algorithm
 
 
 
@@ -200,9 +202,11 @@ Note:
 
 
 ### Log-classify
-- Based on http://scikit-learn.org/
+- Based on http://scikit-learn.org/<img data-src="images/Scikit_learn_logo_small.svg" class="plain"/>
   - Python :-)
   - Many parameters to play with
+- Generic Hashing Text classifier
+  - Assumes text, line based log input
 
 Note:
 - scikit-learn provides many text classifiers
@@ -211,14 +215,27 @@ Note:
 
 ### log-classify: First steps
 
-- CLI that implements above process
-- PyPI project still called ```logreduce```
-- Command line published on pypi
+-  Published on PyPI
 ```bash
     $ pip3 install --user logreduce
+    $ logreduce dir-train model.clf baseline/*
+    $ logreduce dir-run model.clf error.txt
 ```
-- Output /distance/ | /file:line-number/: **anomaly**
-- Multiple baselines can be used
+
+
+### logreduce: Output
+
+```bash
+$ logreduce diff  logs/good.txt logs/bad.txt
+0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500, u'message': u'Exceeded maximum number of retries. Exhausted all hosts available for retrying build failures for instance d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
+97.98% reduction (from 35244 lines to 712)
+```
+
+Multiple baselines can be used
+
+```bash
+    $ logreduce dir-train model.clf baseline/*
+```
 
 
 ### Managing baseline
@@ -236,7 +253,10 @@ Note:
 - Build a model using last month's logs and look for novelties in the last week:
 
 ```bash-
+    $ logreduce journal-train -- range month journal.clf
     $ logreduce journal-run   --range week  journald.clf
+...
+99.76% reduction (from 7804 lines to 19)
 ```
 
 Note:
@@ -265,6 +285,11 @@ Note:
   see the /compared with/ debug
 **** DEMO: open a pre-generated html report and show non obvious issue that are
 detected
+
+
+### Clustering
+- no clustering (DBSCAN, k-means) implemented yet
+- would be useful for finding outliers
 
 
 ### Web Frontend
