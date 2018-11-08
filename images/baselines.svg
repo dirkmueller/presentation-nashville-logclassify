@@ -344,8 +344,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="442.66896"
-     inkscape:cy="362.95995"
+     inkscape:cx="235.58769"
+     inkscape:cy="358.91934"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -428,14 +428,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="445.73776"
+       x="444.79718"
        y="621.92065"
        id="text4204-5"><tspan
          id="tspan4882"
          sodipodi:role="line"
-         x="445.73776"
+         x="444.79718"
          y="621.92065"
-         style="font-size:35.67235184px;line-height:1.25">Log Reduce </tspan></text>
+         style="font-size:35.67235184px;line-height:1.25">Log Classify </tspan></text>
     <path
        style="opacity:1;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.51607502;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4543-6-0)"
        d="m 659.0625,612.17963 h 90.45337"

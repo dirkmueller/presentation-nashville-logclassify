@@ -13,6 +13,7 @@ Note:
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
+- todo: remove ~~youtube~~ from the title?
 - OpenStack runs one of the largest CI systems for OpenSource software
 - It produces tremendous amount of results and data
 - This graph from OpenStack Health shows that each project undergoes
@@ -32,6 +33,7 @@ Note:
 Note:
 - Here we see that about 2% of the OpenStack Infra job log
   http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-ubuntu-xenial/616f532/job-output.txt.gz
+- Ask audience if they are looking at those log files regularly?
 - There is an error in there, can you see it?
 
 
@@ -58,6 +60,8 @@ Note:
 
 Note:
 - Most of this process can be automated
+- Some issue are non obvious like race condition,
+  or new task causing side-effects
 - Automatic anomaly detection may greatly reduce investigation time
 
 
@@ -206,6 +210,44 @@ Note:
 
 
 
+### Limitations
+- Nearest Neighbor uses brute force search.     <!-- .element: class="fragment" data-fragment-index="1" -->
+- Complexcity grows linearly with samples size. <!-- .element: class="fragment" data-fragment-index="2" -->
+- Noise may hide important information.         <!-- .element: class="fragment" data-fragment-index="3" -->
+- Logs may contain many features.               <!-- .element: class="fragment" data-fragment-index="4" -->
+
+Note:
+- Preliminary work based on the HashingVectorizer. It works well for
+  a large majority of log files.
+- The current Nearest Neighbor implementation actually uses a
+  brute force search for sparse matric vectors:
+  http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
+- Which means that search complexity grows linearly with samples size
+- Because it is an unsupervised learning model, short failure message
+  may be indeferent from noise.
+- NN doesn't work well if logfile contains too many
+  sparse features. Mistral logs, i'm looking at you :)
+
+
+### Unique vectors per job
+<img data-src="images/vector-per-jobs.png" class="plain"/>
+
+Note:
+- This graph shows the number of unique vectors found in
+  tempest-full job-output.
+
+
+### Performances per sample size
+<img data-src="images/time-per-samples.png" class="plain"/>
+
+Note:
+- This graph shows search time growing linearly with sample sizes.
+- Samples sizes above 1 millions vectors aren't practical, it
+  would takes 40ms to compute one distance, so about 10 minutes to
+  process a typical tempest-full job-output.
+
+
+
 ## Introducing log-classify
 <img data-src="images/microscope-solid.svg" width=20% height=20% class="plain"/>
 
@@ -249,6 +291,9 @@ Multiple baselines can be used
     $ logreduce dir-train model.clf baseline/*
 ```
 
+Note:
+- Default output is: **distance** | filename: logs
+
 
 ### Managing baseline
 <img data-src="images/baselines.png" class="plain"/>
@@ -266,7 +311,7 @@ Note:
 - Build a model using last month's logs and look for novelties in the last week:
 
 ```bash-
-    $ logreduce journal-train -- range month journal.clf
+    $ logreduce journal-train --range month journal.clf
     $ logreduce journal-run   --range week  journald.clf
 ...
 99.76% reduction (from 7804 lines to 19)
@@ -427,55 +472,14 @@ Note:
 
 
 
-### Limitations
-- Nearest Neighbor uses brute force search.     <!-- .element: class="fragment" data-fragment-index="1" -->
-- Complexcity grows linearly with samples size. <!-- .element: class="fragment" data-fragment-index="2" -->
-- Noise may hide important information.         <!-- .element: class="fragment" data-fragment-index="3" -->
-- Logs may contain many features.               <!-- .element: class="fragment" data-fragment-index="4" -->
-
-Note:
-- Preliminary work based on the HashingVectorizer. It works well for
-  a large majority of log files.
-- The current Nearest Neighbor implementation actually uses a
-  brute force search for sparse matric vectors:
-  http://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbor-algorithms
-- Which means that search complexity grows linearly with samples size
-- Because it is an unsupervised learning model, short failure message
-  may be indeferent from noise.
-- NN doesn't work well if logfile contains too many
-  sparse features. Mistral logs, i'm looking at you :)
-
-
-### Unique vectors per job
-<img data-src="images/vector-per-jobs.png" class="plain"/>
-
-Note:
-- This graph shows the number of unique vectors found in
-  tempest-full job-output.
-
-
-### Performances per sample size
-<img data-src="images/time-per-samples.png" class="plain"/>
-
-Note:
-- This graph shows search time growing linearly with sample sizes.
-- Samples sizes above 1 millions vectors aren't practical, it
-  would takes 40ms to compute one distance, so about 10 minutes to
-  process a typical tempest-full job-output.
-
-
-
 ## Conclusions
 <img data-src="images/compass-solid.svg" width=20% height=20% class="plain"/>
 
 
-### How to contribute
+### Software Factory
 
 Log-Classify is hosted on softwarefactory-project.io
 ![What is SoftwareFactory](images/what-is-sf.png)
-
-- Apache-2.0 Licensed
-- #log-classify on Freenode
 
 Note:
 - Log-classify has been created in the context of Software Factory.
@@ -484,6 +488,13 @@ Note:
   The architecture is modular and the screenshot shows some of
   the ready-to-use components
 - Log-classify is integrated as part of the default CI logs processing
+
+
+### How to contribute
+- Apache-2.0 Licensed
+- #log-classify on Freenode
+
+Note:
 - Join us on #log-classify IRC channel on Freenode to get involved
 
 
