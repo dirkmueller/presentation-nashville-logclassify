@@ -130,8 +130,7 @@ Note:
 <img data-src="images/ml-generic-workflow-p2.png" class="plain"/>
 
 Note:
-- After the model is trained, we can repeat the same process to test
-  the target
+- We can repeat the same process to test the target
 
 
 ### Generic Testing Workflow
@@ -139,7 +138,8 @@ Note:
 <img data-src="images/ml-generic-workflow.png" class="plain"/>
 
 Note:
-- And look for what went wrong to produce a report.
+- After the model has been trained with nominal data, it can detect the noise
+  from the target data and report what went wrong
 - Next we will see how to implement such model
 
 
