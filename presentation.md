@@ -375,6 +375,7 @@ INFO  Classifier - Training took 84.141 seconds to ingest 33.458 MB
 INFO  Classifier - Testing took 173.464 seconds to test 22.952 MB
 99.67% reduction (from 128882 lines to 424)
 ```
+<!-- .element: class="stretch" -->
 
 Note:
 - A model is built per file. The model name is a minified version of the
