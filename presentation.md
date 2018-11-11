@@ -172,7 +172,7 @@ Note:
   hashing trick.
 - Then it encodes the token occurence information into a
   sparse matrix array of all the possible hashes
-  (2**20 by default).
+  (1 million by default).
 - Each vector is very sparse as it only contains the token hashes
 - The vectorizer is used on each log lines, whatever its source or structure.
 
@@ -253,56 +253,93 @@ Note:
 
 
 ### Log-classify
-- Based on http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
+- Uses http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
   - Python :-)
-  - Many parameters to play with
-- Generic Hashing Text classifier
-  - Assumes text, line based log input
+- Extensible Text Extraction Model
+- Assumes text, line based log input
 
 Note:
 - scikit-learn provides many text classifiers
-- Chose HashingVectorizer which is best for logfile types as others work better on natural language
+- Provides TfidfVectorizer and HashingVectorizer based k-NNeighbor model
+- HashingVectorizer works best for machine logfiles
 
 
-### log-classify: First steps
-
-Published on PyPI
+### log-classify: Installation
 
 ```bash
     $ pip3 install --user logreduce
-    $ logreduce dir-train model.clf baseline/*
-    $ logreduce dir-run model.clf error.txt
 ```
-<!-- .element: class="stretch" -->
 
 
-### logreduce: Output
+### log-classify: Commands
 
-```bash
-$ logreduce diff  logs/good.txt logs/bad.txt
-0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500, u'message': u'Exceeded maximum number of retries. Exhausted all hosts available for retrying build failures for instance d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
-97.98% reduction (from 35244 lines to 712)
-```
-<!-- .element: class="stretch" -->
-
-Multiple baselines can be used
-
-```bash
-    $ logreduce dir-train model.clf baseline/*
+```txt
+    $ logreduce
+    diff                Compare directories/files
+    dir                 Train and run against local files/dirs
+    job                 Train and run against CI logs
+    journal             Train and run against local journald
 ```
 
 Note:
-- Default output is: **distance** | filename: logs
+- logreduce can work based on local directories, Zuul CI jobs or systemd journal
+- Each command also has a -train and -run command for more finegrained baseline/target management
 
 
-### Managing baseline
+### log-classify: Model Assumption
 <img data-src="images/baselines.png" class="plain"/>
+- Instance based learning
+- Baseline is built from **normal** input
+- Model is run against **abnormal** target
 
 Note:
 - The key to using k-NN regression for anomaly detection is to have a database of known good baselines
 
 
-### Journald
+### log-classify: Graphical Diff
+<img data-src="images/heap-of-leaves-small.jpg" height="220"/>
+<img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
+<img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
+
+
+### log-classify: Handle baselines
+
+```bash
+    $ logreduce dir-train model.clf baseline/*
+    $ logreduce dir-run model.clf error.txt
+```
+
+
+### log-classify: CI Build-log Model
+<img data-src="images/mkcloud-svd.png" class="plain" height="550" />
+
+
+### log-classify: Devstack Model
+Truncated singular value decomposition (SVD)
+<img data-src="images/devstack-svd.png" class="plain" height="550" />
+
+Note:
+- SVD provides a randomized dimensionality reductio of the samples
+  of hashed vectors to 2D
+- Red shows the normalized tokens from logreduce
+- Grey shows the raw words in the devstack stream
+
+
+### log-classify: Devstack
+
+```bash
+$ logreduce diff  logs/good.txt logs/bad.txt
+0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
+     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500,\
+     u'message': u'Exceeded maximum number of retries. Exhausted \
+     all hosts available for retrying build failures for instance
+     d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
+97.98% reduction (from 35244 lines to 712)
+```
+<!-- .element: class="stretch" -->
+
+
+### log-classify: Journald
 - Extract novelty from the last day:
 ```bash
     $ logreduce journal --range day
@@ -326,9 +363,13 @@ show that looking at journalctl is boring,
 then using a pre-trained model, extract the new events
 
 
-### Sos Report
+### log-classify: journald SVD
+<img data-src="images/messages-svd.png" class="plain" height="550" />
+
+
+### log-classify: sosreport/supportconfigs
 ```bash
-$ logreduce --debug diff report-good/ report-bad/ \
+$ logreduce diff report-good/ report-bad/ \
             --html report.html
 INFO  Classifier - Training took 84.141 seconds to ingest 33.458 MB
 INFO  Classifier - Testing took 173.464 seconds to test 22.952 MB
@@ -345,6 +386,9 @@ Note:
 **** DEMO: open a pre-generated html report and show non obvious issue that are
 detected
 
+
+### supportconfig SVD
+<img data-src="images/supportconfig-svd.png" class="plain" height="550" />
 
 ### Clustering
 - no clustering (DBSCAN, k-means) implemented yet
