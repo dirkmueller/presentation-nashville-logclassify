@@ -328,12 +328,8 @@ Testing took 6.375s at 0.454MB/s (6.569kl/s)
 <img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
 
-### log-classify: CI Build-log Model
-Truncated singular value decomposition (SVD)
-<img data-src="images/mkcloud-svd.png" class="plain" height="550" />
-
-
 ### log-classify: Devstack Model
+Truncated singular value decomposition (SVD)
 <img data-src="images/devstack-svd.png" class="plain" height="550" />
 
 Note:
