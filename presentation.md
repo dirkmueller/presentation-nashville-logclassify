@@ -324,50 +324,57 @@ Testing took 6.375s at 0.454MB/s (6.569kl/s)
 ### log-classify: Training Set Size
 <img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
+Note:
+- Influence of training size on the accuracy of the output
+- Even a single sample is giving an acceptable reduction from the
+  raw 35000 logs
+- 4-8 samples seems to be a good training set size
+
 
 ### log-classify: Devstack Model
 <img data-src="images/devstack-svd.png" class="plain" height="500" />
 <small>Truncated singular value decomposition (SVD)</small>
 
 Note:
-- SVD provides a randomized dimensionality reductio of the samples
-  of hashed vectors to 2D
-- Red shows the normalized tokens from logreduce
+- SVD provides a randomized dimensionality reduction of the samples
+  of hashed vectors to 2D graphics.
 - Grey shows the raw words in the devstack stream
+- Red shows the normalized tokens from logreduce
+- Reduction of features considered for the training seems
+  to be balanced from real world experience.
 
 
 ### log-classify: Devstack
 
 ```bash
 # logreduce diff  logs/good.txt logs/bad.txt
+...
 0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
      Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500,\
      u'message': u'Exceeded maximum number of retries. Exhausted \
      all hosts available for retrying build failures for instance
      d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
+...
 97.98% reduction (from 35244 lines to 712)
 ```
 <!-- .element: class="stretch" -->
 
 
 ### log-classify: Journald
-- Extract novelty from the last day:
+- Extract novelty in todays logs over yesterday:
 ```bash
 # logreduce journal --range day
 ```
 <!-- .element: class="stretch" -->
 - Build a model using previous month's logs and look for novelties:
 
-```bash-
+```bash
 # logreduce journal-train --range month journal.clf
 ```
 
 Note:
 - The journald range sets the baseline as the previous day/week/month and
   the target as the current day/week/month
-- DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
-  show that looking at journalctl is boring,
-  then using a pre-trained model, extract the new events
 
 
 ### log-classify: journald (II)
@@ -391,7 +398,7 @@ Note:
 <!-- .element: class="stretch" -->
 
 
-### log-classify: sosreport/supportconfigs
+### log-classify: sosreport/supportconfig
 ```bash
 # logreduce diff report-good/ report-bad/ --html report.html
 Training took 51.364s at 1.543MB/s
@@ -403,18 +410,23 @@ Testing took 37.432s at 0.446MB/s
 <img data-src="images/report-detail.png"  /> <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Note:
-- Isolate "typical" errors from atypical ones
 - A model is built per file. The model name is a minified version of the
   filename to include variations, e.g. audit.1 and audit.2 use
   the same model
+- A model allows blending out "typical" errors from atypical ones
 - "Loading" and "Testing" debug shows the /model-name/: used for each file
-- Before printing the anomalies, the baseline sources are also displayed,
-  see the /compared with/ debug
+- HTML output is better for handling large outputs
 
 
 ### supportconfig SVD
 <img data-src="images/supportconfig-svd.png" class="plain" height="550" />
 
+Note:
+- For more effective supportconfig reduction the feature extraction
+  still needs tweaking
+- Current feature extraction is too tuned for CI use case and needs
+  some adaptations
+- Work in progress
 
 ### log-classify: OpenStack logfiles
 
