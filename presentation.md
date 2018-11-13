@@ -360,68 +360,65 @@ $ logreduce diff  logs/good.txt logs/bad.txt
     $ logreduce journal --range day
 ```
 <!-- .element: class="stretch" -->
-- Build a model using last month's logs and look for novelties in the last week:
+- Build a model using previous month's logs and look for novelties:
 
 ```bash-
     $ logreduce journal-train --range month journal.clf
-    $ logreduce journal-run   --range week  journald.clf
-...
-99.76% reduction (from 7804 lines to 19)
 ```
-<!-- .element: class="stretch" -->
 
 Note:
 - The journald range sets the baseline as the previous day/week/month and
-      the target as the current day/week/month
-**** DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
-show that looking at journalctl is boring,
-then using a pre-trained model, extract the new events
+  the target as the current day/week/month
+- DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
+  show that looking at journalctl is boring,
+  then using a pre-trained model, extract the new events
 
 
-### log-classify: journald SVD
-<img data-src="images/messages-svd.png" class="plain" height="550" />
+### log-classify: journald (II)
+
+```bash
+# logreduce journal-run --range day journal.clf
+...
+99.76% reduction (from 19677 lines to 48)
+
+0.730 | cron - postdrop: warning: uid=16311: File too large
+...
+0.000 | smartd Device: /dev/sdb, 1 Offline uncorrectable sectors
+
+# killall -SEGV automount
+# logreduce journal-run --range day journal.clf
+99.75% reduction (from 19679 lines to 50)
+...
+0.317 | systemd - DAEMON - autofs.service: Main process exited, code=dumped, status=11/SEGV
+0.314 | systemd - DAEMON - autofs.service: Failed with result 'core-dump'.
+```
+<!-- .element: class="stretch" -->
 
 
 ### log-classify: sosreport/supportconfigs
 ```bash
 $ logreduce diff report-good/ report-bad/ \
             --html report.html
-INFO  Classifier - Training took 84.141 seconds to ingest 33.458 MB
-INFO  Classifier - Testing took 173.464 seconds to test 22.952 MB
-99.67% reduction (from 128882 lines to 424)
+Training took 51.364s at 1.543MB/s
+Testing took 37.432s at 0.446MB/s
+...
+88.41% reduction (from 261091 lines to 30251)
 ```
-<!-- .element: class="stretch" -->
+<img data-src="images/report-overview.png" /> <!-- .element: class="fragment" data-fragment-index="1" -->
+<img data-src="images/report-detail.png"  /> <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Note:
+- Isolate "typical" errors from atypical ones
 - A model is built per file. The model name is a minified version of the
   filename to include variations, e.g. audit.1 and audit.2 use
   the same model
 - "Loading" and "Testing" debug shows the /model-name/: used for each file
 - Before printing the anomalies, the baseline sources are also displayed,
   see the /compared with/ debug
-**** DEMO: open a pre-generated html report and show non obvious issue that are
-detected
 
 
 ### supportconfig SVD
 <img data-src="images/supportconfig-svd.png" class="plain" height="550" />
-
-### Clustering
-- no clustering (DBSCAN, k-means) implemented yet
-- would be useful for finding outliers
-
-
-### Web Frontend
-- React interface for anomaly classification
-
-![LogClassify React UI](images/react-interface.png)
-- Need further development <!-- .element: class="fragment" data-fragment-index="1" -->
-
-Note:
-- The server and web frontend only support Zuul Build at the moment
-- Failure classification into category and model re-enforcement
-  is still under discussion.
-- Next we will see how such tool can be used in a CI context.
 
 
 
@@ -566,6 +563,8 @@ Note:
 - Fingerprint and detect archived anomalies
 - More services: Jenkins build, Travis CI, ...
 - More reporter: Logstash filter, ...
+- Clustering (DBSCAN, k-means) for outlier detection
+
 
 Note:
 - This is a tentative roadmap
