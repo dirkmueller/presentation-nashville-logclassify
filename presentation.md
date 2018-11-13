@@ -211,10 +211,10 @@ Note:
 
 
 ### Limitations
-- Nearest Neighbor uses brute force search.     <!-- .element: class="fragment" data-fragment-index="1" -->
-- Complexcity grows linearly with samples size. <!-- .element: class="fragment" data-fragment-index="2" -->
-- Noise may hide important information.         <!-- .element: class="fragment" data-fragment-index="3" -->
-- Logs may contain many features.               <!-- .element: class="fragment" data-fragment-index="4" -->
+- Nearest Neighbor uses brute force search     <!-- .element: class="fragment" data-fragment-index="1" -->
+- Complexcity grows linearly with samples size <!-- .element: class="fragment" data-fragment-index="2" -->
+- Noise may hide important information         <!-- .element: class="fragment" data-fragment-index="3" -->
+- Logs may contain many features               <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Preliminary work based on the HashingVectorizer. It works well for
