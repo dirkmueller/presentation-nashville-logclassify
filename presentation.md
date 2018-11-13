@@ -1,19 +1,19 @@
 [comment]: # (Warm-up - Why are we presenting?)
-### We are software engineers
+### We are OpenStack engineers
 <img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
 - Tristan works for Red Hat and has been a member of the OpenStack
   Vulnerability Management Team for more than 3 years
   His work focuses on CI/CD solutions
-- Dirk works for SUSE and spends too much time looking at log files :)
+- Dirk works for SUSE and is troubleshooting OpenStack since Folsom
+  and spends too much time looking at log files :)
 
 
-### We love ~~YouTube~~ OpenStack Health
+### We love OpenStack Health
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
-- todo: remove ~~youtube~~ from the title?
 - OpenStack runs one of the largest CI systems for OpenSource software
 - It produces tremendous amount of results and data
 - This graph from OpenStack Health shows that each project undergoes
@@ -27,7 +27,7 @@ Note:
 - Sometimes jobs fail unexpectedly
 
 
-### Let's peek at the log...
+# ?
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 Note:
@@ -37,25 +37,21 @@ Note:
 - There is an error in there, can you see it?
 
 
-# ?
-<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
-
-
 ### Did you find it?
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
-### Current Process
+### Manual Process
 <img data-src="images/legacy-flow.png" class="plain"/>
 
 Note:
-- This diagram shows the current actions a developper usually does to
+- This diagram shows the current actions a developer usually does to
   understand why a job failed
 - This process is tedious and time consuming and usually involves lots
   of clicking and scrolling...
 
 
-### What if the machine looked for the errors?
+### Vision: Machine Learning
 <img data-src="images/improved-flow.png" class="plain"/>
 
 Note:
@@ -213,7 +209,7 @@ Note:
 
 ### Limitations
 - Nearest Neighbor uses brute force search     <!-- .element: class="fragment" data-fragment-index="1" -->
-- Complexcity grows linearly with samples size <!-- .element: class="fragment" data-fragment-index="2" -->
+- Complexity grows linearly with samples size  <!-- .element: class="fragment" data-fragment-index="2" -->
 - Noise may hide important information         <!-- .element: class="fragment" data-fragment-index="3" -->
 - Logs may contain many features               <!-- .element: class="fragment" data-fragment-index="4" -->
 
@@ -255,7 +251,7 @@ Note:
 
 ### Log-classify
 - Uses http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
-  - Python 3 :-)
+- Python 3 &#x1F642;
 - Multiple Text Extraction Models
 - Assumes text, line based log input
 
@@ -325,13 +321,13 @@ Testing took 6.375s at 0.454MB/s (6.569kl/s)
 <!-- .element: class="stretch" -->
 
 
-### log-classify: Influence baseline size
+### log-classify: Training Set Size
 <img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
 
 ### log-classify: Devstack Model
-Truncated singular value decomposition (SVD)
-<img data-src="images/devstack-svd.png" class="plain" height="550" />
+<img data-src="images/devstack-svd.png" class="plain" height="500" />
+<small>Truncated singular value decomposition (SVD)</small>
 
 Note:
 - SVD provides a randomized dimensionality reductio of the samples
@@ -343,7 +339,7 @@ Note:
 ### log-classify: Devstack
 
 ```bash
-$ logreduce diff  logs/good.txt logs/bad.txt
+# logreduce diff  logs/good.txt logs/bad.txt
 0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
      Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500,\
      u'message': u'Exceeded maximum number of retries. Exhausted \
@@ -357,13 +353,13 @@ $ logreduce diff  logs/good.txt logs/bad.txt
 ### log-classify: Journald
 - Extract novelty from the last day:
 ```bash
-    $ logreduce journal --range day
+# logreduce journal --range day
 ```
 <!-- .element: class="stretch" -->
 - Build a model using previous month's logs and look for novelties:
 
 ```bash-
-    $ logreduce journal-train --range month journal.clf
+# logreduce journal-train --range month journal.clf
 ```
 
 Note:
@@ -397,8 +393,7 @@ Note:
 
 ### log-classify: sosreport/supportconfigs
 ```bash
-$ logreduce diff report-good/ report-bad/ \
-            --html report.html
+# logreduce diff report-good/ report-bad/ --html report.html
 Training took 51.364s at 1.543MB/s
 Testing took 37.432s at 0.446MB/s
 ...
@@ -420,6 +415,24 @@ Note:
 ### supportconfig SVD
 <img data-src="images/supportconfig-svd.png" class="plain" height="550" />
 
+
+### log-classify: OpenStack logfiles
+
+```bash
+
+$ logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*
+$ logreduce dir-run nova.clf /var/log/nova/nova-compute.log
+...
+0.684 | INFO .. No calling threads waiting for msg_id : d3afd41a53bb4d14a5e42da0e522f700
+0.619 | INFO .. Recovered from being unable to report status
+...
+93.15% reduction (from 6741 lines to 462)
+```
+
+Note:
+- Similarly log-classify can be used to analyze for anomalies as
+  part of local logrotate if you use decentralized logging.
+- Needs more work and integration with centralized logging systems.
 
 
 ## CI Workflow
