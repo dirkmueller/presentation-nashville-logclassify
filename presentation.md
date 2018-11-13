@@ -121,7 +121,8 @@ Note:
 
 
 ### Generic Training Workflow
-<img data-src="images/ml-generic-workflow-p1.png" class="plain"/>
+<!-- .slide: data-transition="none" data-background-transition="none" -->
+<img data-src="images/ml-generic-workflow-p1.png"/> <!-- .element: class="fragment plain" data-fragment-index="1" -->
 
 Note:
 - This diagram shows how baselines are processed to train a model
@@ -130,7 +131,7 @@ Note:
 
 
 ### Generic Testing Workflow
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ml-generic-workflow-p2.png" class="plain"/>
 
 Note:
@@ -138,7 +139,7 @@ Note:
 
 
 ### Generic Testing Workflow
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ml-generic-workflow.png" class="plain"/>
 
 Note:
@@ -452,7 +453,7 @@ Note:
 
 
 ### Zuul Architecture 2
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p0.1.png" class="plain"/>
 
 Note:
@@ -461,7 +462,7 @@ Note:
 
 
 ### Zuul Architecture
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p1.png" class="plain"/>
 
 Note:
@@ -474,7 +475,7 @@ Note:
 
 
 ### Post-Run Analysis
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p2.png" class="plain"/>
 
 Note:
