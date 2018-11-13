@@ -79,9 +79,9 @@ Note:
 
 Short Intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
-Tool Presentation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+Log-Classify Implementation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
-CI Logs Classification <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
 
