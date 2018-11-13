@@ -254,8 +254,8 @@ Note:
 
 ### Log-classify
 - Uses http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
-  - Python :-)
-- Extensible Text Extraction Model
+  - Python 3 :-)
+- Multiple Text Extraction Models
 - Assumes text, line based log input
 
 Note:
@@ -275,11 +275,17 @@ Note:
 
 ```txt
     $ logreduce
+...
     diff                Compare directories/files
     dir                 Train and run against local files/dirs
+    dir-train           Build a model for local files/dirs
+    dir-run             Run a model against local files/dirs
+...
     job                 Train and run against CI logs
+...
     journal             Train and run against local journald
 ```
+<!-- .element: class="stretch" -->
 
 Note:
 - logreduce can work based on local directories, Zuul CI jobs or systemd journal
@@ -293,29 +299,41 @@ Note:
 - Model is run against **abnormal** target
 
 Note:
-- The key to using k-NN regression for anomaly detection is to have a database of known good baselines
+- Instance based, or non-generalizing training
+- Training only successful runs detects auto-collecting of logs after failure
+- Uses statistical k-NN which is compareable to Bayes
 
 
-### log-classify: Graphical Diff
+### log-classify
 <img data-src="images/heap-of-leaves-small.jpg" height="220"/>
 <img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
 <img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
 
 
-### log-classify: Handle baselines
+### log-classify: Handling of baselines
 
 ```bash
-    $ logreduce dir-train model.clf baseline/*
-    $ logreduce dir-run model.clf error.txt
+$ logreduce dir-train model.clf baseline/*
+Training on 8 logs took 12.090s at 1.426MB/s (20.831kl/s)
+
+$ logreduce dir-run model.clf error.txt
+
+Testing took 6.375s at 0.454MB/s (6.569kl/s)
+99.72% reduction (from 41879 lines to 118)
 ```
+<!-- .element: class="stretch" -->
+
+
+### log-classify: Influence baseline size
+<img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
 
 ### log-classify: CI Build-log Model
+Truncated singular value decomposition (SVD)
 <img data-src="images/mkcloud-svd.png" class="plain" height="550" />
 
 
 ### log-classify: Devstack Model
-Truncated singular value decomposition (SVD)
 <img data-src="images/devstack-svd.png" class="plain" height="550" />
 
 Note:
@@ -356,7 +374,7 @@ $ logreduce diff  logs/good.txt logs/bad.txt
 <!-- .element: class="stretch" -->
 
 Note:
-    - The journald range sets the baseline as the previous day/week/month and
+- The journald range sets the baseline as the previous day/week/month and
       the target as the current day/week/month
 **** DEMO: generate some syslog events (e.g. run logger, kill a service, ...),
 show that looking at journalctl is boring,
