@@ -591,7 +591,6 @@ Note:
 - More reporter: Logstash filter, ...
 - Clustering (DBSCAN, k-means) for outlier detection
 
-
 Note:
 - This is a tentative roadmap
 - Other model may be used depending on baseline sample sizes, e.g. ANN, Word2Vec
