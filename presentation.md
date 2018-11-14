@@ -14,8 +14,9 @@ Note:
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
-- OpenStack runs one of the largest CI systems for OpenSource software
+- OpenStack runs a huge CI system for supporting the software development
 - It produces tremendous amount of results and data
+- OpenStack Health gives you a good way to introspect testing results
 - This graph from OpenStack Health shows that each project undergoes
   many runs daily
 
@@ -49,24 +50,30 @@ Note:
   understand why a job failed
 - This process is tedious and time consuming and usually involves lots
   of clicking and scrolling...
+- Sometimes the root cause is not labelled with an easy to grep for error
+  message
 
 
 ### Vision: Machine Learning
 <img data-src="images/improved-flow.png" class="plain"/>
 
 Note:
-- Most of this process can be automated
-- Some issue are non obvious like race condition,
-  or new task causing side-effects
-- Automatic anomaly detection may greatly reduce investigation time
+- We believe large parts of this process can be automated
+- When there are non-obvious causes like race condition or features
+  being enabled/disabled an automatic process can be more precise in
+  isolating that
+- This tooling for supporting you on anomaly detection may greatly
+   reduce investigation time
 
 
 ### Log-Classify
 ![OpenStack Health Screenshot](images/log-classify-openstack-error.png)
 
 Note:
-- In this presentation, we'll see how to go from a long boring log file
-  to a condensed exciting report of anomalies to look for
+- To give you a preview, we'll introduce you to concepts and tooling
+  that will help you to switch from a long boring log file to
+  a condensided annotated report that highlights the anomalies to
+  look for.
 
 
 
@@ -165,7 +172,7 @@ Note:
 Note:
 - After tokenization, log lines needs to be transformed into
   something more convenient for machines.
-- The Hashing Vectorizer convert each words into a numeric token using a
+- The Hashing Vectorizer convert each words into a numeric hash value using a
   hashing trick.
 - Then it encodes the token occurence information into a
   sparse matrix array of all the possible hashes
@@ -254,12 +261,15 @@ Note:
 - Uses http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
 - Python 3 &#x1F642;
 - Multiple Text Extraction Models
-- Assumes text, line based log input
+- Assumes text, line based log-like input
 
 Note:
-- scikit-learn provides many text classifiers
+- scikit-learn is a framework for using Machine Learning with Python
+- Provides a set of algorithms for efficient data analysis
+- For Text based learning, it provides various like
+  for example the Bag-of-Words approach or the HashingVectorizer
 - Provides TfidfVectorizer and HashingVectorizer based k-NNeighbor model
-- HashingVectorizer works best for machine logfiles
+- in our experience the HashingVectorizer works best for logfiles
 
 
 ### log-classify: Installation
@@ -268,11 +278,14 @@ Note:
     $ pip3 install --user logreduce
 ```
 
+Note:
+- Can be installed with pip or from distribution provided packages
+
 
 ### log-classify: Commands
 
 ```txt
-    $ logreduce
+# logreduce
 ...
     diff                Compare directories/files
     dir                 Train and run against local files/dirs
@@ -286,15 +299,17 @@ Note:
 <!-- .element: class="stretch" -->
 
 Note:
-- logreduce can work based on local directories, Zuul CI jobs or systemd journal
-- Each command also has a -train and -run command for more finegrained baseline/target management
+- logreduce can be used based on local files or set of files in directories
+- Also provides integration with Zuul CI jobs or systemd journal
+- Each command also has a -train and -run command for more control
+  over baseline/target management
 
 
-### log-classify: Model Assumption
+### log-classify: Assumptions
 <img data-src="images/baselines.png" class="plain"/>
 - Instance based learning
-- Baseline is built from **normal** input
-- Model is run against **abnormal** target
+- Baseline is built from **SUCCESS** input
+- Model is run against **FAILURE** target
 
 Note:
 - Instance based, or non-generalizing training
@@ -314,7 +329,7 @@ Note:
   obvious to see.
 
 
-### log-classify: Devstack
+### log-classify: DevStack
 
 ```bash
 # logreduce diff logs/good.txt logs/bad.txt
@@ -329,21 +344,27 @@ Note:
 ```
 <!-- .element: class="stretch" -->
 
+Note:
+- Diff can be used quickly to fuzzy compare two logfiles
+- Will build a temporary model in memory
+- Even a single baseline sample produces a reasonable result
+- Dimensions are # lines / # hashing size 
 
-### log-classify: Devstack Model
+
+### log-classify: DevStack Model
 <img data-src="images/devstack-svd.png" class="plain" height="500" />
 <small>Truncated singular value decomposition (SVD)</small>
 
 Note:
-- SVD provides a randomized dimensionality reduction of the samples
-  of hashed vectors to 2D graphics.
+- SVD reduces the million dimensions to a human graspable
+  scatter plot of 2D graphics
 - Grey shows the raw words in the devstack stream
 - Red shows the normalized tokens from logreduce
-- Reduction of features considered for the training seems
-  to be balanced from real world experience.
+- log-classify will reduce the noise and hence the
+  features to consider for the training process
 
 
-### log-classify: Handling of baselines
+### log-classify: Collecting baselines
 
 ```bash
 $ logreduce dir-train model.clf baseline/*
@@ -409,8 +430,14 @@ Note:
 ```
 <!-- .element: class="stretch" -->
 
+Note:
+- We can see a new anomaly in my journal related to postfix not able to
+  store email anymore
+- We also see that one of the drives has a bad sector, but anomaly rating zero!
+- Producing an anomaly and rerunning shows the new anomaly immediately
 
-### log-classify: sosreport/supportconfig
+
+### sosreport/supportconfig
 ```bash
 # logreduce diff report-good/ report-bad/ --html report.html
 Training took 51.364s at 1.543MB/s
@@ -435,8 +462,8 @@ Note:
 
 ```bash
 
-$ logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
-$ logreduce dir-run nova.clf /var/log/nova/nova-compute.log
+# logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
+# logreduce dir-run nova.clf /var/log/nova/nova-compute.log
 ...
 0.684 | INFO .. No calling threads waiting for msg_id : d3afd41a53bb4d14a5e42da0e522f700
 0.619 | INFO .. Recovered from being unable to report status
@@ -448,7 +475,7 @@ $ logreduce dir-run nova.clf /var/log/nova/nova-compute.log
 Note:
 - Similarly log-classify can be used to analyze for anomalies as
   part of local logrotate if you use decentralized logging.
-- Needs more work and integration with centralized logging systems.
+- Needs more work for integration with centralized logging systems.
 
 
 
