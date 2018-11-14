@@ -547,7 +547,7 @@ Note:
 
 
 ### Demo
-<video><source data-src="videos/short.webm" type="video/webm" /></video>
+<video id="demovideo" class="stretch"><source data-src="videos/short.webm" type="video/webm" /></video>
 
 Note:
 - Grab a failed build from zuul.openstack.org, put the uuid in the new form
