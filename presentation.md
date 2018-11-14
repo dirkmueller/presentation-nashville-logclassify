@@ -307,29 +307,27 @@ Note:
 <img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
 <img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
 
+Note:
+- Can you see a difference?
+- Humans are good at spotting the one obvious deviation,
+  machines can extract all the differences that were less
+  obvious to see.
 
-### log-classify: Handling of baselines
+
+### log-classify: Devstack
 
 ```bash
-$ logreduce dir-train model.clf baseline/*
-Training on 8 logs took 12.090s at 1.426MB/s (20.831kl/s)
-
-$ logreduce dir-run model.clf error.txt
-
-Testing took 6.375s at 0.454MB/s (6.569kl/s)
-99.72% reduction (from 41879 lines to 118)
+# logreduce diff logs/good.txt logs/bad.txt
+...
+0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
+     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500,\
+     u'message': u'Exceeded maximum number of retries. Exhausted \
+     all hosts available for retrying build failures for instance
+     d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
+...
+97.98% reduction (from 35244 lines to 712)
 ```
 <!-- .element: class="stretch" -->
-
-
-### log-classify: Training Set Size
-<img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
-
-Note:
-- Influence of training size on the accuracy of the output
-- Even a single sample is giving an acceptable reduction from the
-  raw 35000 logs
-- 4-8 samples seems to be a good training set size
 
 
 ### log-classify: Devstack Model
@@ -345,20 +343,33 @@ Note:
   to be balanced from real world experience.
 
 
-### log-classify: Devstack
+### log-classify: Handling of baselines
 
 ```bash
-# logreduce diff  logs/good.txt logs/bad.txt
-...
-0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
-     Details: {u'created': u'2018-10-09T05:11:20Z', u'code': 500,\
-     u'message': u'Exceeded maximum number of retries. Exhausted \
-     all hosts available for retrying build failures for instance
-     d7046aa3-e885-4ed6-80e7-d7a7eff9f883.'}
-...
-97.98% reduction (from 35244 lines to 712)
+$ logreduce dir-train model.clf baseline/*
+Training on 8 logs took 12.090s at 1.426MB/s (20.831kl/s)
+
+$ logreduce dir-run model.clf error.txt
+
+Testing took 6.375s at 0.454MB/s (6.569kl/s)
+99.72% reduction (from 41879 lines to 118)
 ```
 <!-- .element: class="stretch" -->
+
+Note:
+- Two phases: Training and then extraction
+- Key question: How large should be the baseline?
+
+
+### log-classify: Training Set Size
+<img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
+
+Note:
+- It depends on particular logfile structure
+- Influence of training size on the output result size
+- Even a baseline from a single sample is leads to reduction from the
+  raw 35000 logs
+- 4-8 samples seems to be a good training set size for getting good results
 
 
 ### log-classify: Journald
