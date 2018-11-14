@@ -417,23 +417,14 @@ Note:
 - A model allows blending out "typical" errors from atypical ones
 - "Loading" and "Testing" debug shows the /model-name/: used for each file
 - HTML output is better for handling large outputs
-
-
-### supportconfig SVD
-<img data-src="images/supportconfig-svd.png" class="plain" height="550" />
-
-Note:
-- For more effective supportconfig reduction the feature extraction
-  still needs tweaking
-- Current feature extraction is too tuned for CI use case and needs
-  some adaptations
 - Work in progress
+
 
 ### log-classify: OpenStack logfiles
 
 ```bash
 
-$ logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*
+$ logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
 $ logreduce dir-run nova.clf /var/log/nova/nova-compute.log
 ...
 0.684 | INFO .. No calling threads waiting for msg_id : d3afd41a53bb4d14a5e42da0e522f700
@@ -441,6 +432,7 @@ $ logreduce dir-run nova.clf /var/log/nova/nova-compute.log
 ...
 93.15% reduction (from 6741 lines to 462)
 ```
+<!-- .element: class="stretch" -->
 
 Note:
 - Similarly log-classify can be used to analyze for anomalies as
