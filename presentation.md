@@ -113,7 +113,7 @@ Note:
   - the HashingVectorizer processor; and
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
-  generic workflow
+  workflow.
 
 
 ### Generic Training Workflow
@@ -203,7 +203,6 @@ Note:
 - This example illustrates a knn search from the previous devstack example.
 - In this case the line contains unknown tokens showed in red
   which increase the distance a lot.
-- The next section introduces an easy-to-use implementation of this technique.
 
 
 
@@ -230,6 +229,7 @@ Note:
 <img data-src="images/vector-per-jobs.png" class="plain"/>
 
 Note:
+- Most log files have a limited amount of possible variations.
 - This graph shows the number of unique vectors found in
   tempest-full job-output.
 
@@ -242,6 +242,7 @@ Note:
 - Samples sizes above 1 millions vectors aren't practical, it
   would takes 40ms to compute one distance, so about 10 minutes to
   process a typical tempest-full job-output.
+- The next section introduces an easy-to-use implementation of this technique.
 
 
 
