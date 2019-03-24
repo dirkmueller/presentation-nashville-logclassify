@@ -78,7 +78,7 @@ Note:
 
 
 ## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
-<!-- .slide: data-background-image="images/berlin.jpg" -->
+<!-- .slide: data-background-image="images/nashville.jpg" -->
 
 Short Intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
