@@ -87,14 +87,61 @@ Log-Classify Implementation <!-- .element: style="color: white; background-color
 CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
+### Avoiding confusion
+- Artificial Intelligence
+- Machine Learning
+- Deep Learning
+
+
+### Concepts of Machine learning
+
+- Switch from logic to probabilities
+    - <CTRL-F> "ERROR"
+    - How likely is it that this message is an error?
+
+
+### Regression vs Classification
+
+- Regression: Predict a continuous quantity
+    - "What is the price of this used car?"
+- Classification: Which label(s) apply to this input?
+    - "Is this a flower, tree or a ?"
+
+
+Precision vs Recall
+
+
+
+
+### Machine Learning Workflow
+
+- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
+- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
+- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
+
+
+### Instance based learning
+
+- Record all instances of what to learn
+- != Generalizing learning
+
+
+### Overfitting
+<img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
+
+
+
+
+
+### k-Nearest Neighbors
+
+- Instance based Learning
+
 
 ### Taxonomy
 - Artificial Intelligence
 - Machine Learning
 - k-Nearest Neighbors
-- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
-- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
-- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
 - AI is a growing branch of computer science with a broad scope.
@@ -258,7 +305,8 @@ Note:
 
 
 ### Log-classify
-- Uses http://scikit-learn.org/<img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
+- Uses http://scikit-learn.org/ <img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
+
 - Python 3 &#x1F642;
 - Multiple Text Extraction Models
 - Assumes text, line based log-like input
@@ -270,6 +318,11 @@ Note:
   for example the Bag-of-Words approach or the HashingVectorizer
 - Provides TfidfVectorizer and HashingVectorizer based k-NNeighbor model
 - in our experience the HashingVectorizer works best for logfiles
+
+
+## scikit learn
+<img data-src="images/ml_map.png" class="plain"/>
+
 
 
 ### log-classify: Installation
@@ -348,7 +401,7 @@ Note:
 - Diff can be used quickly to fuzzy compare two logfiles
 - Will build a temporary model in memory
 - Even a single baseline sample produces a reasonable result
-- Dimensions are # lines / # hashing size 
+- Dimensions are # lines / # hashing size
 
 
 ### log-classify: DevStack Model
