@@ -87,17 +87,44 @@ Log-Classify Implementation <!-- .element: style="color: white; background-color
 CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
-### Avoiding confusion
-- Artificial Intelligence
-- Machine Learning
-- Deep Learning
+### &nbsp;
+<img data-src="images/AI-ML-DL.png" class="plain" width="70%" height="60%"/>
+
+Note:
+- AI is about machines mimicing human intelligent behaviour
+- ML is the subset of AI that uses statistical methods to extract rules from data
+- Deep Learning is a subset of ML that most often uses multiple layers of
+  an artificial neural networks for modelling machine learning methods
+- AI is a growing branch of computer science with a broad scope.
+- ML is a field of artificial intelligence that uses statistical techniques.
+- And Nearest Neighbors is one of the simplest of all ML algorithms that we will explore today.
+- In this presentation:
+  - Build defines generic process that generates logs, e.g. CI jobs,
+      deployment scripts, service operations, ...
+    - Baseline defines nominal build
+    - Target defines build that we want to analyze.
+- Deep Learning (neural network modelling) is an instance of generalizing learning
+- Nearest Neighboars is an instance based learning algorithm
 
 
-### Concepts of Machine learning
+### Why Machine Learning?
+- A regular expressions for a task:
 
-- Switch from logic to probabilities
-    - <CTRL-F> "ERROR"
-    - How likely is it that this message is an error?
+```perl
+/^[Ee]rror:/
+```
+- Another regular expression for a different task:
+
+```perl
+/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|))....
+```
+
+
+### Why Machine Learning?
+<img data-src="images/wordcloud_ml.svg" class="plain"/>
+
+
+### Supervised Learning
 
 
 ### Regression vs Classification
@@ -105,10 +132,10 @@ CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0,
 - Regression: Predict a continuous quantity
     - "What is the price of this used car?"
 - Classification: Which label(s) apply to this input?
-    - "Is this a flower, tree or a ?"
+    - "Is this a flower, tree or a horse?"
 
 
-Precision vs Recall
+### Precision vs Recall
 
 
 
@@ -143,18 +170,6 @@ Precision vs Recall
 - Machine Learning
 - k-Nearest Neighbors
 
-Note:
-- AI is a growing branch of computer science with a broad scope.
-- ML is a field of artificial intelligence that uses statistical techniques.
-- And Nearest Neighbors is one of the simplest of all ML algorithms that
-  we will explore today.
-- In this presentation:
-  - Build defines generic process that generates logs, e.g. CI jobs,
-    deployment scripts, service operations, ...
-  - Baseline defines nominal build
-  - Target defines build that we want to analyze.
-- Deep Learning (neural network modelling) is an instance of generalizing learning
-- Nearest Neighboars is an instance based learning algorithm
 
 
 
