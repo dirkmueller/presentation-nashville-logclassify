@@ -1,16 +1,13 @@
 [comment]: # (Warm-up - Why are we presenting?)
-### We are OpenStack engineers
+### We are cloud engineers
 <img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
-- Dirk works for SUSE and is troubleshooting OpenStack since Folsom
-  and spends too much time looking at log files :)
-- Tristan works for Red Hat and has been a member of the OpenStack
-  Vulnerability Management Team for more than 3 years
-  His work focuses on CI/CD solutions
+- We've both been troubleshooting SUSE OpenStack Cloud since the early days
+  and spend too much time looking at log files :)
 
 
-### We love OpenStack Health
+### We love green CI
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
