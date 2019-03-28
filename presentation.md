@@ -176,9 +176,6 @@ Note:
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
 
 
-
-
-
 ### k-Nearest Neighbors
 
 - Instance based Learning
