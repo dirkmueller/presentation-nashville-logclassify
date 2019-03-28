@@ -45,6 +45,10 @@ module.exports = function(grunt) {
 				src: ['*.sass', '*.scss'],
 				dest: 'css/theme',
 				ext: '.css'
+			},
+			SUSE: {
+				src: 'css/reveal-override.scss',
+				dest: 'css/reveal-override.css'
 			}
 		},
 
