@@ -25,8 +25,8 @@ Note:
 - Sometimes jobs fail unexpectedly
 
 
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" data-menu-title="Find the error" -->
 # ?
-<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 Note:
 - Here we see that about 2% of the OpenStack Infra job log
@@ -84,6 +84,7 @@ Log-Classify Implementation <!-- .element: style="color: white; background-color
 CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
+<!-- .slide: data-menu-title="AI vs. ML vs. DL" -->
 ### &nbsp;
 <img data-src="images/AI-ML-DL.png" class="plain" width="70%" height="60%"/>
 
