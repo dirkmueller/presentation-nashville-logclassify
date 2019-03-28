@@ -75,11 +75,20 @@
 				// Number of slides away from the current that are visible
 				viewDistance: 3,
 
+				menu: {
+					themes: false,
+					transitions: false,
+					openButton: false,
+					openSlideNumber: true,
+					markers: true
+				},
+
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js-menu/menu.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 		</script>
