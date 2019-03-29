@@ -18,11 +18,16 @@ Note:
   many runs daily
 
 
-### We watch OpenStack Health
-![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
+### We watch SUSE OpenStack Cloud CI
+
+![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
 
 Note:
 - Sometimes jobs fail unexpectedly
+
+
+### We watch OpenStack Health
+![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
 
 
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" data-menu-title="Find the error" -->
