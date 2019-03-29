@@ -106,16 +106,41 @@ Note:
 
 
 ### Why Machine Learning?
-- Example regular expressions for a task:
 
 ```perl
-/^[Ee]rror:/
+warning /(?i)warning/
+
+error /Traceback \(most recent call last\)/
+error /(?i)error/
+error /(?i)\bfail(ure|ed)?\b/
+error /(?i)fatal/
+error /$h1!!/
 ```
-- Example regular expression for a different task:
+
+
+### Dealing with false positives
 
 ```perl
-/^(((?=.*(::))(?!.*\3.+\3))\3?|([\dA-F]{1,4}(\3|:\b|$)|\2))(?4){5}((?4){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})\z/ai
+# Successful tempest run
+ok /^ - (Expected Fail|Failed): 0$/
+ok /Warning: Turning on '--gpg-auto-import-keys'/
+ok /Warning: Permanently added .* to the list of known hosts/
+ok /WARNING: Device for PV .* not found or rejected by a filter/
+ok /WARNING: \w+ signature detected on .* offset \d+. Wipe it?/
+ok /grep -v failed\b/
+
+# rpms containing "Error"
+ok /perl-Error[ -]|libsamba-errors|mariadb-errormessages/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=1030822
+warning /Cleaning up (vip-admin-\S+) on \S+, removing fail-count-\1/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=971832
+ok /Failed to try-restart vsftpd@.service: Unit name vsftpd@.service is not valid/
 ```
+
+Note:
+https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/openstack-mkcloud-rules.txt
 
 
 ### Why Machine Learning?
