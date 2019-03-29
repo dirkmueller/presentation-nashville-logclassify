@@ -108,15 +108,15 @@ Note:
 
 
 ### Why Machine Learning?
-- A regular expressions for a task:
+- Example regular expressions for a task:
 
 ```perl
 /^[Ee]rror:/
 ```
-- Another regular expression for a different task:
+- Example regular expression for a different task:
 
 ```perl
-/^(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|))....
+/^(((?=.*(::))(?!.*\3.+\3))\3?|([\dA-F]{1,4}(\3|:\b|$)|\2))(?4){5}((?4){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})\z/ai
 ```
 
 
@@ -124,18 +124,32 @@ Note:
 <img data-src="images/wordcloud_ml.svg" class="plain"/>
 
 
-### Classification (Supervised Learning)
+### Machine Learning Workflow
+
+- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
+- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
+- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
+
+
+
+### Classification
 
 <table>
 <tr>
 <td>
-<img data-src="images/banana.jpg" class="plain"/>
+<img data-src="images/banana.jpg" width="75%" class="plain"/>
 </td>
-<td>
+<td style="vertical-align: middle">
+&nbsp;&nbsp;&nbsp;<img data-src="images/arrow-right.png" class="plain"/>&nbsp;&nbsp;&nbsp;
+</td>
+<td style="vertical-align: middle">
 <img data-src="images/green-gear.png" class="plain"/>
 </td>
-<td>
-Banana
+<td style="vertical-align: middle">
+&nbsp;&nbsp;&nbsp;<img data-src="images/arrow-right.png" class="plain"/>&nbsp;&nbsp;&nbsp;
+</td>
+<td style="vertical-align: middle;">
+<div style="padding: 15px; background-color: #6a6; box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.75);">Banana</div>
 </td>
 </tr>
 </table>
@@ -153,13 +167,6 @@ Banana
 ### Precision vs Recall
 
 
-
-
-### Machine Learning Workflow
-
-- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
-- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
-- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
 
 
 ### Instance based learning
