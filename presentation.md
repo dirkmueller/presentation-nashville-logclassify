@@ -124,7 +124,22 @@ Note:
 <img data-src="images/wordcloud_ml.svg" class="plain"/>
 
 
-### Supervised Learning
+### Classification (Supervised Learning)
+
+<table>
+<tr>
+<td>
+<img data-src="images/banana.jpg" class="plain"/>
+</td>
+<td>
+<img data-src="images/green-gear.png" class="plain"/>
+</td>
+<td>
+Banana
+</td>
+</tr>
+</table>
+
 
 
 ### Regression vs Classification
@@ -163,13 +178,6 @@ Note:
 ### k-Nearest Neighbors
 
 - Instance based Learning
-
-
-### Taxonomy
-- Artificial Intelligence
-- Machine Learning
-- k-Nearest Neighbors
-
 
 
 
