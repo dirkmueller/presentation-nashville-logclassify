@@ -82,7 +82,7 @@ Note:
 ## Today's plan<!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 <!-- .slide: data-background-image="images/nashville.jpg" -->
 
-Short Intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+Intro to Machine Learning <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 Log-Classify Implementation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
@@ -106,7 +106,7 @@ Note:
       deployment scripts, service operations, ...
     - Baseline defines nominal build
     - Target defines build that we want to analyze.
-- Deep Learning (neural network modelling) is an instance of generalizing learning
+- Deep Learning (neural network modelling) is an example of generalizing learning
 - Nearest Neighboars is an instance based learning algorithm
 
 
@@ -151,20 +151,64 @@ https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/
 ### Why Machine Learning?
 <img data-src="images/wordcloud_ml.svg" class="plain"/>
 
+Note:
+- By using statistical methods over larger sets of data,
+  patterns can be extracted by following statistical approaches
+- In this example we see a word cloud of the english wikipedia
+  article about machine learning. Without understanding the
+  structure of the article or english language, we can naturally
+  infer that the article was indeed about machine learning.
 
-### Machine Learning Workflow
 
-- Build    <!-- .element: class="fragment" data-fragment-index="1" -->
-- Baseline <!-- .element: class="fragment" data-fragment-index="1" -->
-- Target   <!-- .element: class="fragment" data-fragment-index="1" -->
+### CI Logfiles: ML Challenges
+
+- Each Instance of a CI Logfile follows the very same structure
+  - Install, Build, Test &#x1F642;
+- The individual Logfiles are quickly evolving
+  - Every check-in changes it &#x1F610;
+- Each run has a lot of completely unique noise &#x1F612;
+  - Timestamps, UUIDs, Passwords and
+  - ordering due to parallel execution
 
 
-
-### Classification
+### Learning techniques
 
 <table>
-<tr>
-<td>
+<thead><tr>
+<th width="50%">Instance-based</th>
+<th width="50%">Generalizing</th>
+</tr></thead>
+<tbody><tr>
+<td><small>
+- Directly store instances of training<br/>
+- Derives hypotheses directly from training instances<br/>
+- Model can be quickly react to new training input<br/>
+- Model can be incrementally updated discarding old training input<br/>
+<p>
+<b>k-Nearest-Neighbor</b>
+</p>
+</small>
+</td><td><small>
+- Generalizes a model from training data<br/>
+- Builds "hidden representation"<br/>
+- Can not "untrain" previously learned data<br/>
+<p>
+<b>Artifical Neural Networks (DL)</b>
+</p>
+</small></td></tr>
+</tbody>
+</table>
+
+
+### Overfitting / Underfitting
+<img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
+
+
+
+
+### Supervised ML: Classification
+
+<table><tr><td>
 <img data-src="images/banana.jpg" width="75%" class="plain"/>
 </td>
 <td style="vertical-align: middle">
@@ -196,24 +240,7 @@ https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/
 
 
 
-
-### Instance based learning
-
-- Record all instances of what to learn
-- != Generalizing learning
-
-
-### Overfitting
-<img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
-
-
-### k-Nearest Neighbors
-
-- Instance based Learning
-
-
-
-## Using machine learning to remove noise
+### Using machine learning to remove noise
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
@@ -223,6 +250,12 @@ Note:
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
   workflow.
+
+### Machine Learning Workflow
+<!-- .slide: data-transition="none" data-background-transition="none" -->
+- *Build*: an individual CI log file
+- *Baseline*: Collection of log files from good CI runs
+- *Target*: The to be analyzed failed CI log run logfile
 
 
 ### Generic Training Workflow
@@ -283,7 +316,7 @@ Note:
 - The vectorizer is used on each log lines, whatever its source or structure.
 
 
-### Example of Devstack Vectors
+### Example for Vectors of a CI logfile
 <img data-src="images/vectors.png" class="plain"/>
 
 Note:
@@ -343,7 +376,7 @@ Note:
   tempest-full job-output.
 
 
-### Performances per sample size
+### Performance per sample size
 <img data-src="images/time-per-samples.png" class="plain"/>
 
 Note:
