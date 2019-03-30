@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<link rel="stylesheet" href="lib/css/talk-fonts.css">
 
+		<link rel="stylesheet" href="css/reveal-override.css"/>
+
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -24,26 +26,27 @@
 	</head>
 	<body>
 		<div class="reveal"> <div class="slides">
-                <section data-background-image="images/nashville.jpg">
-                    <img align="left" data-src="images/susecon-logo.svg" style="background-color: rgba(255,255,255,0.85)"/>
-                    <!--                   <img align="right" data-src="images/download-qrcode.svg"/> -->
-                    <br style="clear: both"/>
-                    <h2 style="font-family: 'sans serif'; color: white; background-color:rgba(0, 0, 0, 0.85);">
-                        Learn more from your logfiles<br/>using machine learning
-                    </h2>
-                    <div style="color: black; background-color:rgba(255,255,255,0.85)">[DEV1156]<br/><b>Adam.Spiers</b>@suse.com</b><br/><b>Dirk.Mueller</b>@suse.com</div>
-                    <div align="right"><a style="font-size: 10pt" href="https://flic.kr/p/dMgF6m">CC BY-NC 2.0 Thomas Hawk</a></div>
-                    <aside class="notes" >
+				<section data-background-image="images/nashville.jpg"
+						 data-menu-title="Title slide">
+					<img align="left" data-src="images/susecon-logo.svg" style="background-color: rgba(255,255,255,0.85)"/>
+					<!--				   <img align="right" data-src="images/download-qrcode.svg"/> -->
+					<br style="clear: both"/>
+					<h2 style="font-family: 'sans serif'; color: white; background-color:rgba(0, 0, 0, 0.85);">
+						Learn more from your logfiles<br/>using machine learning
+					</h2>
+					<div style="color: black; background-color:rgba(255,255,255,0.85)">[DEV1156]<br/><b>Adam.Spiers</b>@suse.com</b><br/><b>Dirk.Mueller</b>@suse.com</div>
+					<div align="right"><a style="font-size: 10pt" href="https://flic.kr/p/dMgF6m">CC BY-NC 2.0 Thomas Hawk</a></div>
+					<aside class="notes" >
 - Machine can generate a tremendous amount of log data and this presentation is about reducing the complexity of log files to narrow down the interesting bits.<br/>
 - If you take a picture of this slide, you can use the QR code to download the slides with the speaker note.
 </aside>
-                </section>
-                <section data-markdown="presentation.md"
-                         data-separator="^\n\n\n"
-                         data-separator-vertical="^\n\n"
-                         data-separator-notes="^Note:"
-                         data-charset="utf-8">
-                </section>
+				</section>
+				<section data-markdown="presentation.md"
+						 data-separator="^\n\n\n"
+						 data-separator-vertical="^\n\n"
+						 data-separator-notes="^Note:"
+						 data-charset="utf-8">
+				</section>
 			</div>
 		</div>
 
@@ -55,29 +58,38 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-                // Push each slide change to the browser history
-            	history: true,
-                // Specify the average time in seconds that you think you will spend
-            	// presenting each slide. This is used to show a pacing timer in the
-            	// speaker view
-                defaultTiming: 40,
-                // Transition style
-            	transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// Push each slide change to the browser history
+				history: true,
+				// Specify the average time in seconds that you think you will spend
+				// presenting each slide. This is used to show a pacing timer in the
+				// speaker view
+				defaultTiming: 40,
+				// Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-            	// Transition speed
-            	transitionSpeed: 'fast', // default/fast/slow
+				// Transition speed
+				transitionSpeed: 'fast', // default/fast/slow
 
-            	// Transition style for full page slide backgrounds
-            	backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+				// Transition style for full page slide backgrounds
+				backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
 
-            	// Number of slides away from the current that are visible
-            	viewDistance: 3,
+				// Number of slides away from the current that are visible
+				viewDistance: 3,
+
+				menu: {
+					themes: false,
+					transitions: false,
+					openButton: false,
+					openSlideNumber: true,
+					markers: true
+				},
 
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js-menu/menu.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 		</script>

@@ -1,16 +1,13 @@
 [comment]: # (Warm-up - Why are we presenting?)
-### We are OpenStack engineers
+### We are cloud engineers
 <img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
-- Dirk works for SUSE and is troubleshooting OpenStack since Folsom
-  and spends too much time looking at log files :)
-- Tristan works for Red Hat and has been a member of the OpenStack
-  Vulnerability Management Team for more than 3 years
-  His work focuses on CI/CD solutions
+- We've both been troubleshooting SUSE OpenStack Cloud since the early days
+  and spend too much time looking at log files :)
 
 
-### We love OpenStack Health
+### We love green CI
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
@@ -21,15 +18,20 @@ Note:
   many runs daily
 
 
-### We watch OpenStack Health
-![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
+### We watch SUSE OpenStack Cloud CI
+
+![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
 
 Note:
 - Sometimes jobs fail unexpectedly
 
 
+### We watch OpenStack Health
+![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
+
+
+<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" data-menu-title="Find the error" -->
 # ?
-<!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 Note:
 - Here we see that about 2% of the OpenStack Infra job log
@@ -87,6 +89,7 @@ Log-Classify Implementation <!-- .element: style="color: white; background-color
 CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
+<!-- .slide: data-menu-title="AI vs. ML vs. DL" -->
 ### &nbsp;
 <img data-src="images/AI-ML-DL.png" class="plain" width="70%" height="60%"/>
 
@@ -108,16 +111,41 @@ Note:
 
 
 ### Why Machine Learning?
-- Example regular expressions for a task:
 
 ```perl
-/^[Ee]rror:/
+warning /(?i)warning/
+
+error /Traceback \(most recent call last\)/
+error /(?i)error/
+error /(?i)\bfail(ure|ed)?\b/
+error /(?i)fatal/
+error /$h1!!/
 ```
-- Example regular expression for a different task:
+
+
+### Dealing with false positives
 
 ```perl
-/^(((?=.*(::))(?!.*\3.+\3))\3?|([\dA-F]{1,4}(\3|:\b|$)|\2))(?4){5}((?4){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})\z/ai
+# Successful tempest run
+ok /^ - (Expected Fail|Failed): 0$/
+ok /Warning: Turning on '--gpg-auto-import-keys'/
+ok /Warning: Permanently added .* to the list of known hosts/
+ok /WARNING: Device for PV .* not found or rejected by a filter/
+ok /WARNING: \w+ signature detected on .* offset \d+. Wipe it?/
+ok /grep -v failed\b/
+
+# rpms containing "Error"
+ok /perl-Error[ -]|libsamba-errors|mariadb-errormessages/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=1030822
+warning /Cleaning up (vip-admin-\S+) on \S+, removing fail-count-\1/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=971832
+ok /Failed to try-restart vsftpd@.service: Unit name vsftpd@.service is not valid/
 ```
+
+Note:
+https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/openstack-mkcloud-rules.txt
 
 
 ### Why Machine Learning?
@@ -177,9 +205,6 @@ Note:
 
 ### Overfitting
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
-
-
-
 
 
 ### k-Nearest Neighbors
