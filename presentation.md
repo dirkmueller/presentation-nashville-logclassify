@@ -204,9 +204,7 @@ Note:
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
 
 
-
-
-### Supervised ML: Classification
+### Supervised Learning: Classification
 
 <table><tr><td>
 <img data-src="images/banana.jpg" width="75%" class="plain"/>
