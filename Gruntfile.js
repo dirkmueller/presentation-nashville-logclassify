@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 				dest: 'css/theme',
 				ext: '.css'
 			},
-			SUSE: {
+			suse: {
 				src: 'css/reveal-override.scss',
 				dest: 'css/reveal-override.css'
 			}
@@ -140,6 +140,10 @@ module.exports = function(grunt) {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
 			},
+			suse: {
+				files: [ 'css/reveal-override.scss' ],
+				tasks: 'css-suse'
+			},
 			html: {
 				files: root.map(path => path + '/*.html')
 			},
@@ -184,6 +188,9 @@ module.exports = function(grunt) {
 
 	// All CSS
 	grunt.registerTask( 'css', [ 'sass', 'autoprefixer', 'cssmin' ] );
+
+	// SUSE CSS
+	grunt.registerTask( 'css-suse', [ 'sass:suse' ] );
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );
