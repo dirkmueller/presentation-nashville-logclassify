@@ -201,8 +201,8 @@ Note:
 </p>
 </small>
 </td><td><small>
-- Generalizes a model from training data<br/>
-- Builds "hidden representation"<br/>
+- Abstracting a model from training data<br/>
+- Requires longer training phase<br/>
 - Can not "untrain" previously learned data<br/>
 <p>
 <b>Artifical Neural Networks (DL)</b>
@@ -214,6 +214,30 @@ Note:
 
 ### Overfitting / Underfitting
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
+
+
+### Machine Learning Variants
+
+<table>
+<thead><tr>
+<th width="50%">Supervised</th>
+<th width="50%">Unsupervised</th>
+</tr></thead>
+<tbody><tr>
+<td><small>
+<b>
+Classification<br/>
+</b>
+
+<b>Regression<br/></b>
+</small>
+</td><td><small>
+<b>
+Clustering<br/>
+</b>
+</small></td></tr>
+</tbody>
+</table>
 
 
 ### Supervised Learning: Classification
