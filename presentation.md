@@ -123,6 +123,18 @@ error /$h1!!/
 ```
 
 
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 1" -->
+<div><img src="images/parsed-console-1.png" /></div>
+
+
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 2" -->
+<div><img src="images/parsed-console-2.png" /></div>
+
+
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 3" -->
+<div><img src="images/parsed-console-3.png" /></div>
+
+
 ### Dealing with false positives
 
 ```perl
