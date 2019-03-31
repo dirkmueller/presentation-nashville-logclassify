@@ -1,0 +1,197 @@
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26548:	| OS-EXT-SRV-ATTR:launch_index         | 0                                                           |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26549:	| OS-EXT-SRV-ATTR:ramdisk_id           |                                                             |
+0.333 | crowbar-openstack-PR-2063-ha-FAIL.txt:26550:	| OS-EXT-SRV-ATTR:reservation_id       | r-frfamddk                                                  |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26551:	| OS-EXT-SRV-ATTR:root_device_name     | -                                                           |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26552:	| OS-EXT-SRV-ATTR:user_data            | -                                                           |
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26558:	| accessIPv4                           |                                                             |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26559:	| accessIPv6                           |                                                             |
+0.500 | crowbar-openstack-PR-2063-ha-FAIL.txt:26560:	| adminPass                            | nLzUi4jBn3uv                                                |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26561:	| config_drive                         |                                                             |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:26562:	| created                              | 2019-03-25T20:49:22Z                                        |
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:33435:	+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:33436:	| expires    | 2019-03-26T01:11:53+0000                                                                                                                                                                |
+1.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:33437:	| id         | gAAAAABcmUQZpHqMyJ3UPYJ8nE1OUVG3i8vKPW8wf4BGqUDOjs1O4Q0p7NvStJkd9hwAksHbJlTOh4c9L38BM_sF1XBySLpXUHT4ssSBA3Y6d94XQqyzTPR_c_69nGI-_QjpUof97TSsSjOA1gd_gWAhSMrhMHNtv8v07Vbk9okVpgOTccC5_iQ |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:33438:	| project_id | f5a37bc8a39244a68bc3c76a0ebc0e0f                                                                                                                                                        |
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:33439:	| user_id    | f52e51d365324e9ca051def8ed314b24                                                                                                                                                        |
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34579:	+(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): crm_mon --failcounts -1
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34580:	+(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): grep fail-count=
+0.261 | crowbar-openstack-PR-2063-ha-FAIL.txt:34581:	+(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): complain 55 'Cluster resources'\'' failures detected'
+0.250 | crowbar-openstack-PR-2063-ha-FAIL.txt:34582:	+(mkcloud-common.sh:114) complain(): local ex=55
+0.423 | crowbar-openstack-PR-2063-ha-FAIL.txt:34583:	+(mkcloud-common.sh:114) complain(): shift
+0.465 | crowbar-openstack-PR-2063-ha-FAIL.txt:34584:	   neutron-l3-ha-service: migration-threshold=3 fail-count=3 last-failure='Mon Mar 25 21:27:23 2019'
+0.403 | crowbar-openstack-PR-2063-ha-FAIL.txt:34585:	+(mkcloud-common.sh:115) complain(): printf 'Error (55): %s
+0.403 | crowbar-openstack-PR-2063-ha-FAIL.txt:34585:	' 'Cluster resources'\'' failures detected'
+0.427 | crowbar-openstack-PR-2063-ha-FAIL.txt:34586:	Error (55): Cluster resources' failures detected
+0.333 | crowbar-openstack-PR-2063-ha-FAIL.txt:34587:	+(mkcloud-common.sh:116) complain(): [[ 55 = - ]]
+0.423 | crowbar-openstack-PR-2063-ha-FAIL.txt:34588:	+(mkcloud-common.sh:116) complain(): exit 55
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34589:	+(qa_crowbarsetup.sh:4347) run_on(): return 55
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34590:	+(qa_crowbarsetup.sh:4650) onadmin_testsetup(): ret=55
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34591:	+(qa_crowbarsetup.sh:4652) onadmin_testsetup(): echo 'Tests on controller: 55'
+0.329 | crowbar-openstack-PR-2063-ha-FAIL.txt:34592:	+(qa_crowbarsetup.sh:4653) onadmin_testsetup(): echo 'Keystone Toggle SSL: 0'
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34593:	+(qa_crowbarsetup.sh:4654) onadmin_testsetup(): echo 'Ceph Tests: 0'
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34594:	+(qa_crowbarsetup.sh:4655) onadmin_testsetup(): echo 'RadosGW S3 Tests: 0'
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34597:	+(qa_crowbarsetup.sh:4663) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:/var/lib/openstack-tempest-test/tempest.log .
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34598:	Tests on controller: 55
+0.733 | crowbar-openstack-PR-2063-ha-FAIL.txt:34599:	Keystone Toggle SSL: 0
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34600:	Ceph Tests: 0
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34601:	RadosGW S3 Tests: 0
+0.500 | crowbar-openstack-PR-2063-ha-FAIL.txt:34602:	scp: /var/lib/openstack-tempest-test/tempest.log: No such file or directory
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34603:	+(qa_crowbarsetup.sh:4664) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:/var/lib/openstack-tempest-test/tempest.subunit.log .
+0.496 | crowbar-openstack-PR-2063-ha-FAIL.txt:34604:	scp: /var/lib/openstack-tempest-test/tempest.subunit.log: No such file or directory
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34605:	+(qa_crowbarsetup.sh:4665) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:.openrc .
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34606:	+(qa_crowbarsetup.sh:4667) onadmin_testsetup(): exit 55
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34607:	+(mkcloud:368) sshrun(): return 55
+0.244 | crowbar-openstack-PR-2063-ha-FAIL.txt:34608:	+(mkcloud-common.sh:124) safely(): local 'errmsg=sshrun TIMEFORMAT="timing for mkcloud call '\''onadmin_testsetup'\'' real=%R user=%U system=%S" ; time onadmin_testsetup failed! (safelyret=55) Aborting.'
+0.250 | crowbar-openstack-PR-2063-ha-FAIL.txt:34609:	+(mkcloud-common.sh:126) safely(): is_onhost
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34610:	+(mkcloud-common.sh:183) is_onhost(): [[  /home/jenkins/github.com/SUSE-Cloud/automation/scripts/lib/mkcloud-common.sh /home/jenkins/github.com/SUSE-Cloud/automation/scripts/lib/mkcloud-common.sh /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud  =~ /mkcloud  ]]
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34611:	+(mkcloud-common.sh:126) safely(): error_exit 30 'sshrun TIMEFORMAT="timing for mkcloud call '\''onadmin_testsetup'\'' real=%R user=%U system=%S" ; time onadmin_testsetup failed! (safelyret=55) Aborting.'
+0.402 | crowbar-openstack-PR-2063-ha-FAIL.txt:34612:	+(mkcloud:270) error_exit(): exitcode=30
+0.398 | crowbar-openstack-PR-2063-ha-FAIL.txt:34613:	+(mkcloud:271) error_exit(): message='sshrun TIMEFORMAT="timing for mkcloud call '\''onadmin_testsetup'\'' real=%R user=%U system=%S" ; time onadmin_testsetup failed! (safelyret=55) Aborting.'
+0.355 | crowbar-openstack-PR-2063-ha-FAIL.txt:34614:	+(mkcloud:272) error_exit(): [[ -n 162503 ]]
+0.402 | crowbar-openstack-PR-2063-ha-FAIL.txt:34615:	+(mkcloud:273) error_exit(): onhost_supportconfig
+0.500 | crowbar-openstack-PR-2063-ha-FAIL.txt:34616:	+(mkcloud:223) onhost_supportconfig(): '[' -z '' ']'
+0.157 | crowbar-openstack-PR-2063-ha-FAIL.txt:34617:	+(mkcloud:224) onhost_supportconfig(): ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 root@192.168.253.10 '
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34618:	            set -x
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34619:	            for node in $(crowbar machines list | grep ^d) ; do
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34620:	            (
+0.553 | crowbar-openstack-PR-2063-ha-FAIL.txt:34621:	                echo "Collecting supportconfig from $node"
+0.592 | crowbar-openstack-PR-2063-ha-FAIL.txt:34622:	                timeout 1200 ssh $node supportconfig | wc
+0.592 | crowbar-openstack-PR-2063-ha-FAIL.txt:34623:	                timeout 300 scp $node:/var/log/\*tbz /var/log/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34624:	            )&
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34625:	            done
+0.733 | crowbar-openstack-PR-2063-ha-FAIL.txt:34626:	            timeout 600 supportconfig | wc &
+0.423 | crowbar-openstack-PR-2063-ha-FAIL.txt:34627:	            wait
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34628:	        '
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34629:	Warning: Permanently added '192.168.253.10' (ECDSA) to the list of known hosts.
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34630:	++ grep '^d'
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34631:	++ crowbar machines list
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34632:	+ for node in '$(crowbar machines list | grep ^d)'
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34633:	+ for node in '$(crowbar machines list | grep ^d)'
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34634:	+ for node in '$(crowbar machines list | grep ^d)'
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34635:	+ for node in '$(crowbar machines list | grep ^d)'
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34636:	+ for node in '$(crowbar machines list | grep ^d)'
+0.423 | crowbar-openstack-PR-2063-ha-FAIL.txt:34637:	+ wait
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34638:	+ echo 'Collecting supportconfig from d52-54-77-77-01-01.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34639:	Collecting supportconfig from d52-54-77-77-01-01.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34640:	+ echo 'Collecting supportconfig from d52-54-77-77-01-03.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34641:	Collecting supportconfig from d52-54-77-77-01-03.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34642:	+ echo 'Collecting supportconfig from d52-54-77-77-01-05.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34643:	Collecting supportconfig from d52-54-77-77-01-05.vc1.cloud.suse.de
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34644:	+ wc
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34645:	+ wc
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34646:	+ timeout 1200 ssh d52-54-77-77-01-03.vc1.cloud.suse.de supportconfig
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34647:	+ timeout 1200 ssh d52-54-77-77-01-05.vc1.cloud.suse.de supportconfig
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34648:	+ wc
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34649:	Collecting supportconfig from d52-54-77-77-01-02.vc1.cloud.suse.de
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34650:	+ timeout 1200 ssh d52-54-77-77-01-01.vc1.cloud.suse.de supportconfig
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34651:	+ echo 'Collecting supportconfig from d52-54-77-77-01-02.vc1.cloud.suse.de'
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34652:	+ wc
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34653:	+ echo 'Collecting supportconfig from d52-54-77-77-01-04.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34654:	Collecting supportconfig from d52-54-77-77-01-04.vc1.cloud.suse.de
+0.733 | crowbar-openstack-PR-2063-ha-FAIL.txt:34655:	+ timeout 600 supportconfig
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34656:	+ timeout 1200 ssh d52-54-77-77-01-02.vc1.cloud.suse.de supportconfig
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34657:	+ wc
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34658:	+ wc
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34659:	+ timeout 1200 ssh d52-54-77-77-01-04.vc1.cloud.suse.de supportconfig
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34660:	TERM environment variable not set.
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34661:	TERM environment variable not set.
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34662:	TERM environment variable not set.
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34663:	TERM environment variable not set.
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34664:	TERM environment variable not set.
+0.742 | crowbar-openstack-PR-2063-ha-FAIL.txt:34665:	TERM environment variable not set.
+0.452 | crowbar-openstack-PR-2063-ha-FAIL.txt:34666:	find: /proc/13311: No such file or directory
+0.452 | crowbar-openstack-PR-2063-ha-FAIL.txt:34667:	find: /proc/13313: No such file or directory
+0.452 | crowbar-openstack-PR-2063-ha-FAIL.txt:34668:	find: /proc/13319: No such file or directory
+0.452 | crowbar-openstack-PR-2063-ha-FAIL.txt:34669:	find: /proc/13320: No such file or directory
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34670:	     93     274    4764
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34671:	+ timeout 300 scp 'd52-54-77-77-01-05.vc1.cloud.suse.de:/var/log/*tbz' /var/log/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34672:	     93     274    4764
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34673:	+ timeout 300 scp 'd52-54-77-77-01-04.vc1.cloud.suse.de:/var/log/*tbz' /var/log/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34674:	     91     268    4654
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34675:	+ timeout 300 scp 'd52-54-77-77-01-03.vc1.cloud.suse.de:/var/log/*tbz' /var/log/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34676:	     91     268    4651
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34677:	+ timeout 300 scp 'd52-54-77-77-01-02.vc1.cloud.suse.de:/var/log/*tbz' /var/log/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34678:	     91     268    4689
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34679:	     91     268    4651
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34680:	+ timeout 300 scp 'd52-54-77-77-01-01.vc1.cloud.suse.de:/var/log/*tbz' /var/log/
+0.250 | crowbar-openstack-PR-2063-ha-FAIL.txt:34681:	++(mkcloud:236) onhost_supportconfig(): wrap_ip 192.168.253.10
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34682:	++(mkcloud-common.sh:54) wrap_ip(): ((  0 > 0  ))
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34683:	++(mkcloud-common.sh:57) wrap_ip(): echo 192.168.253.10
+0.119 | crowbar-openstack-PR-2063-ha-FAIL.txt:34684:	+(mkcloud:236) onhost_supportconfig(): scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 'root@192.168.253.10:/var/log/*tbz' /home/jenkins/workspace/openstack-mkcloud/.artifacts/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34685:	Warning: Permanently added '192.168.253.10' (ECDSA) to the list of known hosts.
+0.402 | crowbar-openstack-PR-2063-ha-FAIL.txt:34686:	+(mkcloud:275) error_exit(): onhost_stop_chef_clients_on_nodes
+0.157 | crowbar-openstack-PR-2063-ha-FAIL.txt:34687:	+(mkcloud:243) onhost_stop_chef_clients_on_nodes(): ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 root@192.168.253.10 '
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34688:	            set -x
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34689:	            for node in $(crowbar machines list | grep ^d) ; do
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34690:	            (
+0.553 | crowbar-openstack-PR-2063-ha-FAIL.txt:34691:	                echo "Stopping chef-client on $node"
+0.684 | crowbar-openstack-PR-2063-ha-FAIL.txt:34692:	                timeout 30 ssh $node rcchef-client stop
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34693:	            )
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34694:	            done
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34695:	        '
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34696:	Warning: Permanently added '192.168.253.10' (ECDSA) to the list of known hosts.
+0.225 | crowbar-openstack-PR-2063-ha-FAIL.txt:34697:	++ crowbar machines list
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34698:	++ grep '^d'
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34699:	+ for node in '$(crowbar machines list | grep ^d)'
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34700:	+ echo 'Stopping chef-client on d52-54-77-77-01-01.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34701:	Stopping chef-client on d52-54-77-77-01-01.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34702:	+ timeout 30 ssh d52-54-77-77-01-01.vc1.cloud.suse.de rcchef-client stop
+1.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34703:	Killed by signal 15.
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34704:	+ for node in '$(crowbar machines list | grep ^d)'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34705:	Stopping chef-client on d52-54-77-77-01-02.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34706:	+ echo 'Stopping chef-client on d52-54-77-77-01-02.vc1.cloud.suse.de'
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34707:	+ timeout 30 ssh d52-54-77-77-01-02.vc1.cloud.suse.de rcchef-client stop
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34708:	+ for node in '$(crowbar machines list | grep ^d)'
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34709:	+ echo 'Stopping chef-client on d52-54-77-77-01-03.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34710:	Stopping chef-client on d52-54-77-77-01-03.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34711:	+ timeout 30 ssh d52-54-77-77-01-03.vc1.cloud.suse.de rcchef-client stop
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34712:	+ for node in '$(crowbar machines list | grep ^d)'
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34713:	+ echo 'Stopping chef-client on d52-54-77-77-01-04.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34714:	Stopping chef-client on d52-54-77-77-01-04.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34715:	+ timeout 30 ssh d52-54-77-77-01-04.vc1.cloud.suse.de rcchef-client stop
+0.400 | crowbar-openstack-PR-2063-ha-FAIL.txt:34716:	+ for node in '$(crowbar machines list | grep ^d)'
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34717:	+ echo 'Stopping chef-client on d52-54-77-77-01-05.vc1.cloud.suse.de'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34718:	Stopping chef-client on d52-54-77-77-01-05.vc1.cloud.suse.de
+0.345 | crowbar-openstack-PR-2063-ha-FAIL.txt:34719:	+ timeout 30 ssh d52-54-77-77-01-05.vc1.cloud.suse.de rcchef-client stop
+1.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34720:	Killed by signal 15.
+0.402 | crowbar-openstack-PR-2063-ha-FAIL.txt:34721:	+(mkcloud:276) error_exit(): pre_exit_cleanup
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34722:	+(mkcloud:218) pre_exit_cleanup(): rm mkcloud.pid
+0.398 | crowbar-openstack-PR-2063-ha-FAIL.txt:34723:	+(mkcloud:277) error_exit(): echo sshrun 'TIMEFORMAT="timing' for mkcloud call ''\''onadmin_testsetup'\''' real=%R user=%U 'system=%S"' ';' time onadmin_testsetup 'failed!' '(safelyret=55)' Aborting.
+0.300 | crowbar-openstack-PR-2063-ha-FAIL.txt:34724:	sshrun TIMEFORMAT="timing for mkcloud call 'onadmin_testsetup' real=%R user=%U system=%S" ; time onadmin_testsetup failed! (safelyret=55) Aborting.
+0.402 | crowbar-openstack-PR-2063-ha-FAIL.txt:34725:	+(mkcloud:278) error_exit(): show_environment
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34726:	++(mkcloud:180) show_environment(): date
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34727:	+(mkcloud:180) show_environment(): end_time='Mon Mar 25 21:33:26 UTC 2019'
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34759:	~/github.com/SUSE-Cloud/automation/scripts ~/workspace/openstack-mkcloud
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34760:	++(mkcloud:190) show_environment(): git --no-pager show -s --oneline
+0.222 | crowbar-openstack-PR-2063-ha-FAIL.txt:34761:	+(mkcloud:190) show_environment(): echo '         git: 03fcdf2c9 Merge pull request #3274 from dirkmueller/cleanvm'
+0.333 | crowbar-openstack-PR-2063-ha-FAIL.txt:34762:	         git: 03fcdf2c9 Merge pull request #3274 from dirkmueller/cleanvm
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34763:	+(mkcloud:191) show_environment(): popd
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34764:	~/workspace/openstack-mkcloud
+--
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34876:	1553544630  1553544636  step      setup_aliases         6
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34877:	1553544636  1553547990  step      proposal              3354
+0.441 | crowbar-openstack-PR-2063-ha-FAIL.txt:34878:	+(mkcloud:279) error_exit(): echo 'exitcode: 30'
+1.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34879:	exitcode: 30
+0.283 | crowbar-openstack-PR-2063-ha-FAIL.txt:34880:	+(mkcloud:280) error_exit(): exit 30
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34881:	+ ret=30
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34882:	+ [[ 30 != 0 ]]
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34883:	+ [[ -n 25eab46769326403479cc462ff6e72e5414db7d2 ]]
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34884:	+ mkcloudgating_trap
+0.244 | crowbar-openstack-PR-2063-ha-FAIL.txt:34885:	+ /home/jenkins/github.com/openSUSE/github-pr/github_pr.rb --action set-status --debugratelimit --org crowbar --repo crowbar-openstack --sha 25eab46769326403479cc462ff6e72e5414db7d2 --context suse/mkcloud/ha --status failure --targeturl https://ci.suse.de/job/openstack-mkcloud/162503/parsed_console/
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34886:	API rate limit: 4490
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34887:	API rate limit: 4489
+0.184 | crowbar-openstack-PR-2063-ha-FAIL.txt:34888:	+ echo 'mkcloud ret=30'
+0.293 | crowbar-openstack-PR-2063-ha-FAIL.txt:34889:	mkcloud ret=30
+0.423 | crowbar-openstack-PR-2063-ha-FAIL.txt:34890:	+ exit 30
+0.461 | crowbar-openstack-PR-2063-ha-FAIL.txt:34891:	Build step 'Execute shell' marked build as failure
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34892:	Set build name.
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34893:	New build name is '#162503: crowbar/crowbar-openstack PR 2063 25eab467 ha'
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34894:	Archiving artifacts
+0.270 | crowbar-openstack-PR-2063-ha-FAIL.txt:34895:	Finished: FAILURE
+0.000 | crowbar-openstack-PR-2063-ha-FAIL.txt:34896:	
+99.68% reduction (from 34896 lines to 110)

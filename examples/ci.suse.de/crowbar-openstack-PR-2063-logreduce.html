@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html class='layout-pf'>
+  <head>
+    <title>Logreduce of crowbar-openstack-PR-2063-ha-FAIL.txt</title>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly.min.css'>
+    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/css/patternfly-additions.min.css'>
+    <style>
+.loglines {max-height: 800px; overflow-y: scroll;}
+.list-group-item-container {overflow: hidden;}
+.ls {margin-top: 0px; margin-bottom: 10px; border-color: black;}
+#debuginfo {display: none;}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-pf" role="navigation">
+      <div class="navbar-header">
+        <img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAXBAMAAAASBMmTAAAAFVBMVEU6feU9geVjl+WMsOUicOXAz+X///9aF/8vAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfiCAsFFSh04lDsAAAAp0lEQVQY012QXQ7CQAiE158LyKYH6BDf7WAPYEkP4BLvfxVxWxPjhge+sAwDpfy9oxgfX5hQhbctt0VV4Z1OjTVC+OowtqeNrekH7rO7qq/3/HcAZoIzOZZy5uDtIrHKlEN0Yg9D9kugQkVbTaDxMkAM9lOJuvWAhinwkR782dVS+iAwjpqzsDlYr7uDcsKPt3TtEc7o+8Siqeb7doQI9jwFjcv/YcobPpYhOB4CZRcAAAAASUVORK5CYII=" alt="LogReduce" />
+      </div>
+      <div class="collapse navbar-collapse navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-utility">
+          <li><a href="#" id='debugbtn'>Show Debug</a></li>
+          <li><a href="https://pypi.org/project/logreduce/" target="_blank">
+            Documentation
+          </a></li>
+          <li><a href="#"><strong>Version</strong> 0.4.1.dev5</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-primary">
+            <li class="active"><a href="log-classify.html">Report</a></li>
+            <li><a href="ara-report/">ARA Records Ansible</a></li>
+            <li><a href="./">Job Artifacts</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container" style='width: 100%'>
+      <div id='debuginfo' style='overflow-x: auto'><table style='white-space: nowrap; margin: 0px' class='table table-condensed table-responsive table-bordered'>
+<tbody>
+<tr>
+<td>Command</td>
+<td>/home/adam/.local/bin/logreduce diff -C 2 crowbar-openstack-PR-2062-ha-PASS.txt crowbar-openstack-PR-2066-ha-PASS.txt crowbar-openstack-PR-2068-ha-PASS.txt crowbar-openstack-PR-2076-ha-PASS.txt crowbar-openstack-PR-2063-ha-FAIL.txt --html ha.html</td>
+</tr>
+<tr>
+<td>Targets</td>
+<td>crowbar-openstack-PR-2063-ha-FAIL.txt</td>
+</tr>
+<tr>
+<td>Baselines</td>
+<td>crowbar-openstack-PR-2062-ha-PASS.txt crowbar-openstack-PR-2066-ha-PASS.txt crowbar-openstack-PR-2068-ha-PASS.txt crowbar-openstack-PR-2076-ha-PASS.txt</td>
+</tr>
+<tr>
+<td>Anomalies count</td>
+<td>190</td>
+</tr>
+<tr>
+<td>Run time</td>
+<td>6.23 seconds</td>
+</tr>
+<tr>
+<td>Reduction</td>
+<td>99.68% (from 34896 lines to 110)</td>
+</tr>
+</tbody></table><br /></div>
+<div id='debuginfo' style='overflow-x: auto'><table style='white-space: nowrap; margin: 0px' class='table table-condensed table-responsive table-bordered'>
+<thead><tr>
+<th>Anomaly count</th>
+<th>Filename</th>
+<th>Test time</th>
+<th>Model</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>190</td>
+<td><a href='#crowbar-openstack-PR-2063-ha-FAIL.txt'>crowbar-openstack-PR-2063-ha-FAIL.txt</a> (<a href='crowbar-openstack-PR-2063-ha-FAIL.txt'>log link</a>)</td>
+<td>6.23 sec</td>
+<td><a href='#model_crowbar-openstack-PR--ha-PASS.txt'>crowbar-openstack-PR--ha-PASS.txt</a></td>
+</tr>
+</tbody></table><br /></div>
+<div class="list-group list-view-pf list-view-pf-view">
+
+    <div class="list-group-item list-view-pf-expand-active" id='crowbar-openstack-PR-2063-ha-FAIL.txt'>
+      <div class="list-group-item-header">
+        <div class="list-view-pf-expand">
+          <span class="fa fa-angle-right fa-angle-down"></span>
+        </div>
+        <div class="list-view-pf-main-info">
+          <div class="list-view-pf-left">
+            <span class="fa pficon-degraded list-view-pf-icon-sm"></span>
+          </div>
+          <div class="list-view-pf-body">
+            <div class="list-view-pf-description">
+              <div class="list-group-item-heading">
+                crowbar-openstack-PR-2063-ha-FAIL.txt
+              </div>
+              <div class="list-group-item-text">
+                (<a href="crowbar-openstack-PR-2063-ha-FAIL.txt">log link</a>)
+              </div>
+            </div>
+            <div class="list-view-pf-additional-info-item" id='debuginfo'>
+              <span class="pficon pficon-registry"></span>
+              <a href="#model_crowbar-openstack-PR--ha-PASS.txt">crowbar-openstack-PR--ha-PASS.txt</a> model
+            </div>
+            <div class="list-view-pf-additional-info-item">
+              <span class="fa fa-bug"></span>
+              <strong>190</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list-group-item-container container-fluid">
+        <div class="close"><span class="pficon pficon-close"></span></div>
+        <div id='debuginfo'>baseline samples:<ul><li>crowbar-openstack-PR-2062-ha-PASS.txt</li><li>crowbar-openstack-PR-2066-ha-PASS.txt</li><li>crowbar-openstack-PR-2068-ha-PASS.txt</li><li>crowbar-openstack-PR-2076-ha-PASS.txt</li></ul></div>
+        <div class="loglines">
+          <font color='#000000'>0.000 | 26548: | OS-EXT-SRV-ATTR:launch_index         | 0                                                           |</font><br />
+<font color='#000000'>0.000 | 26549: | OS-EXT-SRV-ATTR:ramdisk_id           |                                                             |</font><br />
+<font color='#540000'>0.333 | 26550: | OS-EXT-SRV-ATTR:reservation_id       | r-frfamddk                                                  |</font><br />
+<font color='#000000'>0.000 | 26551: | OS-EXT-SRV-ATTR:root_device_name     | -                                                           |</font><br />
+<font color='#000000'>0.000 | 26552: | OS-EXT-SRV-ATTR:user_data            | -                                                           |</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 26558: | accessIPv4                           |                                                             |</font><br />
+<font color='#000000'>0.000 | 26559: | accessIPv6                           |                                                             |</font><br />
+<font color='#7f0000'>0.500 | 26560: | adminPass                            | nLzUi4jBn3uv                                                |</font><br />
+<font color='#000000'>0.000 | 26561: | config_drive                         |                                                             |</font><br />
+<font color='#000000'>0.000 | 26562: | created                              | 2019-03-25T20:49:22Z                                        |</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 33435: +------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</font><br />
+<font color='#000000'>0.000 | 33436: | expires    | 2019-03-26T01:11:53+0000                                                                                                                                                                |</font><br />
+<font color='#ff0000'>1.000 | 33437: | id         | gAAAAABcmUQZpHqMyJ3UPYJ8nE1OUVG3i8vKPW8wf4BGqUDOjs1O4Q0p7NvStJkd9hwAksHbJlTOh4c9L38BM_sF1XBySLpXUHT4ssSBA3Y6d94XQqyzTPR_c_69nGI-_QjpUof97TSsSjOA1gd_gWAhSMrhMHNtv8v07Vbk9okVpgOTccC5_iQ |</font><br />
+<font color='#000000'>0.000 | 33438: | project_id | f5a37bc8a39244a68bc3c76a0ebc0e0f                                                                                                                                                        |</font><br />
+<font color='#000000'>0.000 | 33439: | user_id    | f52e51d365324e9ca051def8ed314b24                                                                                                                                                        |</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 34579: +(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): crm_mon --failcounts -1</font><br />
+<font color='#000000'>0.000 | 34580: +(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): grep fail-count=</font><br />
+<font color='#420000'>0.261 | 34581: +(qa_crowbarsetup.sh:3968) oncontroller_check_crm_failcounts(): complain 55 &#x27;Cluster resources&#x27;\&#x27;&#x27; failures detected&#x27;</font><br />
+<font color='#3f0000'>0.250 | 34582: +(mkcloud-common.sh:114) complain(): local ex=55</font><br />
+<font color='#6b0000'>0.423 | 34583: +(mkcloud-common.sh:114) complain(): shift</font><br />
+<font color='#760000'>0.465 | 34584:    neutron-l3-ha-service: migration-threshold=3 fail-count=3 last-failure=&#x27;Mon Mar 25 21:27:23 2019&#x27;</font><br />
+<font color='#660000'>0.403 | 34585: +(mkcloud-common.sh:115) complain(): printf &#x27;Error (55): %s</font><br />
+<font color='#660000'>0.403 | 34585: &#x27; &#x27;Cluster resources&#x27;\&#x27;&#x27; failures detected&#x27;</font><br />
+<font color='#6c0000'>0.427 | 34586: Error (55): Cluster resources&#x27; failures detected</font><br />
+<font color='#540000'>0.333 | 34587: +(mkcloud-common.sh:116) complain(): [[ 55 = - ]]</font><br />
+<font color='#6b0000'>0.423 | 34588: +(mkcloud-common.sh:116) complain(): exit 55</font><br />
+<font color='#000000'>0.000 | 34589: +(qa_crowbarsetup.sh:4347) run_on(): return 55</font><br />
+<font color='#000000'>0.000 | 34590: +(qa_crowbarsetup.sh:4650) onadmin_testsetup(): ret=55</font><br />
+<font color='#000000'>0.000 | 34591: +(qa_crowbarsetup.sh:4652) onadmin_testsetup(): echo &#x27;Tests on controller: 55&#x27;</font><br />
+<font color='#530000'>0.329 | 34592: +(qa_crowbarsetup.sh:4653) onadmin_testsetup(): echo &#x27;Keystone Toggle SSL: 0&#x27;</font><br />
+<font color='#000000'>0.000 | 34593: +(qa_crowbarsetup.sh:4654) onadmin_testsetup(): echo &#x27;Ceph Tests: 0&#x27;</font><br />
+<font color='#000000'>0.000 | 34594: +(qa_crowbarsetup.sh:4655) onadmin_testsetup(): echo &#x27;RadosGW S3 Tests: 0&#x27;</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 34597: +(qa_crowbarsetup.sh:4663) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:/var/lib/openstack-tempest-test/tempest.log .</font><br />
+<font color='#000000'>0.000 | 34598: Tests on controller: 55</font><br />
+<font color='#ba0000'>0.733 | 34599: Keystone Toggle SSL: 0</font><br />
+<font color='#000000'>0.000 | 34600: Ceph Tests: 0</font><br />
+<font color='#000000'>0.000 | 34601: RadosGW S3 Tests: 0</font><br />
+<font color='#7f0000'>0.500 | 34602: scp: /var/lib/openstack-tempest-test/tempest.log: No such file or directory</font><br />
+<font color='#000000'>0.000 | 34603: +(qa_crowbarsetup.sh:4664) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:/var/lib/openstack-tempest-test/tempest.subunit.log .</font><br />
+<font color='#7e0000'>0.496 | 34604: scp: /var/lib/openstack-tempest-test/tempest.subunit.log: No such file or directory</font><br />
+<font color='#000000'>0.000 | 34605: +(qa_crowbarsetup.sh:4665) onadmin_testsetup(): scp d52-54-77-77-01-01.vc1.cloud.suse.de:.openrc .</font><br />
+<font color='#000000'>0.000 | 34606: +(qa_crowbarsetup.sh:4667) onadmin_testsetup(): exit 55</font><br />
+<font color='#000000'>0.000 | 34607: +(mkcloud:368) sshrun(): return 55</font><br />
+<font color='#3e0000'>0.244 | 34608: +(mkcloud-common.sh:124) safely(): local &#x27;errmsg=sshrun TIMEFORMAT=&quot;timing for mkcloud call &#x27;\&#x27;&#x27;onadmin_testsetup&#x27;\&#x27;&#x27; real=%R user=%U system=%S&quot; ; time onadmin_testsetup failed! (safelyret=55) Aborting.&#x27;</font><br />
+<font color='#3f0000'>0.250 | 34609: +(mkcloud-common.sh:126) safely(): is_onhost</font><br />
+<font color='#000000'>0.000 | 34610: +(mkcloud-common.sh:183) is_onhost(): [[  /home/jenkins/github.com/SUSE-Cloud/automation/scripts/lib/mkcloud-common.sh /home/jenkins/github.com/SUSE-Cloud/automation/scripts/lib/mkcloud-common.sh /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud /home/jenkins/github.com/SUSE-Cloud/automation/scripts/mkcloud  =~ /mkcloud  ]]</font><br />
+<font color='#4a0000'>0.293 | 34611: +(mkcloud-common.sh:126) safely(): error_exit 30 &#x27;sshrun TIMEFORMAT=&quot;timing for mkcloud call &#x27;\&#x27;&#x27;onadmin_testsetup&#x27;\&#x27;&#x27; real=%R user=%U system=%S&quot; ; time onadmin_testsetup failed! (safelyret=55) Aborting.&#x27;</font><br />
+<font color='#660000'>0.402 | 34612: +(mkcloud:270) error_exit(): exitcode=30</font><br />
+<font color='#650000'>0.398 | 34613: +(mkcloud:271) error_exit(): message=&#x27;sshrun TIMEFORMAT=&quot;timing for mkcloud call &#x27;\&#x27;&#x27;onadmin_testsetup&#x27;\&#x27;&#x27; real=%R user=%U system=%S&quot; ; time onadmin_testsetup failed! (safelyret=55) Aborting.&#x27;</font><br />
+<font color='#5a0000'>0.355 | 34614: +(mkcloud:272) error_exit(): [[ -n 162503 ]]</font><br />
+<font color='#660000'>0.402 | 34615: +(mkcloud:273) error_exit(): onhost_supportconfig</font><br />
+<font color='#7f0000'>0.500 | 34616: +(mkcloud:223) onhost_supportconfig(): &#x27;[&#x27; -z &#x27;&#x27; &#x27;]&#x27;</font><br />
+<font color='#270000'>0.157 | 34617: +(mkcloud:224) onhost_supportconfig(): ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 root@192.168.253.10 &#x27;</font><br />
+<font color='#000000'>0.000 | 34618:             set -x</font><br />
+<font color='#650000'>0.400 | 34619:             for node in $(crowbar machines list | grep ^d) ; do</font><br />
+<font color='#000000'>0.000 | 34620:             (</font><br />
+<font color='#8c0000'>0.553 | 34621:                 echo &quot;Collecting supportconfig from $node&quot;</font><br />
+<font color='#960000'>0.592 | 34622:                 timeout 1200 ssh $node supportconfig | wc</font><br />
+<font color='#960000'>0.592 | 34623:                 timeout 300 scp $node:/var/log/\*tbz /var/log/</font><br />
+<font color='#000000'>0.000 | 34624:             )&amp;</font><br />
+<font color='#000000'>0.000 | 34625:             done</font><br />
+<font color='#ba0000'>0.733 | 34626:             timeout 600 supportconfig | wc &amp;</font><br />
+<font color='#6b0000'>0.423 | 34627:             wait</font><br />
+<font color='#000000'>0.000 | 34628:         &#x27;</font><br />
+<font color='#000000'>0.000 | 34629: Warning: Permanently added &#x27;192.168.253.10&#x27; (ECDSA) to the list of known hosts.</font><br />
+<font color='#000000'>0.000 | 34630: ++ grep &#x27;^d&#x27;</font><br />
+<font color='#390000'>0.225 | 34631: ++ crowbar machines list</font><br />
+<font color='#650000'>0.400 | 34632: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#650000'>0.400 | 34633: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#650000'>0.400 | 34634: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#650000'>0.400 | 34635: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#650000'>0.400 | 34636: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#6b0000'>0.423 | 34637: + wait</font><br />
+<font color='#580000'>0.345 | 34638: + echo &#x27;Collecting supportconfig from d52-54-77-77-01-01.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34639: Collecting supportconfig from d52-54-77-77-01-01.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34640: + echo &#x27;Collecting supportconfig from d52-54-77-77-01-03.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34641: Collecting supportconfig from d52-54-77-77-01-03.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34642: + echo &#x27;Collecting supportconfig from d52-54-77-77-01-05.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34643: Collecting supportconfig from d52-54-77-77-01-05.vc1.cloud.suse.de</font><br />
+<font color='#000000'>0.000 | 34644: + wc</font><br />
+<font color='#000000'>0.000 | 34645: + wc</font><br />
+<font color='#390000'>0.225 | 34646: + timeout 1200 ssh d52-54-77-77-01-03.vc1.cloud.suse.de supportconfig</font><br />
+<font color='#390000'>0.225 | 34647: + timeout 1200 ssh d52-54-77-77-01-05.vc1.cloud.suse.de supportconfig</font><br />
+<font color='#000000'>0.000 | 34648: + wc</font><br />
+<font color='#4a0000'>0.293 | 34649: Collecting supportconfig from d52-54-77-77-01-02.vc1.cloud.suse.de</font><br />
+<font color='#390000'>0.225 | 34650: + timeout 1200 ssh d52-54-77-77-01-01.vc1.cloud.suse.de supportconfig</font><br />
+<font color='#580000'>0.345 | 34651: + echo &#x27;Collecting supportconfig from d52-54-77-77-01-02.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#000000'>0.000 | 34652: + wc</font><br />
+<font color='#580000'>0.345 | 34653: + echo &#x27;Collecting supportconfig from d52-54-77-77-01-04.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34654: Collecting supportconfig from d52-54-77-77-01-04.vc1.cloud.suse.de</font><br />
+<font color='#ba0000'>0.733 | 34655: + timeout 600 supportconfig</font><br />
+<font color='#390000'>0.225 | 34656: + timeout 1200 ssh d52-54-77-77-01-02.vc1.cloud.suse.de supportconfig</font><br />
+<font color='#000000'>0.000 | 34657: + wc</font><br />
+<font color='#000000'>0.000 | 34658: + wc</font><br />
+<font color='#390000'>0.225 | 34659: + timeout 1200 ssh d52-54-77-77-01-04.vc1.cloud.suse.de supportconfig</font><br />
+<font color='#bd0000'>0.742 | 34660: TERM environment variable not set.</font><br />
+<font color='#bd0000'>0.742 | 34661: TERM environment variable not set.</font><br />
+<font color='#bd0000'>0.742 | 34662: TERM environment variable not set.</font><br />
+<font color='#bd0000'>0.742 | 34663: TERM environment variable not set.</font><br />
+<font color='#bd0000'>0.742 | 34664: TERM environment variable not set.</font><br />
+<font color='#bd0000'>0.742 | 34665: TERM environment variable not set.</font><br />
+<font color='#730000'>0.452 | 34666: find: /proc/13311: No such file or directory</font><br />
+<font color='#730000'>0.452 | 34667: find: /proc/13313: No such file or directory</font><br />
+<font color='#730000'>0.452 | 34668: find: /proc/13319: No such file or directory</font><br />
+<font color='#730000'>0.452 | 34669: find: /proc/13320: No such file or directory</font><br />
+<font color='#000000'>0.000 | 34670:      93     274    4764</font><br />
+<font color='#390000'>0.225 | 34671: + timeout 300 scp &#x27;d52-54-77-77-01-05.vc1.cloud.suse.de:/var/log/*tbz&#x27; /var/log/</font><br />
+<font color='#000000'>0.000 | 34672:      93     274    4764</font><br />
+<font color='#390000'>0.225 | 34673: + timeout 300 scp &#x27;d52-54-77-77-01-04.vc1.cloud.suse.de:/var/log/*tbz&#x27; /var/log/</font><br />
+<font color='#000000'>0.000 | 34674:      91     268    4654</font><br />
+<font color='#390000'>0.225 | 34675: + timeout 300 scp &#x27;d52-54-77-77-01-03.vc1.cloud.suse.de:/var/log/*tbz&#x27; /var/log/</font><br />
+<font color='#000000'>0.000 | 34676:      91     268    4651</font><br />
+<font color='#390000'>0.225 | 34677: + timeout 300 scp &#x27;d52-54-77-77-01-02.vc1.cloud.suse.de:/var/log/*tbz&#x27; /var/log/</font><br />
+<font color='#000000'>0.000 | 34678:      91     268    4689</font><br />
+<font color='#000000'>0.000 | 34679:      91     268    4651</font><br />
+<font color='#390000'>0.225 | 34680: + timeout 300 scp &#x27;d52-54-77-77-01-01.vc1.cloud.suse.de:/var/log/*tbz&#x27; /var/log/</font><br />
+<font color='#3f0000'>0.250 | 34681: ++(mkcloud:236) onhost_supportconfig(): wrap_ip 192.168.253.10</font><br />
+<font color='#000000'>0.000 | 34682: ++(mkcloud-common.sh:54) wrap_ip(): ((  0 &gt; 0  ))</font><br />
+<font color='#000000'>0.000 | 34683: ++(mkcloud-common.sh:57) wrap_ip(): echo 192.168.253.10</font><br />
+<font color='#1e0000'>0.119 | 34684: +(mkcloud:236) onhost_supportconfig(): scp -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 &#x27;root@192.168.253.10:/var/log/*tbz&#x27; /home/jenkins/workspace/openstack-mkcloud/.artifacts/</font><br />
+<font color='#000000'>0.000 | 34685: Warning: Permanently added &#x27;192.168.253.10&#x27; (ECDSA) to the list of known hosts.</font><br />
+<font color='#660000'>0.402 | 34686: +(mkcloud:275) error_exit(): onhost_stop_chef_clients_on_nodes</font><br />
+<font color='#270000'>0.157 | 34687: +(mkcloud:243) onhost_stop_chef_clients_on_nodes(): ssh -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -oServerAliveInterval=20 -oConnectTimeout=5 root@192.168.253.10 &#x27;</font><br />
+<font color='#000000'>0.000 | 34688:             set -x</font><br />
+<font color='#650000'>0.400 | 34689:             for node in $(crowbar machines list | grep ^d) ; do</font><br />
+<font color='#000000'>0.000 | 34690:             (</font><br />
+<font color='#8c0000'>0.553 | 34691:                 echo &quot;Stopping chef-client on $node&quot;</font><br />
+<font color='#ae0000'>0.684 | 34692:                 timeout 30 ssh $node rcchef-client stop</font><br />
+<font color='#000000'>0.000 | 34693:             )</font><br />
+<font color='#000000'>0.000 | 34694:             done</font><br />
+<font color='#000000'>0.000 | 34695:         &#x27;</font><br />
+<font color='#000000'>0.000 | 34696: Warning: Permanently added &#x27;192.168.253.10&#x27; (ECDSA) to the list of known hosts.</font><br />
+<font color='#390000'>0.225 | 34697: ++ crowbar machines list</font><br />
+<font color='#000000'>0.000 | 34698: ++ grep &#x27;^d&#x27;</font><br />
+<font color='#650000'>0.400 | 34699: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#580000'>0.345 | 34700: + echo &#x27;Stopping chef-client on d52-54-77-77-01-01.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34701: Stopping chef-client on d52-54-77-77-01-01.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34702: + timeout 30 ssh d52-54-77-77-01-01.vc1.cloud.suse.de rcchef-client stop</font><br />
+<font color='#ff0000'>1.000 | 34703: Killed by signal 15.</font><br />
+<font color='#650000'>0.400 | 34704: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34705: Stopping chef-client on d52-54-77-77-01-02.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34706: + echo &#x27;Stopping chef-client on d52-54-77-77-01-02.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#580000'>0.345 | 34707: + timeout 30 ssh d52-54-77-77-01-02.vc1.cloud.suse.de rcchef-client stop</font><br />
+<font color='#650000'>0.400 | 34708: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#580000'>0.345 | 34709: + echo &#x27;Stopping chef-client on d52-54-77-77-01-03.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34710: Stopping chef-client on d52-54-77-77-01-03.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34711: + timeout 30 ssh d52-54-77-77-01-03.vc1.cloud.suse.de rcchef-client stop</font><br />
+<font color='#650000'>0.400 | 34712: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#580000'>0.345 | 34713: + echo &#x27;Stopping chef-client on d52-54-77-77-01-04.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34714: Stopping chef-client on d52-54-77-77-01-04.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34715: + timeout 30 ssh d52-54-77-77-01-04.vc1.cloud.suse.de rcchef-client stop</font><br />
+<font color='#650000'>0.400 | 34716: + for node in &#x27;$(crowbar machines list | grep ^d)&#x27;</font><br />
+<font color='#580000'>0.345 | 34717: + echo &#x27;Stopping chef-client on d52-54-77-77-01-05.vc1.cloud.suse.de&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34718: Stopping chef-client on d52-54-77-77-01-05.vc1.cloud.suse.de</font><br />
+<font color='#580000'>0.345 | 34719: + timeout 30 ssh d52-54-77-77-01-05.vc1.cloud.suse.de rcchef-client stop</font><br />
+<font color='#ff0000'>1.000 | 34720: Killed by signal 15.</font><br />
+<font color='#660000'>0.402 | 34721: +(mkcloud:276) error_exit(): pre_exit_cleanup</font><br />
+<font color='#000000'>0.000 | 34722: +(mkcloud:218) pre_exit_cleanup(): rm mkcloud.pid</font><br />
+<font color='#650000'>0.398 | 34723: +(mkcloud:277) error_exit(): echo sshrun &#x27;TIMEFORMAT=&quot;timing&#x27; for mkcloud call &#x27;&#x27;\&#x27;&#x27;onadmin_testsetup&#x27;\&#x27;&#x27;&#x27; real=%R user=%U &#x27;system=%S&quot;&#x27; &#x27;;&#x27; time onadmin_testsetup &#x27;failed!&#x27; &#x27;(safelyret=55)&#x27; Aborting.</font><br />
+<font color='#4c0000'>0.300 | 34724: sshrun TIMEFORMAT=&quot;timing for mkcloud call &#x27;onadmin_testsetup&#x27; real=%R user=%U system=%S&quot; ; time onadmin_testsetup failed! (safelyret=55) Aborting.</font><br />
+<font color='#660000'>0.402 | 34725: +(mkcloud:278) error_exit(): show_environment</font><br />
+<font color='#000000'>0.000 | 34726: ++(mkcloud:180) show_environment(): date</font><br />
+<font color='#000000'>0.000 | 34727: +(mkcloud:180) show_environment(): end_time=&#x27;Mon Mar 25 21:33:26 UTC 2019&#x27;</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 34759: ~/github.com/SUSE-Cloud/automation/scripts ~/workspace/openstack-mkcloud</font><br />
+<font color='#000000'>0.000 | 34760: ++(mkcloud:190) show_environment(): git --no-pager show -s --oneline</font><br />
+<font color='#380000'>0.222 | 34761: +(mkcloud:190) show_environment(): echo &#x27;         git: 03fcdf2c9 Merge pull request #3274 from dirkmueller/cleanvm&#x27;</font><br />
+<font color='#540000'>0.333 | 34762:          git: 03fcdf2c9 Merge pull request #3274 from dirkmueller/cleanvm</font><br />
+<font color='#000000'>0.000 | 34763: +(mkcloud:191) show_environment(): popd</font><br />
+<font color='#000000'>0.000 | 34764: ~/workspace/openstack-mkcloud</font><br />
+<hr class='ls' />
+<font color='#000000'>0.000 | 34876: 1553544630  1553544636  step      setup_aliases         6</font><br />
+<font color='#000000'>0.000 | 34877: 1553544636  1553547990  step      proposal              3354</font><br />
+<font color='#700000'>0.441 | 34878: +(mkcloud:279) error_exit(): echo &#x27;exitcode: 30&#x27;</font><br />
+<font color='#ff0000'>1.000 | 34879: exitcode: 30</font><br />
+<font color='#480000'>0.283 | 34880: +(mkcloud:280) error_exit(): exit 30</font><br />
+<font color='#000000'>0.000 | 34881: + ret=30</font><br />
+<font color='#000000'>0.000 | 34882: + [[ 30 != 0 ]]</font><br />
+<font color='#000000'>0.000 | 34883: + [[ -n 25eab46769326403479cc462ff6e72e5414db7d2 ]]</font><br />
+<font color='#4a0000'>0.293 | 34884: + mkcloudgating_trap</font><br />
+<font color='#3e0000'>0.244 | 34885: + /home/jenkins/github.com/openSUSE/github-pr/github_pr.rb --action set-status --debugratelimit --org crowbar --repo crowbar-openstack --sha 25eab46769326403479cc462ff6e72e5414db7d2 --context suse/mkcloud/ha --status failure --targeturl https://ci.suse.de/job/openstack-mkcloud/162503/parsed_console/</font><br />
+<font color='#000000'>0.000 | 34886: API rate limit: 4490</font><br />
+<font color='#000000'>0.000 | 34887: API rate limit: 4489</font><br />
+<font color='#2e0000'>0.184 | 34888: + echo &#x27;mkcloud ret=30&#x27;</font><br />
+<font color='#4a0000'>0.293 | 34889: mkcloud ret=30</font><br />
+<font color='#6b0000'>0.423 | 34890: + exit 30</font><br />
+<font color='#750000'>0.461 | 34891: Build step &#x27;Execute shell&#x27; marked build as failure</font><br />
+<font color='#000000'>0.000 | 34892: Set build name.</font><br />
+<font color='#000000'>0.000 | 34893: New build name is &#x27;#162503: crowbar/crowbar-openstack PR 2063 25eab467 ha&#x27;</font><br />
+<font color='#000000'>0.000 | 34894: Archiving artifacts</font><br />
+<font color='#440000'>0.270 | 34895: Finished: FAILURE</font><br />
+<font color='#000000'>0.000 | 34896: </font><br />
+        </div>
+      </div>
+    </div>
+    
+</div>
+<div id='debuginfo' style='overflow-x: auto'><table style='white-space: nowrap; margin: 0px' class='table table-condensed table-responsive table-bordered'>
+<thead><tr>
+<th>Model</th>
+<th>Train time</th>
+<th>Infos</th>
+<th>Baseline files</th>
+</tr></thead>
+<tbody>
+<tr id='model_crowbar-openstack-PR--ha-PASS.txt'>
+<td>crowbar-openstack-PR--ha-PASS.txt</td>
+<td>0.02 sec</td>
+<td>8487 samples, 262144 features</td>
+<td>crowbar-openstack-PR-2062-ha-PASS.txt crowbar-openstack-PR-2066-ha-PASS.txt crowbar-openstack-PR-2068-ha-PASS.txt crowbar-openstack-PR-2076-ha-PASS.txt</td>
+</tr>
+</tbody></table><br /></div>
+    </div>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/patternfly/3.24.0/js/patternfly.min.js'></script>
+    <script>
+$(document).ready(function(){
+$('#debugbtn').on('click', function(event) {$('[id=debuginfo]').toggle();});
+});
+$(".list-group-item-header").click(function(event){
+  if(!$(event.target).is("button, a, input, .fa-ellipsis-v")){
+    $(this).find(".fa-angle-right").toggleClass("fa-angle-down")
+      .end().parent().toggleClass("list-view-pf-expand-active")
+      .find(".list-group-item-container").toggleClass("hidden");
+    }
+})
+$(".list-group-item-container .close").on("click", function (){
+  $(this).parent().addClass("hidden")
+         .parent().removeClass("list-view-pf-expand-active")
+         .find(".fa-angle-right").removeClass("fa-angle-down");
+})
+</script>
+  </body>
+</html>
