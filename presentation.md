@@ -19,6 +19,7 @@ Note:
   many runs daily
 
 
+<!-- .slide: data-state="normal" data-menu-title="SOC CI" -->
 ### We watch SUSE OpenStack Cloud CI
 
 ![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
@@ -27,6 +28,7 @@ Note:
 - Sometimes jobs fail unexpectedly
 
 
+<!-- .slide: data-state="normal" data-menu-title="OpenStack Health" -->
 ### We watch OpenStack Health
 ![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
 
