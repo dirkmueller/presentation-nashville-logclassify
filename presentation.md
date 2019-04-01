@@ -174,8 +174,9 @@ Note:
 
 ### CI Logfiles: ML Challenges
 
-- Each Instance of a CI Logfile follows the very same structure
+- Each Instance of a CI Logfile execute the same steps
   - Install, Build, Test &#x1F642;
+  - Result is recorded (success, failures)
 - The individual Logfiles are quickly evolving
   - Every check-in changes it &#x1F610;
 - Each run has a lot of completely unique noise &#x1F612;
@@ -216,7 +217,7 @@ Note:
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
 
 
-### Machine Learning Variants
+### Machine Learning Variations
 
 <table>
 <thead><tr>
@@ -228,13 +229,24 @@ Note:
 <b>
 Classification<br/>
 </b>
-
+Naive Bayes<br/>
+<u>NearestNeighbor</u><br/>
+Support Vector Machines (SVM)<br/>
+Neural Networks ...
+<br/>
+<br/>
 <b>Regression<br/></b>
+Decision Trees<br/>
+Linear Regression<br/>
+Neural Networks ...
 </small>
 </td><td><small>
 <b>
 Clustering<br/>
 </b>
+K-Means<br/>
+Hidden Markov Model<br/>
+Neural Networks ...
 </small></td></tr>
 </tbody>
 </table>
@@ -242,11 +254,27 @@ Clustering<br/>
 
 ### Supervised Learning: Classification
 
-<table><tr><td>
-<img data-src="images/banana.jpg" width="75%" class="plain"/>
+<table>
+<tr><td>
+<img data-src="images/banane-set.jpg" width="75%" class="plain"/>
 </td>
 <td style="vertical-align: middle">
-&nbsp;&nbsp;&nbsp;<img data-src="images/arrow-right.png" class="plain"/>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;<img data-src="images/arrow-left.png" class="plain"/>&nbsp;&nbsp;&nbsp;
+</td>
+<td style="vertical-align: middle">
+<div style="padding: 15px; background-color: #6a6; box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.75);">Banana</div>
+</td>
+<td style="vertical-align: middle">
+<img data-src="images/green-eyes.png" class="plain"/>
+</td>
+<td style="vertical-align: middle;">
+<img data-src="images/green-brain.png" class="plain"/>
+</td>
+</tr>
+
+<tr>
+<td style="vertical-align: middle">
+<img data-src="images/banana.jpg" width="75%" class="plain"/>
 </td>
 <td style="vertical-align: middle">
 <img data-src="images/green-gear.png" class="plain"/>
@@ -261,17 +289,12 @@ Clustering<br/>
 </table>
 
 
-
 ### Regression vs Classification
 
 - Regression: Predict a continuous quantity
     - "What is the price of this used car?"
 - Classification: Which label(s) apply to this input?
     - "Is this a flower, tree or a horse?"
-
-
-### Precision vs Recall
-
 
 
 ### Using machine learning to remove noise
@@ -284,6 +307,7 @@ Note:
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
   workflow.
+
 
 ### Machine Learning Workflow
 <!-- .slide: data-transition="none" data-background-transition="none" -->
@@ -449,9 +473,17 @@ Note:
 
 ### log-classify: Installation
 
+openSUSE Leap/Tumbleweed:
+
+```bash
+    $ zypper install python3-logreduce
+```
+
+Others install from PyPI:
+
 ```bash
     $ pip3 install --user logreduce
-```
+ ```
 
 Note:
 - Can be installed with pip or from distribution provided packages
