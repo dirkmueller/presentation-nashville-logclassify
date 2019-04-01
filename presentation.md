@@ -57,6 +57,56 @@ Note:
   message
 
 
+### Reducing scrolling by pattern matching
+
+```perl
+warning /(?i)warning/
+
+error /Traceback \(most recent call last\)/
+error /(?i)error/
+error /(?i)\bfail(ure|ed)?\b/
+error /(?i)fatal/
+error /$h1!!/
+```
+
+
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 1" -->
+<div><img src="images/parsed-console-1.png" /></div>
+
+
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 2" -->
+<div><img src="images/parsed-console-2.png" /></div>
+
+
+<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 3" -->
+<div><img src="images/parsed-console-3.png" /></div>
+
+
+### Dealing with false positives
+
+```perl
+# Successful tempest run
+ok /^ - (Expected Fail|Failed): 0$/
+ok /Warning: Turning on '--gpg-auto-import-keys'/
+ok /Warning: Permanently added .* to the list of known hosts/
+ok /WARNING: Device for PV .* not found or rejected by a filter/
+ok /WARNING: \w+ signature detected on .* offset \d+. Wipe it?/
+ok /grep -v failed\b/
+
+# rpms containing "Error"
+ok /perl-Error[ -]|libsamba-errors|mariadb-errormessages/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=1030822
+warning /Cleaning up (vip-admin-\S+) on \S+, removing fail-count-\1/
+
+# https://bugzilla.suse.com/show_bug.cgi?id=971832
+ok /Failed to try-restart vsftpd@.service: Unit name vsftpd@.service is not valid/
+```
+
+Note:
+https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/openstack-mkcloud-rules.txt
+
+
 ### Vision: Machine Learning
 <img data-src="images/improved-flow.png" class="plain"/>
 
@@ -109,56 +159,6 @@ Note:
     - Target defines build that we want to analyze.
 - Deep Learning (neural network modelling) is an example of generalizing learning
 - Nearest Neighboars is an instance based learning algorithm
-
-
-### Why Machine Learning?
-
-```perl
-warning /(?i)warning/
-
-error /Traceback \(most recent call last\)/
-error /(?i)error/
-error /(?i)\bfail(ure|ed)?\b/
-error /(?i)fatal/
-error /$h1!!/
-```
-
-
-<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 1" -->
-<div><img src="images/parsed-console-1.png" /></div>
-
-
-<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 2" -->
-<div><img src="images/parsed-console-2.png" /></div>
-
-
-<!-- .slide: data-state="blank-slide" class="full-screen" data-menu-title="Log parser 3" -->
-<div><img src="images/parsed-console-3.png" /></div>
-
-
-### Dealing with false positives
-
-```perl
-# Successful tempest run
-ok /^ - (Expected Fail|Failed): 0$/
-ok /Warning: Turning on '--gpg-auto-import-keys'/
-ok /Warning: Permanently added .* to the list of known hosts/
-ok /WARNING: Device for PV .* not found or rejected by a filter/
-ok /WARNING: \w+ signature detected on .* offset \d+. Wipe it?/
-ok /grep -v failed\b/
-
-# rpms containing "Error"
-ok /perl-Error[ -]|libsamba-errors|mariadb-errormessages/
-
-# https://bugzilla.suse.com/show_bug.cgi?id=1030822
-warning /Cleaning up (vip-admin-\S+) on \S+, removing fail-count-\1/
-
-# https://bugzilla.suse.com/show_bug.cgi?id=971832
-ok /Failed to try-restart vsftpd@.service: Unit name vsftpd@.service is not valid/
-```
-
-Note:
-https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/openstack-mkcloud-rules.txt
 
 
 ### Why Machine Learning?
@@ -352,23 +352,25 @@ Note:
 - Next we will see how to implement such model
 
 
-### Noise Reduction
-<table><tr><th>Token</th><th>Raw text</th>
-<tr><td><pre>DATE</pre></td><td>months/days/date</td></tr>
-<tr><td><pre>RNGU</pre></td><td>UUIDs</td></tr>
-<tr><td><pre>RNGI</pre></td><td>IPv4 or IPv6 addresses</td></tr>
-<tr><td><pre>RNGN</pre></td><td>words that are exactly 32, 64 or 128 chars</td></tr>
-<tr><td><pre>RNGD</pre></td><td>numbers of at least 3 digits</td></tr>
-</table>
+<!-- .slide: data-state="normal" -->
+### Input transformation steps
 
-Note:
-- We already know what is not relevant for log analysis
-- Random words may be replaced with known tokens
-- Generic tokenization greatly reduce the complexity
-
-
-### Hashing Vectorizer
-<img style="border: none" data-src="images/hashing-vectorizer.png" class="plain"/>
+Splitting by lines
+<pre style="font-size: 10pt; font-weight: bold">
+Mar 11 02:43:28 localhost sudo[5195]: pam_unix(sudo:session): session opened for user root by (uid=5)
+</pre>
+Tokenization
+<pre style="font-size: 10pt; font-weight: bold">
+DATE localhost sudo pam_unix sudo session session opened for user root uid
+</pre>
+Hashing
+<pre style="font-size: 10pt; font-weight: bold">
+hash(DATE) hash(localhost) hash(sudo) hash(pam_unix) hash(sudo) hash(session) hash(opened) ...
+</pre>
+Transformation
+<pre style="font-size: 10pt; font-weight: bold">
+[0, ...., 0, 1, 0, ..., 0, 1, 0, ...]
+</pre>
 
 Note:
 - After tokenization, log lines needs to be transformed into
@@ -382,7 +384,24 @@ Note:
 - The vectorizer is used on each log lines, whatever its source or structure.
 
 
-### Example for Vectors of a CI logfile
+<!-- .slide: data-state="normal" -->
+### Input transformation: Noise reduction
+<table><tr><th>Token</th><th>Raw text</th>
+<tr><td><b><pre>DATE</pre></b></td><td>months/days/date</td></tr>
+<tr><td><b><pre>RNGU</pre></b></td><td>UUIDs</td></tr>
+<tr><td><b><pre>RNGI</pre></b></td><td>IPv4 or IPv6 addresses</td></tr>
+<tr><td><b><pre>RNGN</pre></b></td><td>words that are exactly 32, 64 or 128 chars</td></tr>
+<tr><td><b><pre>RNGD</pre></b></td><td>numbers of at least 3 digits</td></tr>
+</table>
+
+Note:
+- We already know what is not relevant for log analysis
+- Random words may be replaced with known tokens
+- Generic tokenization greatly reduce the complexity
+
+
+<!-- .slide: data-state="normal" -->
+### Example matrix of a CI logfile
 <img data-src="images/vectors.png" class="plain"/>
 
 Note:
