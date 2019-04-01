@@ -21,6 +21,10 @@
         }
     }
 
+    .slide-background-content {
+        background-size: $slide-width $slide-height;
+    }
+
     /* Blow iframe up to full screen size */
     iframe {
         height: 90%;
