@@ -7,6 +7,7 @@ Note:
   and spend too much time looking at log files :)
 
 
+<!-- .slide: data-state="normal" data-menu-title="Agenda" -->
 ### We love green CI
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
@@ -98,7 +99,7 @@ Note:
 - ML is the subset of AI that uses statistical methods to extract rules from data
 - Deep Learning is a subset of ML that most often uses multiple layers of
   an artificial neural networks for modelling machine learning methods
-- AI is a growing branch of computer science with a broad scope.
+- Big Data transition to machine learning
 - ML is a field of artificial intelligence that uses statistical techniques.
 - And Nearest Neighbors is one of the simplest of all ML algorithms that we will explore today.
 - In this presentation:
@@ -213,10 +214,12 @@ Note:
 </table>
 
 
+<!-- .slide: data-state="normal" -->
 ### Overfitting / Underfitting
 <img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
 
 
+<!-- .slide: data-state="normal" -->
 ### Machine Learning Variations
 
 <table>
@@ -252,6 +255,7 @@ Neural Networks ...
 </table>
 
 
+<!-- .slide: data-state="normal" -->
 ### Supervised Learning: Classification
 
 <table>
@@ -289,6 +293,7 @@ Neural Networks ...
 </table>
 
 
+<!-- .slide: data-state="normal" -->
 ### Regression vs Classification
 
 - Regression: Predict a continuous quantity
@@ -297,6 +302,7 @@ Neural Networks ...
     - "Is this a flower, tree or a horse?"
 
 
+<!-- .slide: data-state="normal" -->
 ### Using machine learning to remove noise
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
@@ -309,15 +315,15 @@ Note:
   workflow.
 
 
+<!-- .slide: data-state="normal" -->
 ### Machine Learning Workflow
-<!-- .slide: data-transition="none" data-background-transition="none" -->
 - *Build*: an individual CI log file
 - *Baseline*: Collection of log files from good CI runs
 - *Target*: The to be analyzed failed CI log run logfile
 
 
+<!-- .slide: data-state="normal" -->
 ### Generic Training Workflow
-<!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ml-generic-workflow-p1.png"/> <!-- .element: class="fragment plain" data-fragment-index="1" -->
 
 Note:
@@ -326,6 +332,7 @@ Note:
   machine learning model
 
 
+<!-- .slide: data-state="normal" -->
 ### Generic Testing Workflow
 <!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ml-generic-workflow-p2.png" class="plain"/>
@@ -334,6 +341,7 @@ Note:
 - We can repeat the same process to test the target
 
 
+<!-- .slide: data-state="normal" -->
 ### Generic Testing Workflow
 <!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ml-generic-workflow.png" class="plain"/>
@@ -386,6 +394,7 @@ look for the distances of each target vector to any baseline vectors
 - Next we will see how to interpret those vectors
 
 
+<!-- .slide: data-state="normal" -->
 ### Nearest Neighbors
 <img data-src="images/knn.png" class="plain"/>
 
@@ -396,6 +405,7 @@ Note:
   vectors to the baselines
 
 
+<!-- .slide: data-state="normal" -->
 ### kNeighbors queries
 <img data-src="images/kneighbors.png" class="plain"/>
 
@@ -405,7 +415,7 @@ Note:
   which increase the distance a lot.
 
 
-
+<!-- .slide: data-state="normal" -->
 ### Limitations
 - Nearest Neighbor uses brute force search     <!-- .element: class="fragment" data-fragment-index="1" -->
 - Complexity grows linearly with samples size  <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -425,8 +435,9 @@ Note:
   sparse features. Mistral logs, i'm looking at you :)
 
 
-### Unique vectors per job
-<img data-src="images/vector-per-jobs.png" class="plain"/>
+<!-- .slide: data-state="normal" -->
+### Unique vectors over training set instances
+<img data-src="images/vector-per-jobs.png" height="500px" class="plain"/>
 
 Note:
 - Most log files have a limited amount of possible variations.
@@ -434,8 +445,9 @@ Note:
   tempest-full job-output.
 
 
-### Performance per sample size
-<img data-src="images/time-per-samples.png" class="plain"/>
+<!-- .slide: data-state="normal" -->
+### Lookup time per sample size
+<img data-src="images/time-per-samples.png" height="500px" class="plain"/>
 
 Note:
 - This graph shows search time growing linearly with sample sizes.
@@ -445,11 +457,11 @@ Note:
 - The next section introduces an easy-to-use implementation of this technique.
 
 
-
 ## Introducing log-classify
 <img data-src="images/microscope-solid.svg" width=20% height=20% class="plain"/>
 
 
+<!-- .slide: data-state="normal" -->
 ### Log-classify
 - Uses http://scikit-learn.org/ <img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
 
@@ -466,11 +478,12 @@ Note:
 - in our experience the HashingVectorizer works best for logfiles
 
 
+<!-- .slide: data-state="normal" -->
 ## scikit learn
 <img data-src="images/ml_map.png" class="plain"/>
 
 
-
+<!-- .slide: data-state="normal" -->
 ### log-classify: Installation
 
 openSUSE Leap/Tumbleweed:
@@ -489,6 +502,7 @@ Note:
 - Can be installed with pip or from distribution provided packages
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: Commands
 
 ```txt
@@ -512,9 +526,9 @@ Note:
   over baseline/target management
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: Assumptions
 <img data-src="images/baselines.png" class="plain"/>
-- Instance based learning
 - Baseline is built from **SUCCESS** input
 - Model is run against **FAILURE** target
 
@@ -524,6 +538,7 @@ Note:
 - Uses statistical k-NN which is compareable to Bayes
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify
 <img data-src="images/heap-of-leaves-small.jpg" height="220"/>
 <img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
@@ -536,6 +551,7 @@ Note:
   obvious to see.
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: DevStack
 
 ```bash
@@ -558,6 +574,7 @@ Note:
 - Dimensions are # lines / # hashing size
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: DevStack Model
 <img data-src="images/devstack-svd.png" class="plain" height="500" />
 <small>Truncated singular value decomposition (SVD)</small>
@@ -571,6 +588,7 @@ Note:
   features to consider for the training process
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: Collecting baselines
 
 ```bash
@@ -589,6 +607,7 @@ Note:
 - Key question: How large should be the baseline?
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: Training Set Size
 <img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
@@ -600,6 +619,7 @@ Note:
 - 4-8 samples seems to be a good training set size for getting good results
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: Journald
 - Extract novelty in todays logs over yesterday:
 ```bash
@@ -617,6 +637,7 @@ Note:
   the target as the current day/week/month
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: journald (II)
 
 ```bash
@@ -644,7 +665,8 @@ Note:
 - Producing an anomaly and rerunning shows the new anomaly immediately
 
 
-### sosreport/supportconfig
+<!-- .slide: data-state="normal" -->
+### Supportconfig
 ```bash
 # logreduce diff report-good/ report-bad/ --html report.html
 Training took 51.364s at 1.543MB/s
@@ -665,6 +687,7 @@ Note:
 - Work in progress
 
 
+<!-- .slide: data-state="normal" -->
 ### log-classify: OpenStack logfiles
 
 ```bash
@@ -685,7 +708,7 @@ Note:
 - Needs more work for integration with centralized logging systems.
 
 
-
+<!-- .slide: data-state="blank" -->
 ## CI Workflow
 <img data-src="images/zuul.svg" width=30% height=20% class="plain"/>
 Note:
@@ -694,6 +717,7 @@ Note:
   in a CI workflow
 
 
+<!-- .slide: data-state="normal" -->
 ### Build results
 ![Zuul Build Results](images/zuul-results.png)
 
@@ -704,6 +728,7 @@ Note:
   often deterministic and previous runs can be automatically used as baselines
 
 
+<!-- .slide: data-state="normal" -->
 ### Zuul Architecture
 <img data-src="images/ci-flow-p0.0.png" class="plain"/>
 
@@ -713,6 +738,7 @@ Note:
 - The scheduler executes builds through a remote executor service.
 
 
+<!-- .slide: data-state="normal" -->
 ### Zuul Architecture 2
 <!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p0.1.png" class="plain"/>
@@ -722,6 +748,7 @@ Note:
 - The executor retrieves the logs and publishes them to a logserver
 
 
+<!-- .slide: data-state="normal" -->
 ### Zuul Architecture
 <!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p1.png" class="plain"/>
@@ -735,6 +762,7 @@ Note:
   can be used.
 
 
+<!-- .slide: data-state="normal" -->
 ### Post-Run Analysis
 <!-- .slide: data-transition="none" data-background-transition="none" -->
 <img data-src="images/ci-flow-p2.png" class="plain"/>
@@ -745,6 +773,7 @@ Note:
 - Cons: memory/cpu overhead on shared resources
 
 
+<!-- .slide: data-state="normal" -->
 ### Post-Run Playbook
 ```yaml
     - job:
@@ -769,6 +798,7 @@ Note:
   the job's condensed summary to the user.
 
 
+<!-- .slide: data-state="normal" -->
 ### Standalone Service
 <img data-src="images/ci-flow-p5.png" class="plain"/>
 
@@ -783,6 +813,7 @@ Note:
   directory index of raw files.
 
 
+<!-- .slide: data-state="normal" -->
 ### Demo
 <video id="demovideo" class="stretch"><source data-src="videos/short.webm" type="video/webm" /></video>
 
@@ -793,10 +824,12 @@ Note:
 
 
 
+<!-- .slide: data-state="section-break" -->
 ## Conclusions
 <img data-src="images/compass-solid.svg" width=20% height=20% class="plain"/>
 
 
+<!-- .slide: data-state="normal" -->
 ### Software Factory
 
 Log-Classify is hosted on softwarefactory-project.io
@@ -811,6 +844,7 @@ Note:
 - Log-classify is integrated as part of the default CI logs processing
 
 
+<!-- .slide: data-state="normal" -->
 ### How to contribute
 - Apache-2.0 Licensed
 - #log-classify on Freenode
@@ -819,6 +853,7 @@ Note:
 - Join us on #log-classify IRC channel on Freenode to get involved
 
 
+<!-- .slide: data-state="normal" -->
 ### Future plans
 - Handle Streaming logs
   - Adaptive model
@@ -842,7 +877,11 @@ Note:
 - Thank you for your time!
 
 
+<!-- .slide: data-state="section-break" -->
+### Q&A
 
+
+<!-- .slide: data-state="normal" -->
 ## Credits
 Icons used in these diagrams are licensed under
 Creative Commons Attribution 3.0:
