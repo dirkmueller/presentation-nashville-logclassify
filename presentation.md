@@ -199,29 +199,35 @@ Note:
 </tr></thead>
 <tbody><tr>
 <td><small>
-- Directly store instances of training<br/>
-- Derives hypotheses directly from training instances<br/>
-- Model can be quickly react to new training input<br/>
-- Model can be incrementally updated discarding old training input<br/>
+<ul>
+<li>Directly store instances of training</li>
+<li>Derives hypotheses directly from training instances</li>
+<li>Model can be quickly react to new training input</li>
+<li>Model can be incrementally updated discarding old training input</li>
+</ul>
 <p>
 <b>k-Nearest-Neighbor</b>
 </p>
 </small>
 </td><td><small>
-- Abstracting a model from training data<br/>
-- Requires longer training phase<br/>
-- Can not "untrain" previously learned data<br/>
+<ul>
+<li>Abstracting a model from training data</li>
+<li>Requires longer training phase</li>
+<li>Can not "untrain" previously learned data</li>
+</ul>
 <p>
 <b>Artifical Neural Networks (DL)</b>
 </p>
-</small></td></tr>
+</td></tr>
 </tbody>
 </table>
 
 
 <!-- .slide: data-state="normal" -->
 ### Overfitting / Underfitting
-<img data-src="images/ml_overfitting.svg" height="60%" width="60%" class="plain"/>
+<p style="text-align: center">
+<img data-src="images/ml_overfitting.svg" height="550" class="plain"/>
+</p>
 
 
 <!-- .slide: data-state="normal" -->
