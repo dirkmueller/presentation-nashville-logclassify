@@ -47,6 +47,7 @@ Note:
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
+<!-- .slide: data-state="normal" -->
 ### Manual Process
 <img data-src="images/legacy-flow.png" class="plain"/>
 
@@ -175,6 +176,7 @@ Note:
   infer that the article was indeed about machine learning.
 
 
+<!-- .slide: data-state="normal" -->
 ### CI Logfiles: ML Challenges
 
 - Each Instance of a CI Logfile execute the same steps
@@ -187,6 +189,7 @@ Note:
   - ordering due to parallel execution
 
 
+<!-- .slide: data-state="normal" -->
 ### Learning techniques
 
 <table>
@@ -304,7 +307,7 @@ Neural Networks ...
     - "Is this a flower, tree or a horse?"
 
 
-<!-- .slide: data-state="normal" -->
+<!-- .slide: data-state="blank" -->
 ### Using machine learning to remove noise
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
@@ -319,9 +322,9 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### Machine Learning Workflow
-- *Build*: an individual CI log file
-- *Baseline*: Collection of log files from good CI runs
-- *Target*: The to be analyzed failed CI log run logfile
+- **Build**: an individual CI log file
+- **Baseline**: Collection of log files from good CI runs
+- **Target**: The to be analyzed failed CI log run logfile
 
 
 <!-- .slide: data-state="normal" -->
@@ -500,8 +503,10 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-## scikit learn
-<img data-src="images/ml_map.png" class="plain"/>
+## scikit-learn
+<p style="text-align: center">
+<img data-src="images/ml_map.png" height="450" class="plain"/>
+</p>
 
 
 <!-- .slide: data-state="normal" -->
@@ -509,13 +514,13 @@ Note:
 
 openSUSE Leap/Tumbleweed:
 
-```bash
+```shell
     $ zypper install python3-logreduce
 ```
 
 Others install from PyPI:
 
-```bash
+```shell
     $ pip3 install --user logreduce
  ```
 
@@ -526,7 +531,8 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: Commands
 
-```txt
+<small>
+```shell
 # logreduce
 ...
     diff                Compare directories/files
@@ -538,7 +544,7 @@ Note:
 ...
     journal             Train and run against local journald
 ```
-<!-- .element: class="stretch" -->
+</small>
 
 Note:
 - logreduce can be used based on local files or set of files in directories
@@ -560,7 +566,7 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-### log-classify
+### log-classify: Image Metaphor
 <img data-src="images/heap-of-leaves-small.jpg" height="220"/>
 <img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
 <img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
@@ -575,7 +581,7 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: DevStack
 
-```bash
+```shell
 # logreduce diff logs/good.txt logs/bad.txt
 ...
 0.527 | bad.txt:34245:  2018-10-09 05:56:51.021261 | controller |\
@@ -586,7 +592,6 @@ Note:
 ...
 97.98% reduction (from 35244 lines to 712)
 ```
-<!-- .element: class="stretch" -->
 
 Note:
 - Diff can be used quickly to fuzzy compare two logfiles
@@ -597,8 +602,10 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### log-classify: DevStack Model
+<p style="text-align: center">
 <img data-src="images/devstack-svd.png" class="plain" height="500" />
 <small>Truncated singular value decomposition (SVD)</small>
+</p>
 
 Note:
 - SVD reduces the million dimensions to a human graspable
@@ -612,7 +619,7 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: Collecting baselines
 
-```bash
+```shell
 $ logreduce dir-train model.clf baseline/*
 Training on 8 logs took 12.090s at 1.426MB/s (20.831kl/s)
 
@@ -621,7 +628,6 @@ $ logreduce dir-run model.clf error.txt
 Testing took 6.375s at 0.454MB/s (6.569kl/s)
 99.72% reduction (from 41879 lines to 118)
 ```
-<!-- .element: class="stretch" -->
 
 Note:
 - Two phases: Training and then extraction
@@ -643,13 +649,13 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: Journald
 - Extract novelty in todays logs over yesterday:
-```bash
+
+```shell
 # logreduce journal --range day
 ```
-<!-- .element: class="stretch" -->
 - Build a model using previous month's logs and look for novelties:
 
-```bash
+```shell
 # logreduce journal-train --range month journal.clf
 ```
 
@@ -661,7 +667,7 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: journald (II)
 
-```bash
+```shell
 # logreduce journal-run --range day journal.clf
 ...
 99.76% reduction (from 19677 lines to 48)
@@ -677,7 +683,6 @@ Note:
 0.317 | systemd - DAEMON - autofs.service: Main process exited, code=dumped, status=11/SEGV
 0.314 | systemd - DAEMON - autofs.service: Failed with result 'core-dump'.
 ```
-<!-- .element: class="stretch" -->
 
 Note:
 - We can see a new anomaly in my journal related to postfix not able to
@@ -688,7 +693,7 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### Supportconfig
-```bash
+```shell
 # logreduce diff report-good/ report-bad/ --html report.html
 Training took 51.364s at 1.543MB/s
 Testing took 37.432s at 0.446MB/s
@@ -709,9 +714,9 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-### log-classify: OpenStack logfiles
+### log-classify: OpenStack log files
 
-```bash
+```shell
 
 # logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
 # logreduce dir-run nova.clf /var/log/nova/nova-compute.log
@@ -721,7 +726,6 @@ Note:
 ...
 93.15% reduction (from 6741 lines to 462)
 ```
-<!-- .element: class="stretch" -->
 
 Note:
 - Similarly log-classify can be used to analyze for anomalies as
