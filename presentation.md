@@ -908,12 +908,13 @@ Note:
 - Thank you for your time!
 
 
-<!-- .slide: data-state="section-break" -->
-### Q&A
-
-
 <!-- .slide: data-state="normal" -->
-## Credits
+## Q&A
+
+**Please fill out the survey!**
+
+https://pypi.org/project/logreduce/
+
 Icons used in these diagrams are licensed under
 Creative Commons Attribution 3.0:
 - https://fontawesome.com/license
