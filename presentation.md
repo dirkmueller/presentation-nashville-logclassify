@@ -798,7 +798,7 @@ Note:
     - job:
         name: base
         post-run:
-          - clasify-log
+          - classify-log
           - upload-log
 ```
 ```yaml
