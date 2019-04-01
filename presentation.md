@@ -7,7 +7,7 @@ Note:
   and spend too much time looking at log files :)
 
 
-<!-- .slide: data-state="normal" data-menu-title="Agenda" -->
+<!-- .slide: data-state="normal" data-menu-title="Green CI" -->
 ### We love green CI
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
