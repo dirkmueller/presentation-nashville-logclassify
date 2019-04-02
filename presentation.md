@@ -1,4 +1,5 @@
 [comment]: # (Warm-up - Why are we presenting?)
+<!-- .slide: data-state="normal" class="centered" -->
 ### We are cloud engineers
 <img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
@@ -60,6 +61,7 @@ Note:
   message
 
 
+<!-- .slide: data-state="normal" -->
 ### Reducing scrolling by pattern matching
 
 ```perl
@@ -111,6 +113,7 @@ Note:
 https://github.com/SUSE-Cloud/automation/blob/master/scripts/jenkins/log-parser/openstack-mkcloud-rules.txt
 
 
+<!-- .slide: data-state="normal" class="centered" -->
 ### Vision: Machine Learning
 <img data-src="images/improved-flow.png" class="plain"/>
 
@@ -123,6 +126,7 @@ Note:
    reduce investigation time
 
 
+<!-- .slide: data-state="normal" class="centered" -->
 ### Log-Classify
 ![OpenStack Health Screenshot](images/log-classify-openstack-error.png)
 
@@ -167,6 +171,7 @@ Note:
 - Nearest Neighboars is an instance based learning algorithm
 
 
+<!-- .slide: data-state="normal" class="centered" -->
 ### Why Machine Learning?
 <img data-src="images/wordcloud_ml.svg" class="plain"/>
 
@@ -233,7 +238,7 @@ Note:
 </p>
 
 
-<!-- .slide: data-state="normal" -->
+<!-- .slide: data-state="normal" class="centered" -->
 ### Machine Learning Variations
 
 <table>
@@ -269,7 +274,7 @@ Neural Networks ...
 </table>
 
 
-<!-- .slide: data-state="normal" -->
+<!-- .slide: data-state="normal" class="centered" -->
 ### Supervised Learning: Classification
 
 <table>
@@ -316,7 +321,7 @@ Neural Networks ...
     - "Is this a flower, tree or a horse?"
 
 
-<!-- .slide: data-state="blank" -->
+<!-- .slide: data-state="normal" class="centered" -->
 ### Using machine learning to remove noise
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
@@ -490,6 +495,7 @@ Note:
 - The next section introduces an easy-to-use implementation of this technique.
 
 
+<!-- .slide: data-state="normal" class="centered" -->
 ## Introducing log-classify
 <img data-src="images/microscope-solid.svg" width=20% height=20% class="plain"/>
 
