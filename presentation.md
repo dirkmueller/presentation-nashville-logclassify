@@ -332,7 +332,7 @@ Note:
 ### Machine Learning Workflow
 - **Build**: an individual CI log file
 - **Baseline**: Collection of log files from good CI runs
-- **Target**: The to be analyzed failed CI log run logfile
+- **Target**: The failed CI log run logfile to be analyzed
 
 
 <!-- .slide: data-state="normal" -->
