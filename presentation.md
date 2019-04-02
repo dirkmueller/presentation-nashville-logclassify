@@ -143,9 +143,11 @@ Log-Classify Implementation <!-- .element: style="color: white; background-color
 CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
-<!-- .slide: data-menu-title="AI vs. ML vs. DL" -->
-### &nbsp;
-<img data-src="images/AI-ML-DL.png" class="plain" width="70%" height="60%"/>
+<!-- .slide: data-state="normal" -->
+### AI vs ML vs DL
+<p style="text-align: center">
+![AI-ML-DL](images/AI-ML-DL.png)<!-- .element: style="width: 50%; height: 50%" -->
+</p>
 
 Note:
 - AI is about machines mimicing human intelligent behaviour
