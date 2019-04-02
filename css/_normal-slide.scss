@@ -32,6 +32,15 @@
             margin-bottom: 0;
         }
 
+        pre {
+            width: 100%;
+
+            code {
+                // override crap from theme/white.css
+                max-height: inherit;
+            }
+        }
+
         img.full-slide {
             width: 80%;
             max-width: 80%;
