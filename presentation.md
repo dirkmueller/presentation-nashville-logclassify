@@ -876,7 +876,6 @@ Note:
 
 <!-- .slide: data-state="section-break" -->
 ## Conclusions
-<img data-src="images/compass-solid.svg" width=20% height=20% class="plain"/>
 
 
 <!-- .slide: data-state="normal" -->
