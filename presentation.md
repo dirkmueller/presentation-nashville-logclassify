@@ -502,7 +502,9 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### Log-classify
-- Uses http://scikit-learn.org/ <img data-src="images/scikit_learn_logo_small.svg" class="plain"/>
+<img data-src="images/scikit_learn_logo_small.svg" class="plain" style="float:right" />
+
+- Uses http://scikit-learn.org/
 
 - Python 3 &#x1F642;
 - Multiple Text Extraction Models
