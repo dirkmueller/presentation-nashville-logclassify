@@ -44,13 +44,13 @@ Note:
 - There is an error in there, can you see it?
 
 
-### Did you find it?
+## Did you find it?
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" -->
 
 
 <!-- .slide: data-state="normal" -->
 ### Manual Process
-<img data-src="images/legacy-flow.png" class="plain"/>
+<img data-src="images/legacy-flow.png" width="90%" class="plain"/>
 
 Note:
 - This diagram shows the current actions a developer usually does to
@@ -279,7 +279,7 @@ Neural Networks ...
 
 <table>
 <tr><td>
-<img data-src="images/banane-set.jpg" width="75%" class="plain"/>
+<img data-src="images/banane-set.jpg" width="66%" class="plain"/>
 </td>
 <td style="vertical-align: middle">
 &nbsp;&nbsp;&nbsp;<img data-src="images/arrow-left.png" class="plain"/>&nbsp;&nbsp;&nbsp;
@@ -288,7 +288,7 @@ Neural Networks ...
 <div style="padding: 15px; background-color: #6a6; box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.75);">Banana</div>
 </td>
 <td style="vertical-align: middle">
-<img data-src="images/green-eyes.png" class="plain"/>
+<img data-src="images/green-eyes.png" height="200%" class="plain"/>
 </td>
 <td style="vertical-align: middle;">
 <img data-src="images/green-brain.png" class="plain"/>
@@ -297,7 +297,7 @@ Neural Networks ...
 
 <tr>
 <td style="vertical-align: middle">
-<img data-src="images/banana.jpg" width="75%" class="plain"/>
+<img data-src="images/banana.jpg" width="66%" class="plain"/>
 </td>
 <td style="vertical-align: middle">
 <img data-src="images/green-gear.png" class="plain"/>
@@ -322,7 +322,7 @@ Neural Networks ...
 
 
 <!-- .slide: data-state="normal" class="centered" -->
-### Using machine learning to remove noise
+### Using machine learning for CI log files
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
@@ -332,6 +332,8 @@ Note:
   - the NearestNeighbor model
 - Note that other models may easily be used while keeping the same
   workflow.
+- CI jobs are great targets for k-NN regression because the build outputs are
+  often deterministic and previous runs can be automatically used as baselines
 
 
 <!-- .slide: data-state="normal" -->
@@ -502,9 +504,24 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### Log-classify
-<img data-src="images/scikit_learn_logo_small.svg" class="plain" style="float:right" />
-
-- Uses http://scikit-learn.org/
+<table>
+<tr>
+<td>
+http://scikit-learn.org/</td><td> <img data-src="images/scikit_learn_logo_small.svg" width="50%" class="plain"/> </td>
+</tr>
+<tr> <td>
+**not yet**: https://www.tensorflow.org/</td><td> ( <img data-src="images/tensorflow_logo.svg" width="50%" class="plain"/> )
+</td>
+</td></tr>
+<tr>
+<td>
+https://github.com/facebookresearch/pysparnn
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+</table>
 
 - Python 3 &#x1F642;
 - Multiple Text Extraction Models
@@ -529,7 +546,7 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: Installation
 
-openSUSE Leap/Tumbleweed:
+openSUSE Leap/Tumbleweed/SLE 15 SUSE Package Hub:
 
 ```shell
     $ zypper install python3-logreduce
@@ -540,6 +557,10 @@ Others install from PyPI:
 ```shell
     $ pip3 install --user logreduce
  ```
+
+**NOTE**: log-classify is the new name, rename away from logreduce
+hasn't been completed yet.
+
 
 Note:
 - Can be installed with pip or from distribution provided packages
@@ -620,7 +641,7 @@ Note:
 <!-- .slide: data-state="normal" -->
 ### log-classify: DevStack Model
 <p style="text-align: center">
-<img data-src="images/devstack-svd.png" class="plain" height="500" />
+<img data-src="images/devstack-svd.png" width="60%" class="plain" />
 <small>Truncated singular value decomposition (SVD)</small>
 </p>
 
@@ -757,17 +778,6 @@ Note:
 - Using the tool manually may be cumbersome
 - We will now see different ways to integrate anomaly detection
   in a CI workflow
-
-
-<!-- .slide: data-state="normal" -->
-### Build results
-![Zuul Build Results](images/zuul-results.png)
-
-Note:
-- At the end of run, the user is presented with a list of build result,
-  and the goal is to help him understand why a build failed.
-- CI jobs are great targets for k-NN regression because the build outputs are
-  often deterministic and previous runs can be automatically used as baselines
 
 
 <!-- .slide: data-state="normal" -->
