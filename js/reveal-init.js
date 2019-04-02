@@ -40,3 +40,14 @@ Reveal.initialize({
 		{ src: 'reveal.js-menu/menu.js', async: true, condition: function() { return !!document.body.classList; } }
 	]
 });
+
+// Left/right mouse click to advance to next / previous slides.
+if (false) {
+  window.addEventListener("mousedown", handleClick, false);
+  window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+  function handleClick(e) {
+    e.preventDefault();
+    if(e.button === 0) Reveal.next();
+    if(e.button === 2) Reveal.prev();
+  }
+}
