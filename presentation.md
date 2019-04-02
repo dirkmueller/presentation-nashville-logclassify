@@ -85,6 +85,7 @@ error /$h1!!/
 <div><img src="images/parsed-console-3.png" /></div>
 
 
+<!-- .slide: data-state="normal" -->
 ### Dealing with false positives
 
 ```perl
