@@ -771,7 +771,7 @@ Note:
 
 
 <!-- .slide: data-state="blank" -->
-## CI Workflow
+## OpenStack Zuul
 <img data-src="images/zuul.svg" width=30% height=20% class="plain"/>
 Note:
 - Using the tool manually may be cumbersome
@@ -864,9 +864,8 @@ Note:
   directory index of raw files.
 
 
-<!-- .slide: data-state="normal" -->
-### Demo
-<video id="demovideo" class="stretch"><source data-src="videos/short.webm" type="video/webm" /></video>
+<!-- .slide: data-state="blank" -->
+<video id="demovideo" class="full-screen" controls preload><source data-src="videos/short.webm" type="video/webm" /></video>
 
 Note:
 - Grab a failed build from zuul.openstack.org, put the uuid in the new form
