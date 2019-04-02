@@ -344,6 +344,19 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
+### log-classify: Image Metaphor
+<img data-src="images/heap-of-leaves-small.jpg" height="220"/>
+<img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
+<img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
+
+Note:
+- Can you see a difference?
+- Humans are good at spotting the one obvious deviation,
+  machines can extract all the differences that were less
+  obvious to see.
+
+
+<!-- .slide: data-state="normal" -->
 ### Generic Training Workflow
 <img data-src="images/ml-generic-workflow-p1.png"/> <!-- .element: class="fragment plain" data-fragment-index="1" -->
 
@@ -561,7 +574,6 @@ Others install from PyPI:
 **NOTE**: log-classify is the new name, rename away from logreduce
 hasn't been completed yet.
 
-
 Note:
 - Can be installed with pip or from distribution provided packages
 
@@ -601,19 +613,6 @@ Note:
 - Instance based, or non-generalizing training
 - Training only successful runs detects auto-collecting of logs after failure
 - Uses statistical k-NN which is compareable to Bayes
-
-
-<!-- .slide: data-state="normal" -->
-### log-classify: Image Metaphor
-<img data-src="images/heap-of-leaves-small.jpg" height="220"/>
-<img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
-<img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
-
-Note:
-- Can you see a difference?
-- Humans are good at spotting the one obvious deviation,
-  machines can extract all the differences that were less
-  obvious to see.
 
 
 <!-- .slide: data-state="normal" -->
