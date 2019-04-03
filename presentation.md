@@ -8,8 +8,14 @@ Note:
   and spend too much time looking at log files :)
 
 
-<!-- .slide: data-state="normal" data-menu-title="Green CI" -->
+<!-- .slide: data-state="normal" data-menu-title="SOC CI" class="centered" -->
 ### We love green CI
+
+![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
+
+
+<!-- .slide: data-state="normal" data-menu-title="Green CI" -->
+### We care about upstream OpenStack CI too
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
@@ -18,14 +24,6 @@ Note:
 - OpenStack Health gives you a good way to introspect testing results
 - This graph from OpenStack Health shows that each project undergoes
   many runs daily
-
-
-<!-- .slide: data-state="normal" data-menu-title="SOC CI" -->
-### We watch SUSE OpenStack Cloud CI
-
-![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
-
-Note:
 - Sometimes jobs fail unexpectedly
 
 
