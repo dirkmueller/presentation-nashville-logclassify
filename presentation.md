@@ -609,8 +609,9 @@ Others install from PyPI:
     $ pip3 install --user logreduce
  ```
 
-**NOTE**: log-classify is the new name, rename away from logreduce
-hasn't been completed yet.
+**NOTE**:
+- `log-classify` is the new name
+- Rename from `logreduce` hasn't been completed yet
 
 Note:
 - Can be installed with pip or from distribution provided packages
