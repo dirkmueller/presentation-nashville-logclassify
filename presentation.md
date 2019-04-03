@@ -156,19 +156,11 @@ CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0,
 
 Note:
 - AI is about machines mimicing human intelligent behaviour
-- ML is the subset of AI that uses statistical methods to extract rules from data
-- Deep Learning is a subset of ML that most often uses multiple layers of
-  an artificial neural networks for modelling machine learning methods
+- ML is the subset of AI that uses statistical methods to infer patterns from data
+- Deep Learning is an example of ML that most often uses one or more layers of
+  an artificial neural networks for modelling machine learning
 - Big Data transition to machine learning
-- ML is a field of artificial intelligence that uses statistical techniques.
-- And Nearest Neighbors is one of the simplest of all ML algorithms that we will explore today.
-- In this presentation:
-  - Build defines generic process that generates logs, e.g. CI jobs,
-      deployment scripts, service operations, ...
-    - Baseline defines nominal build
-    - Target defines build that we want to analyze.
 - Deep Learning (neural network modelling) is an example of generalizing learning
-- Nearest Neighboars is an instance based learning algorithm
 
 
 <!-- .slide: data-state="normal" class="centered" -->
@@ -196,9 +188,16 @@ Note:
   - Timestamps, UUIDs, Passwords and
   - ordering due to parallel execution
 
+Note:
+- Most popular uses of ML and DL are about handling
+  video, images or audio
+- When ML is used for text, it is usually for usecases
+  around Natural Language Processing for translation
+  or feature extraction
+- Logfiles are fairly unique in some sense
 
 <!-- .slide: data-state="normal" -->
-### Learning techniques
+### Learning model Variations
 
 <table>
 <thead><tr>
@@ -220,7 +219,7 @@ Note:
 </td><td><small>
 <ul>
 <li>Abstracting a model from training data</li>
-<li>Requires longer training phase</li>
+<li>Requires much longer training phase</li>
 <li>Can not "untrain" previously learned data</li>
 </ul>
 <p>
@@ -229,6 +228,11 @@ Note:
 </td></tr>
 </tbody>
 </table>
+
+Note:
+- While Generalizing are more popular, instance
+based models have some advantages that are useful
+for the CI log case.
 
 
 <!-- .slide: data-state="normal" -->
@@ -341,6 +345,13 @@ Note:
 - **Build**: an individual CI log file
 - **Baseline**: Collection of log files from good CI runs
 - **Target**: The failed CI log run logfile to be analyzed
+
+Note:
+- In this presentation:
+  - Build defines generic process that generates logs, e.g. CI jobs,
+      deployment scripts, service operations, ...
+    - Baseline defines nominal build
+    - Target defines build that we want to analyze.
 
 
 <!-- .slide: data-state="normal" -->
