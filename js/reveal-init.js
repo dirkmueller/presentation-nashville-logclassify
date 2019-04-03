@@ -20,6 +20,7 @@ Reveal.initialize({
 
 	controls: false, // press C to toggle
 	controlsTutorial: true,
+	slideNumber: true,
 	navigationMode: 'linear',
 
 	// Transition speed
