@@ -808,6 +808,12 @@ Note:
 - Needs more work for integration with centralized logging systems.
 
 
+<!-- .slide: data-state="normal" -->
+### log-classify: Other use cases
+- Open Build Service build result files
+- Your ideas ?
+
+
 <!-- .slide: data-state="blank" -->
 ## OpenStack Zuul
 <img data-src="images/zuul.svg" width=30% height=20% class="plain"/>
