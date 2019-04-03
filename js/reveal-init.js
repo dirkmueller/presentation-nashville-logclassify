@@ -11,8 +11,11 @@ Reveal.initialize({
 	// Transition style
 	transition: 'fade', // none/fade/slide/convex/concave/zoom
 
+	// If you change these, make sure $slide-width and $slide-height in
+	// css/_variables.scss are also updated accordingly:
 	width: 1244,
 	height: 700,
+
 	margin: 0,
 
 	controls: false, // press C to toggle
