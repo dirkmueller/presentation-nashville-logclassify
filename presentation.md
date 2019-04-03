@@ -1,11 +1,13 @@
 [comment]: # (Warm-up - Why are we presenting?)
 <!-- .slide: data-state="normal" class="centered" -->
-### We are cloud engineers
+### We are SUSE OpenStack Cloud software engineers
 <img data-src="images/user-friends-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
 - We've both been troubleshooting SUSE OpenStack Cloud since the early days
-  and spend too much time looking at log files :)
+- Handling log files is part of daily routine
+- We'd like to explore together with you reducing the time to spend
+  looking at logfiles.
 
 
 <!-- .slide: data-state="normal" data-menu-title="SOC CI" class="centered" -->
@@ -55,12 +57,12 @@ Note:
   understand why a job failed
 - This process is tedious and time consuming and usually involves lots
   of clicking and scrolling...
-- Sometimes the root cause is not labelled with an easy to grep for error
+- Often one of the failure causes is labelled with an easy to grep error
   message
 
 
 <!-- .slide: data-state="normal" -->
-### Reducing scrolling by pattern matching
+### Idea: Reducing scrolling by pattern matching
 
 ```perl
 warning /(?i)warning/
@@ -155,10 +157,9 @@ CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0,
 Note:
 - AI is about machines mimicing human intelligent behaviour
 - ML is the subset of AI that uses statistical methods to infer patterns from data
-- Deep Learning is an example of ML that most often uses one or more layers of
-  an artificial neural networks for modelling machine learning
 - Big Data transition to machine learning
-- Deep Learning (neural network modelling) is an example of generalizing learning
+- Deep Learning is most often about artificial neural networks,
+  mimicing some aspects of biological neurons
 
 
 <!-- .slide: data-state="normal" class="centered" -->
@@ -187,12 +188,14 @@ Note:
   - ordering due to parallel execution
 
 Note:
-- Most popular uses of ML and DL are about handling
+- Most popular usecases of ML and DL are about handling
   video, images or audio
 - When ML is used for text, it is usually for usecases
-  around Natural Language Processing for translation
-  or feature extraction
-- Logfiles are fairly unique in some sense
+  around Natural Language Processing for language translation
+  or feature / sentinment extraction
+- Logfiles are a different use case afaik not covered well
+  and have unique challenges
+
 
 <!-- .slide: data-state="normal" -->
 ### Learning model Variations
@@ -239,6 +242,14 @@ for the CI log case.
 <img data-src="images/ml_overfitting.svg" height="550" class="plain"/>
 </p>
 
+Note:
+- The training set data and size are extremely important
+  for achieving good results
+- Training on too much will lead to overfitting
+- Training too little or having a model that can not
+  adequately reflect the complexitiy of the input will
+  lead to underfitting
+
 
 <!-- .slide: data-state="normal" class="centered" -->
 ### Machine Learning Variations
@@ -275,6 +286,11 @@ Neural Networks ...
 </tbody>
 </table>
 
+Note:
+- with supervised learning human review/input will
+  guide the ML model to better performance
+- with unsupervised learning the features are
+  extracted only based on analysing the data
 
 <!-- .slide: data-state="normal" class="centered" -->
 ### Supervised Learning: Classification
@@ -314,28 +330,22 @@ Neural Networks ...
 </table>
 
 
-<!-- .slide: data-state="normal" -->
-### Regression vs Classification
-
-- Regression: Predict a continuous quantity
-    - "What is the price of this used car?"
-- Classification: Which label(s) apply to this input?
-    - "Is this a flower, tree or a horse?"
-
-
 <!-- .slide: data-state="normal" class="centered" -->
 ### Using machine learning for CI log files
 <img data-src="images/flask-solid.svg" width=20% height=20% class="plain"/>
 
 Note:
-- This section introduces the base principle along with
+- This section introduces the base principles chose to handle CI log files
+- The easiest to use model is the Nearest-Neighbor model which we'll explain
+  in more detail
+
   two objects that can be used with logs:
   - the HashingVectorizer processor; and
   - the NearestNeighbor model
-- Note that other models may easily be used while keeping the same
+- Note that other models can easily be used while keeping the same
   workflow.
-- CI jobs are great targets for k-NN regression because the build outputs are
-  often deterministic and previous runs can be automatically used as baselines
+- CI jobs are great targets for k-NN because the build outputs are
+  naturally labelled as success or failure
 
 
 <!-- .slide: data-state="normal" -->
@@ -353,7 +363,7 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-### log-classify: Image Metaphor
+### log-classify: Analogy using pictures
 <img data-src="images/heap-of-leaves-small.jpg" height="220"/>
 <img data-src="images/heap-of-leaves-manipulated-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="1"/>
 <img data-src="images/heap-of-leaves-diff-small.jpg" style="float: right" height="220" class="fragment" data-fragment-index="2"/>
@@ -370,7 +380,13 @@ Note:
 <img data-src="images/ml-generic-workflow-p1.png"/> <!-- .element: class="fragment plain" data-fragment-index="1" -->
 
 Note:
-- This diagram shows how baselines are processed to train a model
+- The raw input from the baseline is being transformed first into
+  a representationt that can be stored in the model
+- We treat logfiles as a set of document inputs for the machine
+  learning model
+- Every line of the logfiles are noise reduced to reduce
+  the total dimensionality of the model and features are
+  extracted from the input
 - The raw text lines need to be converted before being used by a
   machine learning model
 
@@ -381,7 +397,13 @@ Note:
 <img data-src="images/ml-generic-workflow-p2.png" class="plain"/>
 
 Note:
-- We can repeat the same process to test the target
+- For running the model against a target, we repeat the same
+  transformation steps prior evaluating it against the model
+- The raw output of the NearestNeighbor ML prediction is
+  further post processed and a human digestable HTML
+  or pure text report is being generated to highlight detected
+  anomalies
+
 
 
 <!-- .slide: data-state="normal" -->
@@ -392,11 +414,10 @@ Note:
 Note:
 - After the model has been trained with nominal data, it can detect the noise
   from the target data and report what went wrong
-- Next we will see how to implement such model
 
 
 <!-- .slide: data-state="normal" -->
-### Input transformation steps
+### Log Input transformation example
 
 Splitting by lines
 <pre style="font-size: 10pt; font-weight: bold">
@@ -416,19 +437,22 @@ Transformation
 </pre>
 
 Note:
-- After tokenization, log lines needs to be transformed into
+- every line of a log file is being evaluated individually
+- In order to reduce noise, we're removing very short words or digit combinations
+  of 3 digits and less.
+- We also pattern match common complete noise parts out of the input
   something more convenient for machines.
-- The Hashing Vectorizer convert each words into a numeric hash value using a
-  hashing trick.
-- Then it encodes the token occurence information into a
-  sparse matrix array of all the possible hashes
-  (1 million by default).
-- Each vector is very sparse as it only contains the token hashes
-- The vectorizer is used on each log lines, whatever its source or structure.
+- Next we apply a trick to avoid having to store and update large
+  word dictionaries by simply hashing the word using a repeatable
+  predictable hashing algorithm
+- The hash result is encoded in a very long very sparse vector. The
+  ordering of words is ignored as well as their frequency of occurance
+  in a line
+- The huge loss of information still seems to lead to pretty good results
 
 
 <!-- .slide: data-state="normal" -->
-### Input transformation: Noise reduction
+### Input transformation: Replace irrelevant pieces with fixed strings
 <table><tr><th>Token</th><th>Raw text</th>
 <tr><td><b><pre>DATE</pre></b></td><td>months/days/date</td></tr>
 <tr><td><b><pre>RNGU</pre></b></td><td>UUIDs</td></tr>
@@ -457,7 +481,7 @@ look for the distances of each target vector to any baseline vectors
 
 
 <!-- .slide: data-state="normal" -->
-### Nearest Neighbors
+### k-Nearest Neighbors (k=1)
 <img data-src="images/knn.png" class="plain"/>
 
 Note:
@@ -468,8 +492,10 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-### kNeighbors queries
+### Example distance calculation in kNeighbors queries
 <img data-src="images/kneighbors.png" class="plain"/>
+
+- **VARIABLE IS NOT DEFINED** is not part of the baseline
 
 Note:
 - This example illustrates a knn search from the previous devstack example.
@@ -479,10 +505,10 @@ Note:
 
 <!-- .slide: data-state="normal" -->
 ### Limitations
-- Nearest Neighbor uses brute force search     <!-- .element: class="fragment" data-fragment-index="1" -->
+- Nearest Neighbor performs linear search in model<!-- .element: class="fragment" data-fragment-index="1" -->
 - Complexity grows linearly with samples size  <!-- .element: class="fragment" data-fragment-index="2" -->
-- Noise may hide important information         <!-- .element: class="fragment" data-fragment-index="3" -->
-- Logs may contain many features               <!-- .element: class="fragment" data-fragment-index="4" -->
+- Unfiltered Noise may distract from important information         <!-- .element: class="fragment" data-fragment-index="3" -->
+- Logs containing too many features               <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Note:
 - Preliminary work based on the HashingVectorizer. It works well for
@@ -494,7 +520,10 @@ Note:
 - Because it is an unsupervised learning model, short failure message
   may be indeferent from noise.
 - NN doesn't work well if logfile contains too many
-  sparse features. Mistral logs, i'm looking at you :)
+  unique features. as an example if log files are too verbose, 
+  it will require a very large baseline until the ML model
+  becomes meaningful. However, very large baselines are
+  harder to maintain and require huge memory and cpu footprint
 
 
 <!-- .slide: data-state="normal" -->
@@ -549,20 +578,20 @@ https://github.com/facebookresearch/pysparnn
 - Multiple Text Extraction Models
 - Assumes text, line based log-like input
 
-Note:
-- scikit-learn is a framework for using Machine Learning with Python
-- Provides a set of algorithms for efficient data analysis
-- For Text based learning, it provides various like
-  for example the Bag-of-Words approach or the HashingVectorizer
-- Provides TfidfVectorizer and HashingVectorizer based k-NNeighbor model
-- in our experience the HashingVectorizer works best for logfiles
-
 
 <!-- .slide: data-state="normal" -->
 ## scikit-learn
 <p style="text-align: center">
 <img data-src="images/ml_map.png" height="450" class="plain"/>
 </p>
+
+Note:
+- scikit-learn is a mature, proven framework for Machine Learning using Python
+- Provides a set of algorithms for efficient data analysis
+- For Text based learning, it provides various like
+  for example the Bag-of-Words approach or the HashingVectorizer
+- Provides TfidfVectorizer and HashingVectorizer based k-NNeighbor model
+- in our experience the HashingVectorizer works best for logfiles
 
 
 <!-- .slide: data-state="normal" -->
@@ -681,7 +710,7 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
-### log-classify: Training Set Size
+### log-classify: Influence of Baseline Size
 <img data-src="images/graph-anomaly-baseline-effect.png" height="420" class="plain"/>
 
 Note:
