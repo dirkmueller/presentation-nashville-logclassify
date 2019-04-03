@@ -580,7 +580,7 @@ https://github.com/facebookresearch/pysparnn
 
 
 <!-- .slide: data-state="normal" -->
-## scikit-learn
+### scikit-learn
 <p style="text-align: center">
 <img data-src="images/ml_map.png" height="450" class="plain"/>
 </p>
