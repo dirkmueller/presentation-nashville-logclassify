@@ -768,6 +768,26 @@ Note:
 
 
 <!-- .slide: data-state="normal" -->
+### log-classify: OpenStack log files
+
+```shell
+
+# logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
+# logreduce dir-run nova.clf /var/log/nova/nova-compute.log
+...
+0.684 | INFO .. No calling threads waiting for msg_id : d3afd41a53bb4d14a5e42da0e522f700
+0.619 | INFO .. Recovered from being unable to report status
+...
+93.15% reduction (from 6741 lines to 462)
+```
+
+Note:
+- Similarly log-classify can be used to analyze for anomalies as
+  part of local logrotate if you use decentralized logging.
+- Needs more work for integration with centralized logging systems.
+
+
+<!-- .slide: data-state="normal" -->
 ### Supportconfig
 ```shell
 # logreduce diff report-good/ report-bad/ --html report.html
@@ -789,24 +809,16 @@ Note:
 - Work in progress
 
 
-<!-- .slide: data-state="normal" -->
-### log-classify: OpenStack log files
+<!-- .slide: data-state="normal" data-menu-title="Crowbar example" -->
+![crowbar-openstack PR #2063](images/PR-2063.png)
 
-```shell
 
-# logreduce dir-train nova.clf /var/log/nova/nova-compute.log-*xz
-# logreduce dir-run nova.clf /var/log/nova/nova-compute.log
-...
-0.684 | INFO .. No calling threads waiting for msg_id : d3afd41a53bb4d14a5e42da0e522f700
-0.619 | INFO .. Recovered from being unable to report status
-...
-93.15% reduction (from 6741 lines to 462)
-```
+<!-- .slide: data-state="normal" data-menu-title="Crowbar failure" -->
+![crowbar-openstack PR #2063 failure](images/PR-2063-failure.png)
 
-Note:
-- Similarly log-classify can be used to analyze for anomalies as
-  part of local logrotate if you use decentralized logging.
-- Needs more work for integration with centralized logging systems.
+
+<!-- .slide: data-state="blank" class="full-screen" data-menu-title="supportconfig output" -->
+<iframe data-src="examples/ci.suse.de/crowbar-openstack-PR-2063-ha-FAIL/nts_d52-54-77-77-01-01_190325_2128.html" />
 
 
 <!-- .slide: data-state="normal" -->
