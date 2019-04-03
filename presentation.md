@@ -153,7 +153,7 @@ Intro to Machine Learning <!-- .element: style="color: white; background-color:r
 
 Log-Classify Implementation <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
-CI Integration Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
+Demo <!-- .element: style="color: white; background-color:rgba(0, 0, 0, 0.6)" -->
 
 
 <!-- .slide: data-state="normal" -->
