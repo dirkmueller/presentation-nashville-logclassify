@@ -5,8 +5,8 @@
 
 Note:
 - We've both been troubleshooting SUSE OpenStack Cloud since the early days
-- Handling log files is part of daily routine
-- We'd like to explore together with you reducing the time to spend
+- Handling log files is part of our daily routine
+- Today we're going to show you some techniques for reducing the time we spend
   looking at logfiles.
 
 
@@ -15,32 +15,40 @@ Note:
 
 ![SUSE OpenStack Cloud CI](images/cloud9-ardana-mostly-green.png)
 
+Note:
+- CI is the beating heart of our product
+- It's mission critical for delivering a quality product
+- We have lots of different CI jobs
+- CI failures are expensive
+
 
 <!-- .slide: data-state="normal" data-menu-title="Green CI" -->
 ### We care about upstream OpenStack CI too
 ![OpenStack Health Screenshot](images/openstack-health-screenshot.png)
 
 Note:
-- OpenStack runs a huge CI system for supporting the software development
-- It produces tremendous amount of results and data
-- OpenStack Health gives you a good way to introspect testing results
-- This graph from OpenStack Health shows that each project undergoes
+- This graph of an upstream CI job shows that each project undergoes
   many runs daily
 - Sometimes jobs fail unexpectedly
 
 
 <!-- .slide: data-state="normal" data-menu-title="OpenStack Health" -->
-### We watch OpenStack Health
+### OpenStack Health
 ![OpenStack Health Job fails](images/openstack-health-jobs-list-arrow.png)
+
+Note:
+- OpenStack runs a huge CI system for supporting the software development
+- It produces tremendous amount of results and data
+- OpenStack Health gives you a good way to introspect testing results
 
 
 <!-- .slide: data-background-image="images/job-log-output-zoom-out.png" data-menu-title="Find the error" -->
 # ?
 
 Note:
-- Here we see that about 2% of the OpenStack Infra job log
+- This is about 2% of an OpenStack Infra job log
   http://logs.openstack.org/86/613286/1/check/openstack-ansible-opendaylight-ubuntu-xenial/616f532/job-output.txt.gz
-- Ask audience if they are looking at those log files regularly?
+- Ask audience if they are look at those log files regularly?
 - There is an error in there, can you see it?
 
 
