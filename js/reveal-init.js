@@ -15,6 +15,10 @@ Reveal.initialize({
 	height: 700,
 	margin: 0,
 
+	controls: false, // press C to toggle
+	controlsTutorial: true,
+	navigationMode: 'linear',
+
 	// Transition speed
 	transitionSpeed: 'fast', // default/fast/slow
 
@@ -41,13 +45,22 @@ Reveal.initialize({
 	]
 });
 
+Reveal.configure({
+	keyboard: {
+		// Make 'C' toggle controls
+		67: function() {
+			Reveal.configure({ controls: ! Reveal.getConfig()['controls'] });
+		},
+	}
+});
+
 // Left/right mouse click to advance to next / previous slides.
 if (false) {
-  window.addEventListener("mousedown", handleClick, false);
-  window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
-  function handleClick(e) {
-    e.preventDefault();
-    if(e.button === 0) Reveal.next();
-    if(e.button === 2) Reveal.prev();
-  }
+	window.addEventListener("mousedown", handleClick, false);
+	window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+	function handleClick(e) {
+		e.preventDefault();
+		if(e.button === 0) Reveal.next();
+		if(e.button === 2) Reveal.prev();
+	}
 }
