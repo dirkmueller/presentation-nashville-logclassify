@@ -300,6 +300,7 @@ Note:
 - with unsupervised learning the features are
   extracted only based on analysing the data
 
+
 <!-- .slide: data-state="normal" class="centered" -->
 ### Supervised Learning: Classification
 
